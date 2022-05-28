@@ -3,9 +3,9 @@
     <h1>Home</h1>
     <p>{{permissions}}</p>
     <div id='admin-section'>
-      <router-link v-if="isAdmin" v-bind:to="{name: 'admin'}">Admin Portal</router-link>
+      <router-link v-if="isAdmin()" v-bind:to="{name: 'admin'}">Admin Portal</router-link>
     </div>
-    <div v-if="isBrewer">Brewer</div>
+    <div v-if="isBrewer()">Brewer</div>
     <div>User</div>
   </div>
 </template>
