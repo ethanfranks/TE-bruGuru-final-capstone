@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <p>Test for Admin/Brewer/User</p>
+    <p>{{permissions}}</p>
     <div id='admin-section'>
       <router-link v-if="isAdmin" v-bind:to="{name: 'admin'}">Admin Portal</router-link>
     </div>
@@ -21,13 +21,17 @@ export default {
   },
   methods : {
     isAdmin () {
-      if(Object.values(this.permissions).includes('ROLE_ADMIN')) {
-        return true
+      for(let i = 0; i < this.permissions.length; i++){
+        if(this.permissions[i].name == 'ROLE_ADMIN'){
+          return true
+        }
       }
     },
     isBrewer () {
-      if(Object.values(this.permissions).includes('ROLE_BREWER')) {
-        return true
+      for(let i = 0; i < this.permissions.length; i++){
+        if(this.permissions[i].name == 'ROLE_BREWER'){
+          return true
+        }
       }
     },
   }
