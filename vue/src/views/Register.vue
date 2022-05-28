@@ -2,6 +2,7 @@
   <div id="register" class="text-center">
     <form class="form-register" @submit.prevent="register">
       <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+      {{user}}
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -24,6 +25,7 @@
         v-model="user.password"
         required
       />
+      
       <input
         type="password"
         id="confirmPassword"
@@ -31,6 +33,13 @@
         placeholder="Confirm Password"
         v-model="user.confirmPassword"
         required
+      />
+      <label for="checkbox">Do you own or represent a brewery?</label>
+      <input
+      type="checkbox"
+      id="isBrewer"
+      class="form-control"
+      v-on:change="addBrewerRole($event)"
       />
       <router-link :to="{ name: 'login' }">Have an account?</router-link>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
@@ -51,7 +60,7 @@ export default {
         username: '',
         password: '',
         confirmPassword: '',
-        role: 'user',
+        role: 'Beer Lover',
       },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',
@@ -86,6 +95,14 @@ export default {
       this.registrationErrors = false;
       this.registrationErrorMsg = 'There were problems registering this user.';
     },
+    addBrewerRole(evt) {
+      if(evt.target.checked) {
+        this.user.role='Beer Lover,Brewer'
+      }
+      else {
+        this.user.role='Beer Lover'
+      }
+    }
   },
 };
 </script>
