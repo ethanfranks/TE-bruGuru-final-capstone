@@ -15,6 +15,20 @@
       :zoom='12'
       style='width:100%;  height: 400px;'
     >
+    <GmapInfoWindow 
+    :options="infoWindowOptions"
+    :position="infoWindowPosition"
+    :opened="infoWindowOpened"
+    @click="activeBrewery = m"
+    >
+
+    <div class="info-window">
+      <h2>BreweryName</h2>
+      <h5>Hours:</h5>
+      <p>Address</p>
+    </div>
+      
+    </GmapInfoWindow>
     <GmapMarker
         :key="index"
         v-for="(m, index) in markers"
@@ -27,6 +41,8 @@
 </template>
 
 <script>
+import breweryService from '@/services/BreweryService'
+
 export default {
     name: 'GoogleMap',
     data() {
@@ -35,7 +51,25 @@ export default {
             currentPlace: null,
             markers: [],
             places: [],
+            breweries: [],
+            infoWindowOptions : {
+
+            },
+            infoWindowPosition: {
+              lat:"",
+              lng:"",
+
+            },
+            infoWindowOpened: false,
+            activeBrewery : {}
     }
+  },
+  created() {
+    return breweryService.getBreweries().then(
+      (response) => {
+        this.breweries = response.data
+        // this.getCoordinates();
+      });
   },
   mounted() {
     this.geolocate();
@@ -56,6 +90,17 @@ export default {
         this.currentPlace = null;
       }
     },
+    // getCoordinates() {
+    //   this.breweries.forEach((b) => {
+    //     breweryService.getBreweryCoords(b.address).then(
+    //       (response) => {
+    //           const latitude = response.results.geometry.location.lat;
+    //           const longitude = response.results.geometry.location.lng;
+    //           console.log({latitude, longitude})
+    //       }
+    //     )
+    //   })
+    // },
     geolocate: function() {
       navigator.geolocation.getCurrentPosition(position => {
         this.center = {
@@ -63,7 +108,7 @@ export default {
           lng: position.coords.longitude,
         };
       });
-    },
+    }
   },
 }
 </script>
