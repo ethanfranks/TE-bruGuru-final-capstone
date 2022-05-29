@@ -4,9 +4,13 @@
     <p>{{permissions}}</p>
     <div id='admin-section'>
       <router-link v-if="isAdmin()" v-bind:to="{name: 'admin'}">Admin Portal</router-link>
+    </div >
+    <div v-if="isBrewer()" id='brewer-section'>
+      <router-link v-if="isBrewer()" v-bind:to="{name: 'register-brewery'}">Brewery</router-link>
     </div>
-    <div v-if="isBrewer()">Brewer</div>
-    <div>User</div>
+    <div id='user-section'>
+      <router-link v-bind:to="{name: 'beer-finder'}">Find Great Beers</router-link>
+    </div>
   </div>
 </template>
 
