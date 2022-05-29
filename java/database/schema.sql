@@ -28,9 +28,14 @@ CREATE TABLE users (
 
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
+INSERT INTO users (username,password_hash,role) VALUES ('dave','$2a$10$5Z8FuX3eXmGDWRklDRDwlempKvhzpmzAW8HW66uI8.4/fcwjGDoK.','ROLE_ADMIN,ROLE_BEER LOVER,ROLE_BREWER');
+INSERT INTO users (username,password_hash,role) VALUES ('taylor','$2a$10$9ozIJQwk4ItwCu4fPcCyn.gXC6O7XGzZprbwnu7UURBrJx/E8s86m','ROLE_ADMIN,ROLE_BEER LOVER,ROLE_BREWER');
+INSERT INTO users (username,password_hash,role) VALUES ('chris','$2a$10$hRhH/GnAVxWjGt38yoc9SeEn90GVeITUdcrELNoiCKAvBYmsOGx7K','ROLE_ADMIN,ROLE_BEER LOVER,ROLE_BREWER');
+INSERT INTO users (username,password_hash,role) VALUES ('ethan','$2a$10$2pcUm9CQdkjY9diqYTgGr.RJviCoRZ2JuIPqoofG.ZDPziLB40kPW','ROLE_ADMIN,ROLE_BEER LOVER,ROLE_BREWER');
 
 CREATE TABLE breweries (
 	brewery_id SERIAL NOT NULL,
+	user_id int NOT NULL,
 	brewery_name varchar(100) NOT NULL,
 	email varchar(100),
 	phone varchar(50),
@@ -42,12 +47,13 @@ CREATE TABLE breweries (
 	street_address varchar(500),
 	gps_coords varchar(100),
 	food_available boolean,
-	CONSTRAINT PK_brewery PRIMARY KEY (brewery_id)
+	CONSTRAINT PK_brewery PRIMARY KEY (brewery_id),
+	CONSTRAINT FK_brewery FOREIGN KEY (user_id) REFERENCES users(user_id)
 
 );
 
-INSERT INTO breweries (brewery_name,email,phone,ig_link,fb_link,about_us,hours_of_operation,img_url,street_address,gps_coords,food_available)
-VALUES ('Big Elk River Brewing Co','BigElkBeer@fakeemail.com','555-666-7777','https://www.instagram.com/BigElkBeer/','https://www.Facebook.com/BigElkBeer','Test description for a fake brewery! Big Elk ipso lorum yadda yadda', 
+INSERT INTO breweries (brewery_name,user_id,email,phone,ig_link,fb_link,about_us,hours_of_operation,img_url,street_address,gps_coords,food_available)
+VALUES ('Big Elk River Brewing Co',3,'BigElkBeer@fakeemail.com','555-666-7777','https://www.instagram.com/BigElkBeer/','https://www.Facebook.com/BigElkBeer','Test description for a fake brewery! Big Elk ipso lorum yadda yadda', 
 'Tuesday-Sunday 11:30am - 1:00am', 'https://www.shutterstock.com/image-photo/glasses-different-sorts-craft-beer-on-1212903172', '123 Main St. Noel, MO. 64854', 'Latitude: 36.601856 / N 36° 36'' 6.682, Longitude: -94.447206 / W 94° 26'' 49.943''', true);
 
 CREATE TABLE beers (
