@@ -9,6 +9,7 @@ import AdminPage from '@/views/AdminPage'
 import AddBrewery from '@/views/AddBrewery'
 import BeerFinderPage from '@/views/BeerFinderPage'
 import BreweryHomePage from '@/views/BreweryHomePage'
+import MapViewTest from '@/views/MapViewTest'
 
 Vue.use(Router)
 
@@ -87,6 +88,14 @@ const router = new Router({
       name: 'brewery-details',
       component: BreweryHomePage,
       props: true,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/map',
+      name: 'map-test',
+      component: MapViewTest,
       meta: {
         requiresAuth: false
       }
