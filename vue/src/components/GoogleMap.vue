@@ -68,11 +68,12 @@ export default {
     return breweryService.getBreweries().then(
       (response) => {
         this.breweries = response.data
-        // this.getCoordinates();
+        this.addListMarkers()
       });
   },
   mounted() {
     this.geolocate();
+    
   },
   methods: {
     setPlace(place) {
@@ -89,6 +90,16 @@ export default {
         this.center = marker;
         this.currentPlace = null;
       }
+    },
+    addListMarkers() {
+      this.breweries.forEach((b) => {
+        const marker = {
+          lat: b.gpsLocation.lat,
+          lng: b.gpsLocation.lng
+        }
+
+        this.markers.push({ position: marker })
+      })
     },
     // getCoordinates() {
     //   this.breweries.forEach((b) => {
