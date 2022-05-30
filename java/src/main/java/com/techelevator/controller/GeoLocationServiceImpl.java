@@ -32,7 +32,7 @@ public class GeoLocationServiceImpl {
     }
 
 
-    public Optional<Location> computeGeoLocation(String fullAddressLine) { //2
+    public Location computeGeoLocation(String fullAddressLine) { //2
         final PlacesSearchResponse placesSearchResponse;
         try {
             placesSearchResponse = PlacesApi.textSearchQuery(geoApiContext,
@@ -53,7 +53,7 @@ public class GeoLocationServiceImpl {
                     final double longitude = geocodingResults[0].geometry.location.lng;
                     final Location geoLocation = new Location(latitude, longitude);
                     log.info("Computed following coordinates using GeocodingApi.newRequest {}", geoLocation);
-                    return Optional.of(geoLocation);
+                    return geoLocation;
                 } else {
                     log.warn("No coordinates found using GeocodingApi.newRequest {}", fullAddressLine);
                 }
@@ -64,7 +64,7 @@ public class GeoLocationServiceImpl {
             log.error("Encountered error [{}] using GoogleMapsApi for address {} : {}", e.getMessage(), fullAddressLine, e);
         }
 
-        return Optional.empty();
+        return null;
     }
 }
 
