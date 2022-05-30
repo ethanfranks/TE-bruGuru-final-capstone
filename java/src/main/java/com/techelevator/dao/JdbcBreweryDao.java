@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Location;
 import com.techelevator.model.Beer;
 import com.techelevator.model.Brewery;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class JdbcBreweryDao implements BreweryDao{
@@ -66,12 +68,20 @@ public class JdbcBreweryDao implements BreweryDao{
         brewery.setAboutUs(rs.getString("about_us"));
         brewery.setAddress(rs.getString("street_address"));
         brewery.setImageURL(rs.getString("img_url"));
-        brewery.setGpsLocation(rs.getString("gps_coords"));
+        brewery.setGpsLocation(createLocation(rs));
+        brewery.setGooglePlaceId(rs.getString("googlePlaceId"));
         brewery.setFood(rs.getBoolean("food_available"));
         brewery.setOfferings(getBeerByBrewery(brewery.getId()));
         brewery.setReviews(jdbcReviewDao.getBreweryReviews(brewery.getId()));
 
         return brewery;
+    }
+
+    public Location createLocation(SqlRowSet rs){
+        Location location = new Location();
+        location.setLat(rs.getDouble("gps_lat"));
+        location.setLng(rs.getDouble("gps_lng"));
+        return location;
     }
 
     private List<Beer> getBeerByBrewery(long id) {

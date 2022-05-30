@@ -45,16 +45,18 @@ CREATE TABLE breweries (
 	hours_of_operation varchar(1000),
 	img_url varchar(1000),
 	street_address varchar(500),
-	gps_coords varchar(100),
+	gps_lat numeric(10,7),
+	gps_lng numeric(10,7),
+	googlePlaceId varchar(200),
 	food_available boolean,
 	CONSTRAINT PK_brewery PRIMARY KEY (brewery_id),
 	CONSTRAINT FK_brewery FOREIGN KEY (user_id) REFERENCES users(user_id)
 
 );
 
-INSERT INTO breweries (brewery_name,user_id,email,phone,ig_link,fb_link,about_us,hours_of_operation,img_url,street_address,gps_coords,food_available)
+INSERT INTO breweries (brewery_name,user_id,email,phone,ig_link,fb_link,about_us,hours_of_operation,img_url,street_address,gps_lat,gps_lng,googlePlaceId,food_available)
 VALUES ('Big Elk River Brewing Co',3,'BigElkBeer@fakeemail.com','555-666-7777','https://www.instagram.com/BigElkBeer/','https://www.Facebook.com/BigElkBeer','Test description for a fake brewery! Big Elk ipso lorum yadda yadda', 
-'Tuesday-Sunday 11:30am - 1:00am', 'https://www.shutterstock.com/image-photo/glasses-different-sorts-craft-beer-on-1212903172', '123 Main St. Noel, MO. 64854', 'Latitude: 36.601856 / N 36° 36'' 6.682, Longitude: -94.447206 / W 94° 26'' 49.943''', true);
+'Tuesday-Sunday 11:30am - 1:00am', 'https://www.shutterstock.com/image-photo/glasses-different-sorts-craft-beer-on-1212903172', '123 Main St. Noel, MO. 64854', '36.601856', '-94.447206','EiAxMjMgTWFpbiBTdCwgTm9lbCwgTU8gNjQ4NTQsIFVTQSIaEhgKFAoSCdt0um1dU8iHEf7MGv4vDfNMEHs', true);
 
 CREATE TABLE beers (
 	beer_id SERIAL,

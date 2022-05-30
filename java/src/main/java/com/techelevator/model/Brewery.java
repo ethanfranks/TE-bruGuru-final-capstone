@@ -2,6 +2,7 @@ package com.techelevator.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Brewery {
     private long id;
@@ -13,12 +14,29 @@ public class Brewery {
     private String aboutUs;
     private String address;
     private String imageURL;
-    private String gpsLocation;
+    private Location gpsLocation;
+    private String googlePlaceId;
     private boolean food;
     private List<Beer> offerings = new ArrayList<>();
     private List<BreweryReview> reviews = new ArrayList<>();
 
     public Brewery() {
+    }
+
+    public String getGooglePlaceId() {
+        return googlePlaceId;
+    }
+
+    public void setGooglePlaceId(String googlePlaceId) {
+        this.googlePlaceId = googlePlaceId;
+    }
+
+    public Location getGpsLocation() {
+        return gpsLocation;
+    }
+
+    public void setGpsLocation(Location gpsLocation) {
+        this.gpsLocation = gpsLocation;
     }
 
     public long getId() {
@@ -101,13 +119,6 @@ public class Brewery {
         this.imageURL = imageURL;
     }
 
-    public String getGpsLocation() {
-        return gpsLocation;
-    }
-
-    public void setGpsLocation(String gpsLocation) {
-        this.gpsLocation = gpsLocation;
-    }
 
     public List<Beer> getOfferings() {
         return offerings;
