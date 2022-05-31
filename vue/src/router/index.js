@@ -10,6 +10,7 @@ import AddBrewery from '@/views/AddBrewery'
 import BeerFinderPage from '@/views/BeerFinderPage'
 import BreweryHomePage from '@/views/BreweryHomePage'
 import MapViewTest from '@/views/MapViewTest'
+import Account from '@/views/Account'
 
 Vue.use(Router)
 
@@ -98,6 +99,14 @@ const router = new Router({
       component: MapViewTest,
       meta: {
         requiresAuth: false
+      }
+    },
+    {
+      path: '/account',
+      name: 'account',
+      component: Account,
+      meta: {
+        requiresAuth: true
       }
     }
   ]

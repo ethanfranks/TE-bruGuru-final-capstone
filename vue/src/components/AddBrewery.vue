@@ -5,9 +5,7 @@
         <label for="brewer-id">Brewer ID:</label>
         <input id="brewer-id" type="text" v-model="newBrewery.user_id" />
       </div>
-      {{ newBrewery.user_id }}
-      {{ newBrewery.brewery_name }}
-      <div class="form-element">
+         <div class="form-element">
         <label for="brewery-name">Brewery Name:</label>
         <input
           id="brewery-name"
