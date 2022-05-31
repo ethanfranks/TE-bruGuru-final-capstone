@@ -11,4 +11,8 @@ export default {
 
     },
 
+    addBrewery(newBrewery) {
+        return axios.post('/breweries/createBrewery', newBrewery)
+    }
+
 }

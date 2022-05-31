@@ -1,16 +1,16 @@
 <template>
   <div>
     <h1>Add Brewery</h1>
-    <brewery-profile />
+    <add-brewery />
   </div>
 </template>
 
 <script>
-import BreweryProfile from "@/components/BreweryProfile";
+import AddBrewery from "../components/AddBrewery.vue";
 
 export default {
   components: {
-    BreweryProfile
-  }
+    AddBrewery,
+  },
 };
 </script>
