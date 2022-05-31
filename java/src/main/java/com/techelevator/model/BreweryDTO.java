@@ -38,23 +38,17 @@ public class BreweryDTO {
     private String address;
     @JsonProperty("img_url")
     private String imageURL;
-    // QUESTION: The database has a column for latitude and for longitude.
-    // Do we need to change this in our brewery object?
     private Location gpsLocation;
     @JsonProperty("googleplaceid")
     private String googlePlaceId;
     @JsonProperty("food_available")
     private boolean food;
-    private List<Beer> offerings = new ArrayList<>();
-    private List<BreweryReview> reviews = new ArrayList<>();
 
     // Constructor for Creating Breweries
-    public BreweryDTO(long brewer_id, String name) {
-        this.brewer_id = brewer_id;
-        this.name = name;
+    public BreweryDTO() {
     }
 
-   // Getters & Setters
+    // Getters & Setters
     public BreweryDao getBreweryDao() {
         return breweryDao;
     }
@@ -175,19 +169,4 @@ public class BreweryDTO {
         this.food = food;
     }
 
-    public List<Beer> getOfferings() {
-        return offerings;
-    }
-
-    public void setOfferings(List<Beer> offerings) {
-        this.offerings = offerings;
-    }
-
-    public List<BreweryReview> getReviews() {
-        return reviews;
-    }
-
-    public void setReviews(List<BreweryReview> reviews) {
-        this.reviews = reviews;
-    }
 }
