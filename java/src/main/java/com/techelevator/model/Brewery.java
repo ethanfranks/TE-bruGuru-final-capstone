@@ -6,6 +6,7 @@ import java.util.Optional;
 
 public class Brewery {
     private long id;
+    private long brewery_id;
     private String name;
     private String email;
     private String phoneNumber;

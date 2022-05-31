@@ -10,5 +10,5 @@ public interface BreweryDao {
 
     Brewery getBreweryByID(long id);
 
-    boolean createBrewery();
+    boolean createBrewery(long brewer_id, String name);
 }

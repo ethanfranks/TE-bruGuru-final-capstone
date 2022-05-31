@@ -3,19 +3,22 @@ package com.techelevator.dao;
 import com.techelevator.model.Location;
 import com.techelevator.model.Beer;
 import com.techelevator.model.Brewery;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class JdbcBreweryDao implements BreweryDao{
 
     private JdbcTemplate jdbcTemplate;
     private JdbcReviewDao jdbcReviewDao;
+
+    @Autowired
+    BreweryDao breweryDao;
 
     public JdbcBreweryDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -52,9 +55,12 @@ public class JdbcBreweryDao implements BreweryDao{
     }
 
     @Override
-    public boolean createBrewery() {
-        return false;
+    public boolean createBrewery(long brewer_id, String name) {
+        String sql = "INSERT INTO breweries (user_id, brewery_name) VALUES (?, ?);";
+
+        return jdbcTemplate.update(sql, brewer_id, name) == 1;
     }
+
 
     public Brewery createBreweryFromRow(SqlRowSet rs) {
         Brewery brewery = new Brewery();

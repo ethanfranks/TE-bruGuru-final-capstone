@@ -5,14 +5,19 @@ import com.techelevator.dao.BreweryDao;
 import com.techelevator.model.Brewery;
 import com.techelevator.model.BreweryDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 @RestController
 @CrossOrigin
 @RequestMapping(path = "/breweries")
 public class BreweryController {
+
+    private Principal principal;
 
     @Autowired
     //Google API service. Handles Geolocation of new Breweries
@@ -31,10 +36,14 @@ public class BreweryController {
         return breweryDao.getBreweryByID(id);
     }
 
-    @PostMapping(path="/breweries")
-    public Brewery addNewBrewery(@RequestBody BreweryDTO breweryDTO){
-        Brewery newBrewery = new Brewery();
-        return newBrewery;
+    // Changed the addNewBrewery method to return a boolean instead of a Brewery object
+    // Added Principal to take care of the authentication aspect
+    // Added @Valid annotation to make sure the variable annotations in our DTO are active
+    // Added @ResponseStatus annotation but not totally sure when and where we will need it
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path="/createBrewery", method = RequestMethod.POST)
+    public boolean addNewBrewery(@Valid @RequestBody BreweryDTO breweryDTO){
+        return breweryDao.createBrewery(breweryDTO.getBrewer_id(), breweryDTO.getName());
     }
 
 }
