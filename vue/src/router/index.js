@@ -67,8 +67,8 @@ const router = new Router({
       }
     },
     {
-      path: '/register-brewery',
-      name: 'register-brewery',
+      path: '/add-brewery',
+      name: 'Add Brewery',
       component: AddBrewery,
       meta: {
         requiresAuth: true
