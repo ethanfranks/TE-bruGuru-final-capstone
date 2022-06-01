@@ -1,43 +1,32 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
-    <p>{{permissions}}</p>
-    <div id='admin-section'>
-      <router-link v-if="isAdmin()" v-bind:to="{name: 'admin'}">Admin Portal</router-link>
-    </div >
-    <div v-if="isBrewer()" id='brewer-section'>
-      <router-link v-if="isBrewer()" v-bind:to="{name: 'register-brewery'}">Brewery</router-link>
-    </div>
-    <div id='user-section'>
-      <router-link v-bind:to="{name: 'beer-finder'}">Find Great Beers</router-link>
-    </div>
+    <header-component></header-component>
+
+    <google-map></google-map>
+
+    <footer-component></footer-component>
   </div>
 </template>
 
 <script>
+import headerComponent from '../components/Header.vue'
+import footerComponent from '../components/Footer.vue'
+import googleMap from '../components/GoogleMap.vue'
 
 export default {
   name: "home",
+  components:{
+    headerComponent,
+    footerComponent,
+    googleMap
+  },
   data () {
     return {
-      permissions : this.$store.state.user.authorities
+
     }
   },
   methods : {
-    isAdmin () {
-      for(let i = 0; i < this.permissions.length; i++){
-        if(this.permissions[i].name == 'ROLE_ADMIN'){
-          return true
-        }
-      }
-    },
-    isBrewer () {
-      for(let i = 0; i < this.permissions.length; i++){
-        if(this.permissions[i].name == 'ROLE_BREWER'){
-          return true
-        }
-      }
-    },
+
   }
 };
 </script>
