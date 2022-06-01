@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div class="header">
     <img src="" alt="" />
     <h1>Brewery Finder</h1>
     <nav>
-      <router-link v-bind:to="{ name: 'home' }">Home |</router-link>
-      <router-link v-bind:to="{ name: 'account' }"> Account | </router-link>
-      <router-link v-bind:to="{ name: isLoggedIn ? 'login' : 'logout'}">
+      <router-link class="router" id="home" v-bind:to="{ name: 'home' }">Home</router-link>
+      <router-link class="router" id="account" v-bind:to="{ name: 'account' }">Account</router-link>
+      <router-link class="router" id="login-logout" v-bind:to="{ name: isLoggedIn ? 'login' : 'logout'}">
         {{isLoggedIn ? 'Logout' : 'Login'}}
       </router-link>
     </nav>
@@ -32,4 +32,26 @@ export default {
 </script>
 
 <style>
+.header {
+  display: grid;
+  text-align: center;
+  background-color:  #55595C;
+  color: #F8F9FA;
+}
+
+nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    "home account login-logout"
+}
+
+.router {
+  text-decoration: none;
+  color: #F8F9FA;
+}
+
+.router:hover {
+  color: #CED4DA;
+}
 </style>

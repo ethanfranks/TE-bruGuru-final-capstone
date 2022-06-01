@@ -1,5 +1,8 @@
 <template>
   <div>
+    
+    <h2>Add Brewery</h2>
+    
     <form v-on:submit.prevent="addNewBrewery">
       <div class="form-element">
         <label for="brewer-id">Brewer ID:</label>
@@ -14,8 +17,8 @@
         />
       </div>
       <div class="actions">
-        <button v-on:click.prevent="resetForm" type="cancel">Cancel</button>
         <button>Submit</button>
+        <button v-on:click.prevent="resetForm" type="cancel">Cancel</button>
       </div>
     </form>
   </div>

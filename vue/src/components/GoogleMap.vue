@@ -1,7 +1,7 @@
 <template>
   <div id='map-area'>
     <div>
-    <h2>Map Test</h2>
+    <h2>Find Breweries</h2>
     <GmapAutocomplete
         @place_changed='setPlace'
     />
@@ -13,7 +13,8 @@
     <GmapMap @
       :center='center'
       :zoom='12'
-      style='width:100%;  height: 400px;'
+      style='width:40%;  height: 400px;'
+      id="map"
     >
     <GmapInfoWindow @
     :options="infoWindowOptions"
@@ -137,4 +138,10 @@ export default {
 </script>
 
 <style>
+
+#map {
+  display: flex;
+  justify-content: center;
+}
+
 </style>
