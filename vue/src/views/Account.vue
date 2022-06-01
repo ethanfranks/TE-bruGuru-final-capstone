@@ -9,7 +9,10 @@
     <div id="brewer-section" v-if="isBrewer()">
       <!-- add the update brewery component here -->
     </div>
+<div id="update-brewery"> 
 
+    <router-link class="router" id="update-brewery" v-bind:to="{ name: 'update-brewery' }">Update Brewery</router-link>
+</div>
     <div id="user-section" v-if="isUser()">
       <!-- add the favorite breweries component and favorite beers component here 
             also, if we want an update account component, etc... -->
@@ -23,6 +26,7 @@
 import headerComponent from "../components/Header.vue";
 import footerComponent from "../components/Footer.vue";
 import addBrewery from "../components/AddBrewery.vue";
+// import breweryUpdate from "../components/BreweryUpdate.vue";
 
 export default {
   name: "Account",
