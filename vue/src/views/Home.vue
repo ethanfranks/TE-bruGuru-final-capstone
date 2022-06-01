@@ -1,8 +1,10 @@
 <template>
   <div class="home">
     <header-component></header-component>
-
-    <google-map></google-map>
+    
+    <body>
+      <google-map></google-map>
+    </body>
 
     <footer-component></footer-component>
   </div>
@@ -31,6 +33,13 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
+div {
+  font-family: "Nunito Sans", sans-serif;
+}
 
+body {
+  display: flexbox;
+  
+}
 </style>
