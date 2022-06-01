@@ -5,8 +5,8 @@
     <GmapAutocomplete
         @place_changed='setPlace'
     />
-    <button @click='addMarker'>
-        Add
+    <button @click='centerMap'>
+        Go!
       </button>
     </div>
     <br>
@@ -15,11 +15,10 @@
       :zoom='12'
       style='width:100%;  height: 400px;'
     >
-    <GmapInfoWindow 
+    <GmapInfoWindow @
     :options="infoWindowOptions"
     :position="infoWindowPosition"
-    :opened="infoWindowOpened"
-    @click="activeBrewery = m"
+    :opened="infoWindowOpened"  
     >
 
     <div class="info-window">
@@ -33,7 +32,8 @@
         :key="index"
         v-for="(m, index) in markers"
         :position="m.position"
-        @click="center=m.position"
+        :clickable="true"
+        @click="toggleInfoWindow(m, index)"
       />
     </GmapMap>
     
@@ -53,27 +53,40 @@ export default {
             places: [],
             breweries: [],
             infoWindowOptions : {
-
+              content: '',
+              maxWidth: 300,
+              pixelOffset: { width: 0, height: -35 }
             },
             infoWindowPosition: {
-              lat:"",
-              lng:"",
+              lat:"34.0676609",
+              lng:"-117.662575",
 
             },
             infoWindowOpened: false,
-            activeBrewery : {}
+            activeBrewery : null
     }
   },
   created() {
     return breweryService.getBreweries().then(
       (response) => {
         this.breweries = response.data
-        this.addListMarkers()
+        this.breweries.map((b) => {
+          const marker = {
+            position : {
+              lat: b.gpsLocation.lat,
+              lng: b.gpsLocation.lng
+            },
+            infoText : `<strong>${b.name}<br></strong>` +
+                        `${b.address}<br>` +
+                        `<a href="/brewery/${b.id}" onclick="clickHomeLink(${b})">View home page</a>`
+                        
+          }
+          this.markers.push(marker)
+        })
       });
   },
   mounted() {
     this.geolocate();
-    
   },
   methods: {
     setPlace(place) {
@@ -91,27 +104,26 @@ export default {
         this.currentPlace = null;
       }
     },
-    addListMarkers() {
-      this.breweries.forEach((b) => {
-        const marker = {
-          lat: b.gpsLocation.lat,
-          lng: b.gpsLocation.lng
-        }
-
-        this.markers.push({ position: marker })
-      })
+    toggleInfoWindow: function(marker, idx) {
+      this.infoWindowPosition = marker.position
+      this.infoWindowOptions.content = marker.infoText
+      if(this.activeBrewery === idx) {
+        this.infoWindowOpened = !this.infoWindowOpened
+      }
+      else {
+        this.infoWindowOpened = true
+        this.activeBrewery = idx
+      }   
     },
-    // getCoordinates() {
-    //   this.breweries.forEach((b) => {
-    //     breweryService.getBreweryCoords(b.address).then(
-    //       (response) => {
-    //           const latitude = response.results.geometry.location.lat;
-    //           const longitude = response.results.geometry.location.lng;
-    //           console.log({latitude, longitude})
-    //       }
-    //     )
-    //   })
-    // },
+    centerMap() {
+      
+      this.center = { lat: this.currentPlace.geometry.location.lat(),
+                      lng: this.currentPlace.geometry.location.lng() }
+    },
+    clickHomeLink(brewery) {
+      this.$router.push({name: 'brewery-details', params:{id: brewery.id}})
+    },
+    
     geolocate: function() {
       navigator.geolocation.getCurrentPosition(position => {
         this.center = {
