@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Beer {
     private long id;
+    private long breweryId;
     private String name;
     private String description;
     private double abv;
@@ -46,6 +47,14 @@ public class Beer {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public long getBreweryId() {
+        return breweryId;
+    }
+
+    public void setBreweryId(long breweryId) {
+        this.breweryId = breweryId;
     }
 
     public String getName() {

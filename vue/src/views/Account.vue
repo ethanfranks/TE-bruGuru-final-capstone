@@ -7,7 +7,7 @@
     </div>
 
     <div id="brewer-section" v-if="isBrewer()">
-      <!-- add the update brewery component here -->
+      <beer-list></beer-list>
     </div>
 
     <div id="user-section" v-if="isUser()">
@@ -23,6 +23,7 @@
 import headerComponent from "../components/Header.vue";
 import footerComponent from "../components/Footer.vue";
 import addBrewery from "../components/AddBrewery.vue";
+import beerList from "../components/BeerList.vue"
 
 export default {
   name: "Account",
@@ -30,6 +31,7 @@ export default {
     headerComponent,
     footerComponent,
     addBrewery,
+    beerList
   },
   data() {
     return {
