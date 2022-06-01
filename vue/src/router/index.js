@@ -11,6 +11,7 @@ import BeerFinderPage from '@/views/BeerFinderPage'
 import BreweryHomePage from '@/views/BreweryHomePage'
 import MapViewTest from '@/views/MapViewTest'
 import Account from '@/views/Account'
+import BreweryUpdate from '@/views/BreweryUpdate'
 
 Vue.use(Router)
 
@@ -94,6 +95,14 @@ const router = new Router({
       }
     },
     {
+      path: '/account',
+      name: 'account',
+      component: Account,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
       path: '/map',
       name: 'map-test',
       component: MapViewTest,
@@ -102,9 +111,9 @@ const router = new Router({
       }
     },
     {
-      path: '/account',
-      name: 'account',
-      component: Account,
+      path: '/brewery/:id/update',
+      name: 'update-brewery',
+      component: BreweryUpdate,
       meta: {
         requiresAuth: true
       }
