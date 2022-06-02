@@ -3,10 +3,18 @@
     <img src="" alt="" />
     <h1>Brewery Finder</h1>
     <nav>
-      <router-link class="router" id="home" v-bind:to="{ name: 'home' }">Home</router-link>
-      <router-link class="router" id="account" v-bind:to="{ name: 'account' }">Account</router-link>
-      <router-link class="router" id="login-logout" v-bind:to="{ name: isLoggedIn ? 'login' : 'logout'}">
-        {{isLoggedIn ? 'Logout' : 'Login'}}
+      <router-link class="router" id="home" v-bind:to="{ name: 'home' }"
+        >Home</router-link
+      >
+      <router-link class="router" id="account" v-bind:to="{ name: 'account' }"
+        >Account</router-link
+      >
+      <router-link
+        class="router"
+        id="login-logout"
+        v-bind:to="{ name: isLoggedIn ? 'login' : 'logout' }"
+      >
+        {{ isLoggedIn ? "Logout" : "Login" }}
       </router-link>
     </nav>
   </div>
@@ -35,23 +43,22 @@ export default {
 .header {
   display: grid;
   text-align: center;
-  background-color:  #55595C;
-  color: #F8F9FA;
+  background-color: #55595c;
+  color: #f8f9fa;
 }
 
 nav {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas:
-    "home account login-logout"
+  grid-template-areas: "home account login-logout";
 }
 
 .router {
   text-decoration: none;
-  color: #F8F9FA;
+  color: #f8f9fa;
 }
 
 .router:hover {
-  color: #CED4DA;
+  color: #ced4da;
 }
 </style>
