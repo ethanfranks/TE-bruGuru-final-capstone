@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Brewery;
+import com.techelevator.model.BreweryDTO;
 
 import java.util.List;
 
@@ -13,4 +14,6 @@ public interface BreweryDao {
     int getBreweryIdByUserName(String name);
 
     boolean createBrewery(long brewer_id, String name);
+
+    Brewery updateBreweryDetails (BreweryDTO updatedBrewery);
 }
