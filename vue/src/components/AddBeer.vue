@@ -32,6 +32,10 @@
         <label for="brewery-id">Brewery ID: </label>
         <input id="brewery-id" type="text" v-model="newBeer.brewery_id" required />
       </div>
+      <div class="actions">
+        <button>Submit</button>
+        <button v-on:click.prevent="resetForm" type="cancel">Cancel</button>
+      </div>
     </form>
   </div>
 </template>
@@ -58,8 +62,8 @@ export default {
     addNewBeer() {
       beerService.addNewBeer(this.newBeer).then((response) => {
         if (response.status == 201) {
-          this.resetForm();
           this.$router.push("/account");
+          this.resetForm();
         }
       });
     },
