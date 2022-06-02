@@ -1,14 +1,12 @@
 <template>
   <div class="card">
     <div class="beer-name">{{beer.name}}</div>
-
-    <!-- <h2>{{ beer.name }}</h2>
-    <h3>{{ brewery_name }}</h3>
-    <p>Style: {{ beer.style }}</p>
-    <p>ABV: {{ beer.abv }}%</p>
-    <p>Flavor Profile: {{ beer.profile }}</p>
-    <h3>Description</h3>
-    <p>{{ beer.description }}</p> -->
+    <div class="brewery-name">{{beer.brewery_name}}</div>
+    <img class="beer-img" :src="beer.imageURL">
+    <div class="beer-style">{{beer.style}}</div>
+    <div class="beer-abv">{{beer.abv}}</div>
+    <div class="flavor-profile">{{beer.profile}}</div>
+    <div class="beer-description">{{beer.description}}</div>
   </div>
 </template>
 
@@ -20,4 +18,19 @@ export default {
 </script>
 
 <style>
+.card {
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 250px;
+  height: 550px;
+  margin: 20px;
+}
+
+.card .beer-name {
+  font-size: 1.5rem;
+}
+
+.card .brewery-name {
+  font-size: 1rem;
+}
 </style>
