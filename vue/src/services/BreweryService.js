@@ -13,10 +13,6 @@ export default {
 
     addBrewery(newBrewery) {
         return axios.post('/breweries/createBrewery', newBrewery)
-    },
-
-    getBeersByBreweryID(breweryId) {
-        return axios.get(`/breweries/`)
     }
 
 }

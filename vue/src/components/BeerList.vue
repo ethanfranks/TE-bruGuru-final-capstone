@@ -1,31 +1,36 @@
 <template>
   <div v-for: class="beer-list">
-
+    <beer-card v-for="beer in beers" v-bind:key="beer.beer_id" v-bind:beer="beer"></beer-card>
   </div>
 </template>
 
 <script>
+import beerCard from "@/components/BeerCard";
+import beerService from "@/services/BeerService";
+
 export default {
+  name: "beer-list",
+  components: {
+    beerCard,
+  },
   data() {
     return {
-      beer: {
-        name: 'Hazy Dayz',
-        description: 'This hazy IPA is everything you ever wanted in a beer. Tasty, cool, refreshing. Drink up delight.',
-        abv: 6.5,
-        imageURL: '',
-        style: 'IPA',
-        profile: 'grapefruit, hops',
-      }
-    }
+      beers: [],
+    };
   },
-  props: {
-    brewery_id: null,
-    brewery_name: null,
-  }
-
-}
+  created() {
+    const thisId = this.$route.params.id;
+    return beerService.getBeersByBreweryId(thisId).then((response) => {
+      this.beers = response.data;
+    });
+  },
+};
 </script>
 
 <style>
-
+.beer-list {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
 </style>
