@@ -24,6 +24,14 @@ public class Brewery {
     public Brewery() {
     }
 
+    public long getBrewery_id() {
+        return brewery_id;
+    }
+
+    public void setBrewery_id(long brewery_id) {
+        this.brewery_id = brewery_id;
+    }
+
     public String getGooglePlaceId() {
         return googlePlaceId;
     }

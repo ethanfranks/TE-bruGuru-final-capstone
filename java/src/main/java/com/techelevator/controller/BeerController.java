@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.BeerDao;
+import com.techelevator.dao.BreweryDao;
 import com.techelevator.model.Beer;
 import com.techelevator.model.BeerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +17,11 @@ import java.util.List;
 @RequestMapping(path = "/beer")
 public class BeerController {
 
-    private Principal principal;
-
     @Autowired
     BeerDao beerDao;
+
+    @Autowired
+    BreweryDao breweryDao;
 
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
     public List<Beer> getBeersByBreweryId(@PathVariable long id) {
@@ -28,8 +30,9 @@ public class BeerController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/addBeer", method = RequestMethod.POST)
-    public boolean addBeer(@Valid @RequestBody BeerDTO beerDTO) {
+    public boolean addBeer(@Valid @RequestBody BeerDTO beerDTO, Principal principal) {
+        long breweryId = breweryDao.getBreweryIdByUserName(principal.getName());
         return beerDao.addBeer(beerDTO.getName(), beerDTO.getDescription(), beerDTO.getAbv(), beerDTO.getStyle(),
-                beerDTO.getImageURL(), beerDTO.getProfile(), beerDTO.getBreweryId());
+                beerDTO.getImageURL(), beerDTO.getProfile(), breweryId);
     }
 }

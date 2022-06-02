@@ -55,17 +55,33 @@ public class JdbcBreweryDao implements BreweryDao{
     }
 
     @Override
-    public boolean createBrewery(long brewer_id, String name) {
+    public int getBreweryIdByUserName(String name) {
+        int breweryId = -1;
+        String sql="SELECT b.brewery_id FROM breweries b JOIN users on b.user_id = users.user_id WHERE username = ?;";
+
+        SqlRowSet rs = jdbcTemplate.queryForRowSet(sql, name);
+
+        if(rs.next()) {
+            breweryId = rs.getInt("brewery_id");
+        }
+
+        return breweryId;
+    }
+
+
+    @Override
+    public boolean createBrewery(long user_id, String name) {
         String sql = "INSERT INTO breweries (user_id, brewery_name) VALUES (?, ?);";
 
-        return jdbcTemplate.update(sql, brewer_id, name) == 1;
+        return jdbcTemplate.update(sql, user_id, name) == 1;
     }
 
 
     public Brewery createBreweryFromRow(SqlRowSet rs) {
         Brewery brewery = new Brewery();
 
-        brewery.setId(rs.getLong("brewery_id"));
+        brewery.setId(rs.getLong("user_id"));
+        brewery.setBrewery_id(rs.getLong("brewery_id"));
         brewery.setName(rs.getString("brewery_name"));
         brewery.setEmail(rs.getString("email"));
         brewery.setPhoneNumber(rs.getString("phone"));

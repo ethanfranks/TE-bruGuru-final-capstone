@@ -27,11 +27,6 @@
         <label for="beer-description">Beer Description: </label>
         <input id="beer-description" type="text" v-model="newBeer.beer_description" required />
       </div>
-      <!-- NEED TO CHANGE THIS TO AUTO-POPULATE WITH ASSOCIATED BREWER ID -->
-      <div class="form-element">
-        <label for="brewery-id">Brewery ID: </label>
-        <input id="brewery-id" type="text" v-model="newBeer.brewery_id" required />
-      </div>
       <div class="actions">
         <button>Submit</button>
         <button v-on:click.prevent="resetForm" type="cancel">Cancel</button>
@@ -53,8 +48,7 @@ export default {
         beer_abv: null,
         beer_style: "",
         image_url: "",
-        flavor_profile: "",
-        brewery_id: null,
+        flavor_profile: ""
       },
     };
   },
