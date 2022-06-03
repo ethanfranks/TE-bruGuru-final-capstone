@@ -1,6 +1,5 @@
 <template>
   <div>
-    <header-component></header-component>
     <div id="login" class="text-center">
       <img :src="image" alt="Flight of beer" class="logo" />
       <form class="form-signin" @submit.prevent="login">
@@ -40,23 +39,17 @@
         <br />
         <router-link :to="{ name: 'register' }">Need an account?</router-link>
       </form>
-      <footer-component></footer-component>
     </div>
   </div>
 </template>
 
+
 <script>
 import authService from "../services/AuthService";
-import headerComponent from "../components/Header.vue";
-import footerComponent from "../components/Footer.vue";
 import image from "../assets/secondBeerFlight.png";
 
 export default {
   name: "login",
-  components: {
-    headerComponent,
-    footerComponent,
-  },
   data() {
     return {
       user: {

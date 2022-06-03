@@ -1,6 +1,5 @@
 <template>
   <div>
-    <header-component></header-component>
     <div id="register" class="text-center">
       <img :src="image" alt="Fancy flight of beer" class="logoTwo" />
 
@@ -61,23 +60,17 @@
           >Already have an account?</router-link
         >
       </form>
-      <footer-component></footer-component>
     </div>
   </div>
 </template>
 
 <script>
 import authService from "../services/AuthService";
-import headerComponent from "../components/Header.vue";
-import footerComponent from "../components/Footer.vue";
 import image from "../assets/favoritebeerflight.png";
 
 export default {
   name: "register",
-  components: {
-    headerComponent,
-    footerComponent,
-  },
+
   data() {
     return {
       user: {

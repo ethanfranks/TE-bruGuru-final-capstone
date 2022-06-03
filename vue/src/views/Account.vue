@@ -1,7 +1,5 @@
 <template>
   <div class="home">
-    <header-component></header-component>
-
     <div id="admin-section" v-if="isAdmin()">
       <add-brewery></add-brewery>
     </div>
@@ -14,24 +12,18 @@
       <!-- add the favorite breweries component and favorite beers component here 
             also, if we want an update account component, etc... -->
     </div>
-
-    <footer-component></footer-component>
   </div>
 </template>
 
 <script>
-import headerComponent from "../components/Header.vue";
-import footerComponent from "../components/Footer.vue";
 import addBrewery from "../components/AddBrewery.vue";
-import beerList from "../components/BeerList.vue"
+import beerList from "../components/BeerList.vue";
 
 export default {
   name: "Account",
   components: {
-    headerComponent,
-    footerComponent,
     addBrewery,
-    beerList
+    beerList,
   },
   data() {
     return {
