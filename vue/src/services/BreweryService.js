@@ -15,8 +15,5 @@ export default {
         return axios.post('/breweries/createBrewery', newBrewery)
     },
 
-    // getBeersByBreweryID(breweryId) {
-    //     return axios.get(`/breweries/`)
-    // }
 
 }
