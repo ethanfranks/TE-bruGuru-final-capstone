@@ -36,12 +36,14 @@ public class BreweryController {
         return breweryDao.getBreweryByID(id);
     }
 
-//    @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
-//    public Brewery updateBreweryDetails(@PathVariable @RequestBody BreweryDTO breweryDTO){
-//        BreweryDTO locatedBrewery  = geoLocationService.computeGeoLocation(breweryDTO);
-//        return breweryDao.updateBreweryDetails(locatedBrewery);
-//
-//    }
+    @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
+    public Brewery updateBreweryDetails(@PathVariable long id, @RequestBody BreweryDTO breweryDTO){
+        System.out.println(breweryDTO);
+        BreweryDTO locatedBrewery  = geoLocationService.computeGeoLocation(breweryDTO);
+        System.out.println(breweryDTO.getGpsLocation());
+        return breweryDao.updateBreweryDetails(locatedBrewery);
+
+    }
 
     // Changed the addNewBrewery method to return a boolean instead of a Brewery object
     // Added Principal to take care of the authentication aspect

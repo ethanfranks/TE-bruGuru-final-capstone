@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.BreweryDTO;
 import com.techelevator.model.Location;
 import com.techelevator.model.Beer;
 import com.techelevator.model.Brewery;
@@ -74,6 +75,116 @@ public class JdbcBreweryDao implements BreweryDao{
         String sql = "INSERT INTO breweries (user_id, brewery_name) VALUES (?, ?);";
 
         return jdbcTemplate.update(sql, user_id, name) == 1;
+    }
+
+    @Override
+    public Brewery updateBreweryDetails(BreweryDTO updatedBrewery) {
+        long breweryId = updatedBrewery.getId();
+    if(updatedBrewery.getName()!= ""){
+        updatedBreweryName(breweryId,updatedBrewery.getName());
+    }
+        if(updatedBrewery.getEmail()!= ""){
+            updatedBreweryEmail(breweryId,updatedBrewery.getEmail());
+        }
+        if(updatedBrewery.getPhoneNumber()!= ""){
+            updatedBreweryPhone(breweryId,updatedBrewery.getPhoneNumber());
+        }
+        if(updatedBrewery.getFbLink()!= ""){
+            updatedBreweryFB(breweryId,updatedBrewery.getFbLink());
+        }
+        if(updatedBrewery.getIgLink()!= ""){
+            updatedBreweryIG(breweryId,updatedBrewery.getIgLink());
+        }
+        if(updatedBrewery.getAboutUs()!= ""){
+            updatedBreweryAboutUs(breweryId,updatedBrewery.getAboutUs());
+        }
+        if(updatedBrewery.getImageURL()!= ""){
+            updatedBreweryImage(breweryId,updatedBrewery.getImageURL());
+        }
+        if(updatedBrewery.getAddress()!= ""){
+            updatedBreweryAddress(breweryId,updatedBrewery.getAddress());
+        }
+        if(updatedBrewery.getGooglePlaceId()!= ""){
+            updatedBreweryGooglePlaceId(breweryId,updatedBrewery.getGooglePlaceId());
+        }
+        updatedBreweryGoogleLongitude(breweryId, updatedBrewery);
+        updatedBreweryGoogleLatitude(breweryId, updatedBrewery);
+
+        updatedBreweryHasFood(breweryId,updatedBrewery.isFood());
+
+        return getBreweryByID(updatedBrewery.getId());
+    }
+
+    private void updatedBreweryHasFood(long breweryId, boolean food) {
+        String sql = "Update breweries Set food_available = ? Where brewery_id = ? ;";
+        jdbcTemplate.update(sql, food, breweryId);
+
+    }
+
+    private void updatedBreweryGooglePlaceId(long breweryId, String googlePlaceId) {
+        String sql = "Update breweries Set googlePlaceId = ? Where brewery_id = ? ;";
+        jdbcTemplate.update(sql, googlePlaceId, breweryId);
+
+    }
+    private void updatedBreweryGoogleLongitude(long breweryId, BreweryDTO breweryDTO) {
+        Location location =breweryDTO.getGpsLocation();
+        String sql = "Update breweries Set gps_lng = ? Where brewery_id = ? ;";
+        jdbcTemplate.update(sql, location.getLng(), breweryId);
+
+    }
+
+    private void updatedBreweryGoogleLatitude(long breweryId,  BreweryDTO breweryDTO) {
+        Location location =breweryDTO.getGpsLocation();
+        String sql = "Update breweries Set gps_lat = ? Where brewery_id = ? ;";
+        jdbcTemplate.update(sql, location.getLat(), breweryId);
+
+    }
+    private void updatedBreweryAddress(long breweryId, String address) {
+        String sql = "Update breweries Set street_address = ? Where brewery_id = ? ;";
+        jdbcTemplate.update(sql, address, breweryId);
+
+    }
+
+    private void updatedBreweryImage(long breweryId, String imageURL) {
+        String sql = "Update breweries Set img_url = ? Where brewery_id = ? ;";
+        jdbcTemplate.update(sql, imageURL, breweryId);
+
+    }
+
+    private void updatedBreweryAboutUs(long breweryId, String aboutUs) {
+        String sql = "Update breweries Set about_us = ? Where brewery_id = ? ;";
+        jdbcTemplate.update(sql, aboutUs, breweryId);
+
+    }
+
+    private void updatedBreweryIG(long breweryId, String igLink) {
+        String sql = "Update breweries Set ig_link = ? Where brewery_id = ? ;";
+        jdbcTemplate.update(sql, igLink, breweryId);
+        
+    }
+
+    private void updatedBreweryFB(long breweryId, String fbLink) {
+        String sql = "Update breweries Set fb_link = ? Where brewery_id = ? ;";
+        jdbcTemplate.update(sql, fbLink, breweryId);
+        
+    }
+
+    private void updatedBreweryPhone(long breweryId, String phoneNumber) {
+        String sql = "Update breweries Set phone = ? Where brewery_id = ? ;";
+        jdbcTemplate.update(sql, phoneNumber, breweryId);
+
+
+    }
+
+    private void updatedBreweryEmail(long breweryId, String email) {
+        String sql = "Update breweries Set email = ? Where brewery_id = ? ;";
+        jdbcTemplate.update(sql, email, breweryId);
+
+    }
+
+    private void updatedBreweryName(long breweryId, String name) {
+        String sql = "Update breweries Set brewery_name = ? Where brewery_id = ? ;";
+        jdbcTemplate.update(sql, name, breweryId);
     }
 
 

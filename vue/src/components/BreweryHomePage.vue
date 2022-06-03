@@ -1,5 +1,6 @@
 <template>
   <div>
+       <brewery-update>Brewery update</brewery-update>
       <h2>{{brewery.name}}</h2>
       <h3>{{brewery.address}}</h3>
       <h3>{{brewery.phoneNumber}}</h3>
@@ -17,12 +18,17 @@
 
 <script>
 import breweryService from '@/services/BreweryService'
+import BreweryUpdate from './BreweryUpdate.vue'
 
 export default {
     data() {
         return {
             brewery: {}
         }
+    },
+    components:  {
+        BreweryUpdate
+
     },
     created() {
         const thisId = this.$route.params.id

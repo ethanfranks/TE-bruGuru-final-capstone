@@ -15,5 +15,8 @@ export default {
         return axios.post('/breweries/createBrewery', newBrewery)
     },
 
+    updateBrewery(updatedBrewery){
+        return axios.put(`breweries/${updatedBrewery.id}`, updatedBrewery)
+    }
 
 }

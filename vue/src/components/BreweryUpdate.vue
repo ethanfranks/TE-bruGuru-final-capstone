@@ -34,11 +34,13 @@
 </template>
 
 <script>
+import BreweryService from '@/services/BreweryService';
 export default {
   data() {
     return {
       brewery: {
-          name:'',
+          brewery_id: this.$route.params.id,
+          brewery_name:'',
           email:'',
           phone: '',
           ig_link: '',
@@ -49,9 +51,17 @@ export default {
           street_address:'',
           food_available:'',
 
-      }, 
+     },
+     updatedBrewery:{},
+     
       errorMsg:''
         };
     },
-    }
+    methods:{
+      sendUpdate() {
+return BreweryService.updateBrewery(this.brewery).then(response => 
+this.brewery = response.data)
+      }
+      }
+    };
 </script>

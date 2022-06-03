@@ -169,4 +169,24 @@ public class BreweryDTO {
         this.food = food;
     }
 
+    @Override
+    public String toString() {
+        return "BreweryDTO{" +
+                "breweryDao=" + breweryDao +
+                ", principal=" + principal +
+                ", id=" + id +
+                ", brewer_id=" + brewer_id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", igLink='" + igLink + '\'' +
+                ", fbLink='" + fbLink + '\'' +
+                ", aboutUs='" + aboutUs + '\'' +
+                ", address='" + address + '\'' +
+                ", imageURL='" + imageURL + '\'' +
+                ", gpsLocation=" + gpsLocation +
+                ", googlePlaceId='" + googlePlaceId + '\'' +
+                ", food=" + food +
+                '}';
+    }
 }
