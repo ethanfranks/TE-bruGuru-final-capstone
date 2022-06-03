@@ -11,6 +11,8 @@
     <div class="description-tag">Description</div>
     <div class="beer-description">{{ beer.description }}</div>
 
+    <!-- <input type="radio" v-if="isBrewer()" name="is-available" id="is-available" :value="isAvailable ? 'Available' : 'Unavailable'" v-model="beer.isAvailable"> -->
+
     <beer-reviews></beer-reviews>
 
   </div>
@@ -24,6 +26,15 @@ export default {
   components: {
       beerReviews
   },
+  methods: {
+    isBrewer() {
+      for (let i = 0; i < this.permissions.length; i++) {
+        if (this.permissions[i].name == "ROLE_BREWER") {
+          return true;
+        }
+      }
+    }
+  }
 };
 </script>
 
