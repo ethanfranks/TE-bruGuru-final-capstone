@@ -67,12 +67,13 @@ CREATE TABLE beers (
 	image_url varchar(300),
 	flavor_profile varchar(300),
 	brewery_id int,
+	beer_available boolean,
 	CONSTRAINT PK_beers PRIMARY KEY (beer_id),
 	CONSTRAINT FK_beers FOREIGN KEY (brewery_id) REFERENCES breweries(brewery_id)
 );
 
-INSERT INTO beers (beer_name,beer_description,beer_abv,beer_style,flavor_profile,image_url,brewery_id)
-VALUES ('Big Elk Brown Ale', 'Our brown ale is made from the finest brown ale stuff money can buy',6.3,'Ale','Nutty,Smooth,Mild','https://www.shutterstock.com/image-vector/craft-beer-ads-exquisite-bottled-3d-1018235908',1);
+INSERT INTO beers (beer_name,beer_description,beer_abv,beer_style,flavor_profile,image_url,brewery_id, beer_available)
+VALUES ('Moose Drool', 'Our brown ale is made from the finest brown ale stuff money can buy',6.3,'Ale','Nutty,Smooth,Mild','https://bigskybrew.com/wp-content/uploads/2022/03/CANMD192web.png',1, true);
 
 
 CREATE TABLE beer_reviews (

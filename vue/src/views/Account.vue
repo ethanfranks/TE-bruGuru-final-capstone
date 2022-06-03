@@ -6,6 +6,7 @@
 
     <div id="brewer-section" v-if="isBrewer()">
       <beer-list></beer-list>
+      <router-link v-bind:to="{name: 'add-beer'}">Add Beer</router-link>
     </div>
 
     <div id="user-section" v-if="isUser()">
