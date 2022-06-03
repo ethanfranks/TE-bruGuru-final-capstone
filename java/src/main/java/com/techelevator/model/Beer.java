@@ -12,6 +12,7 @@ public class Beer {
     private String imageURL;
     private String style;
     private String profile;
+    private boolean isAvailable;
     private List<BeerReview> reviews = new ArrayList<>();
 
     public String getDescription() {
@@ -79,6 +80,14 @@ public class Beer {
 
     public void setProfile(String profile) {
         this.profile = profile;
+    }
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
     }
 
     public List<BeerReview> getReviews() {

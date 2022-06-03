@@ -6,5 +6,8 @@ export default {
     },
     addNewBeer(newBeer) {
         return axios.post('/beer/addBeer', newBeer);
+    },
+    updateAvailability(beer) {
+        return axios.put('/beer/updateAvailability', beer);
     }
 }

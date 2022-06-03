@@ -14,8 +14,21 @@
 </template>
 
 <script>
+import beerService from '@/services/BeerService'
+
 export default {
 name: 'update-beer',
+data() {
+    return {
+        beers: []
+    }
+},
+  created() {
+    const thisId = this.$route.params.id;
+    return beerService.getBeersByBreweryId(thisId).then((response) => {
+      this.beers = response.data;
+    });
+  },
 methods: {}
 }
 </script>

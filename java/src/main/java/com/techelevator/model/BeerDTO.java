@@ -30,6 +30,8 @@ public class BeerDTO {
     private String style;
     @JsonProperty("flavor_profile")
     private String profile;
+    @JsonProperty("beer_available")
+    private boolean isAvailable;
 
     public BeerDTO() {
     }
@@ -96,5 +98,13 @@ public class BeerDTO {
 
     public void setProfile(String profile) {
         this.profile = profile;
+    }
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
     }
 }

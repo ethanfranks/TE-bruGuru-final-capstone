@@ -37,13 +37,22 @@ public class JdbcBeerDao implements BeerDao{
 
     @Override
     public boolean addBeer(String name, String description, double abv, String style,
-                            String imgURL, String profile, long breweryId) {
+                            String imgURL, String profile, long breweryId, boolean isAvailable) {
 
         String sql = "INSERT INTO beers (beer_name, beer_description, beer_abv, " +
-                        "beer_style, image_url, flavor_profile, brewery_id) " +
-                        "VALUES (?, ?, ?, ?, ?, ?, ?);";
+                        "beer_style, image_url, flavor_profile, brewery_id, beer_available) " +
+                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
 
-        return jdbcTemplate.update(sql, name, description, abv, style, imgURL, profile, breweryId) == 1;
+        return jdbcTemplate.update(sql, name, description, abv, style, imgURL, profile, breweryId, isAvailable) == 1;
+    }
+
+    @Override
+    public boolean updateBeer(String name, String description, double abv, String style, String imgURL, String profile, long breweryId, boolean isAvailable, long beerId) {
+
+        String sql = "UPDATE beers SET beer_name = ?, beer_description = ?, beer_abv = ?, beer_style = ?, " +
+                "image_url = ?, flavor_profile = ?, brewery_id = ?, beer_available = ? WHERE beer_id = ?;";
+
+        return jdbcTemplate.update(sql, name, description, abv, style, imgURL,profile, breweryId, isAvailable, beerId) == 1;
     }
 
     public Beer createBeerFromRow(SqlRowSet rs) {

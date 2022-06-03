@@ -11,8 +11,6 @@
     <div class="description-tag">Description</div>
     <div class="beer-description">{{ beer.description }}</div>
 
-    <!-- <input type="radio" v-if="isBrewer()" name="is-available" id="is-available" :value="isAvailable ? 'Available' : 'Unavailable'" v-model="beer.isAvailable"> -->
-
     <beer-reviews></beer-reviews>
 
   </div>
@@ -69,5 +67,13 @@ export default {
 .card .characteristic-tag {
     font-weight: bold;
     display: inline;
+}
+
+.card .is-available {
+  font-weight: bold;
+}
+
+.card .not-available {
+
 }
 </style>
