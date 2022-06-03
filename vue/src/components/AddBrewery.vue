@@ -59,8 +59,7 @@ export default {
     addNewBrewery() {
       BreweryService.addBrewery(this.newBrewery).then((response) => {
         if (response.status == 201) {
-          this.$router.push("/admin");
-          this.resetForm;
+          this.resetForm();
         }
       });
     },
