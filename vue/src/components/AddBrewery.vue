@@ -1,12 +1,15 @@
 <template>
   <div id="main">
     <img :src="image" alt="brewery" class="brewery-image" />
+    
     <div class="add-brewery-form">
       <h2>Add Brewery</h2>
       <form v-on:submit.prevent="addNewBrewery">
         <div class="form-element">
-          <label for="brewer-id">Brewer ID: </label>
-          <input id="brewer-id" type="text" v-model="newBrewery.user_id" />
+        <select name="brewer" id="brewer" v-model="newBrewery.user_id" required>
+          <option :value="null">Select Brewer User Account</option>
+          <option v-for="brewer in brewers" v-bind:key="brewer.id" :value="brewer.id">User ID# {{brewer.id}} -- Username: {{brewer.username}}</option>
+        </select>
         </div>
         <br />
         <div class="form-element">
@@ -14,38 +17,20 @@
           <input
             id="brewery-name"
             type="text"
-            v-model="newBrewery.brewery_name"
+            v-model="newBrewery.brewery_name" required placeholder="Brewery Name"
           />
         </div>
         <br />
         <div class="actions">
-          <button><b>Submit</b></button>
-          <button v-on:click.prevent="resetForm" type="cancel">
-            <b>Cancel</b>
+          <button class="bold">Submit</button>
+          <button v-on:click.prevent="resetForm" type="cancel" class="bold">
+            Cancel
           </button>
         </div>
       </form>
     </div>
-  <div>
-    
-    <h2>Add Brewery</h2>
-    
-    <form v-on:submit.prevent="addNewBrewery">
-      <div class="form-element">
-        <select name="brewer" id="brewer" v-model="newBrewery.user_id" required>
-          <option :value="null">Select Brewer User Account</option>
-          <option v-for="brewer in brewers" v-bind:key="brewer.id" :value="brewer.id">User ID# {{brewer.id}} -- Username: {{brewer.username}}</option>
-        </select>
-      </div>
-      <div class="form-element">
-        <input id="brewery-name" type="text" placeholder="Brewery Name" v-model="newBrewery.brewery_name" required />
-      </div>
-      <div class="actions">
-        <button>Submit</button>
-        <button v-on:click.prevent="resetForm" type="cancel">Cancel</button>
-      </div>
-    </form>
   </div>
+
 </template>
 
 <script>
@@ -94,6 +79,10 @@ export default {
 </script>
 
 <style>
+.bold {
+  font-weight: bold;
+}
+
 .add-brewery-form {
   display: inline-block;
   top: 200px;
