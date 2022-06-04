@@ -6,7 +6,7 @@
     <div class="status-message error" v-show="errorMsg !== ''"></div>
     <div class="form-group">
              <label for="Name">Name:</label>
-      <input id="name" type="text" class="form-control" v-model="brewery.name" autocomplete="off" />
+      <input id="name" type="text" class="form-control" v-model="brewery.brewery_name" autocomplete="off" />
            <label for="number">Phone Number:</label>
       <input id="number" type="tel" class="form-control" v-model="brewery.phone" autocomplete="off" />
            <label for="email">Email:</label>
@@ -25,7 +25,7 @@
          <textarea id="address" class="form-control" v-model="brewery.street_address"></textarea>
           <label for="food">Food Available: Yes</label>
          <input id="food" type="checkbox" class="form-control" v-model="brewery.food_available">
-      <input id="submit" type="submit" v-model="brewery.submit"/>
+      <input id="submit" type="submit" @click="sendUpdate()" value="Submit"/>
    
     </div>
     </div>
@@ -39,7 +39,7 @@ export default {
   data() {
     return {
       brewery: {
-          brewery_id: this.$route.params.id,
+          brewery_id: (Number(this.$route.params.id)),
           brewery_name:'',
           email:'',
           phone: '',
@@ -59,9 +59,9 @@ export default {
     },
     methods:{
       sendUpdate() {
-return BreweryService.updateBrewery(this.brewery).then(response => 
-this.brewery = response.data)
-      }
+        return BreweryService.updateBrewery(this.brewery).then(response => {
+        this.brewery = response.data})
+        }
       }
     };
 </script>

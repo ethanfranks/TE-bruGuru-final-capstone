@@ -77,8 +77,8 @@ public class BreweryDTO {
         return brewer_id;
     }
 
-    public void setBrewer_id(long brewer_id) {
-        this.brewer_id = brewer_id;
+    public void setBrewer_id(String brewer_id) {
+        this.brewer_id = Long.parseLong(brewer_id);
     }
 
     public String getName() {

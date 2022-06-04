@@ -80,36 +80,37 @@ public class JdbcBreweryDao implements BreweryDao{
     @Override
     public Brewery updateBreweryDetails(BreweryDTO updatedBrewery) {
         long breweryId = updatedBrewery.getId();
-    if(updatedBrewery.getName()!= ""){
+    if(updatedBrewery.getName()!= null){
         updatedBreweryName(breweryId,updatedBrewery.getName());
     }
-        if(updatedBrewery.getEmail()!= ""){
+        if(updatedBrewery.getEmail()!= null){
             updatedBreweryEmail(breweryId,updatedBrewery.getEmail());
         }
-        if(updatedBrewery.getPhoneNumber()!= ""){
+        if(updatedBrewery.getPhoneNumber()!= null){
             updatedBreweryPhone(breweryId,updatedBrewery.getPhoneNumber());
         }
-        if(updatedBrewery.getFbLink()!= ""){
+        if(updatedBrewery.getFbLink()!= null){
             updatedBreweryFB(breweryId,updatedBrewery.getFbLink());
         }
-        if(updatedBrewery.getIgLink()!= ""){
+        if(updatedBrewery.getIgLink()!= null){
             updatedBreweryIG(breweryId,updatedBrewery.getIgLink());
         }
-        if(updatedBrewery.getAboutUs()!= ""){
+        if(updatedBrewery.getAboutUs()!= null){
             updatedBreweryAboutUs(breweryId,updatedBrewery.getAboutUs());
         }
-        if(updatedBrewery.getImageURL()!= ""){
+        if(updatedBrewery.getImageURL()!= null){
             updatedBreweryImage(breweryId,updatedBrewery.getImageURL());
         }
-        if(updatedBrewery.getAddress()!= ""){
+        if(updatedBrewery.getAddress()!= null){
             updatedBreweryAddress(breweryId,updatedBrewery.getAddress());
         }
-        if(updatedBrewery.getGooglePlaceId()!= ""){
+        if(updatedBrewery.getGooglePlaceId()!= null){
             updatedBreweryGooglePlaceId(breweryId,updatedBrewery.getGooglePlaceId());
         }
-        updatedBreweryGoogleLongitude(breweryId, updatedBrewery);
-        updatedBreweryGoogleLatitude(breweryId, updatedBrewery);
-
+        if(updatedBrewery.getGpsLocation()!= null) {
+            updatedBreweryGoogleLongitude(breweryId, updatedBrewery);
+            updatedBreweryGoogleLatitude(breweryId, updatedBrewery);
+        }
         updatedBreweryHasFood(breweryId,updatedBrewery.isFood());
 
         return getBreweryByID(updatedBrewery.getId());

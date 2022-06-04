@@ -37,11 +37,14 @@ public class BreweryController {
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
-    public Brewery updateBreweryDetails(@PathVariable long id, @RequestBody BreweryDTO breweryDTO){
+    public Brewery updateBreweryDetails(@PathVariable String id, @RequestBody BreweryDTO breweryDTO){
         System.out.println(breweryDTO);
-        BreweryDTO locatedBrewery  = geoLocationService.computeGeoLocation(breweryDTO);
+        if(breweryDTO.getGpsLocation() == null) {
+//            BreweryDTO locatedBrewery = geoLocationService.computeGeoLocation(breweryDTO);
+            return breweryDao.updateBreweryDetails(breweryDTO);
+        }
         System.out.println(breweryDTO.getGpsLocation());
-        return breweryDao.updateBreweryDetails(locatedBrewery);
+        return breweryDao.updateBreweryDetails(breweryDTO);
 
     }
 

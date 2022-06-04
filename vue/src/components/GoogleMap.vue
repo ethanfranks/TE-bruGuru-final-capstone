@@ -7,7 +7,7 @@
     </div>
     <br />
     <GmapMap
-      @
+      @tilesloaded="filterMarkers"
       :center="center"
       :zoom="12"
       style="width: 500px; height: 400px"
@@ -43,8 +43,10 @@ export default {
   name: "GoogleMap",
   data() {
     return {
+      map: null,
       center: { lat: 36.545341, lng: -94.489761 },
       currentPlace: null,
+      currentMarkers: [],
       markers: [],
       places: [],
       breweries: [],
@@ -65,7 +67,7 @@ export default {
     return breweryService.getBreweries().then((response) => {
       this.breweries = response.data;
       this.breweries.map((b) => {
-        const marker = {
+        let marker = new this.google.maps.Marker({
           position: {
             lat: b.gpsLocation.lat,
             lng: b.gpsLocation.lng,
@@ -74,13 +76,16 @@ export default {
             `<strong>${b.name}<br></strong>` +
             `${b.address}<br>` +
             `<a href="/brewery/${b.id}" onclick="clickHomeLink(${b})">View home page</a>`,
-        };
+        });
         this.markers.push(marker);
       });
     });
   },
   mounted() {
     this.geolocate();
+    this.$refs.googleMapRef.$mapPromise.then((map) => {
+      this.map = map;
+    });
   },
   methods: {
     setPlace(place) {
@@ -97,6 +102,11 @@ export default {
         this.center = marker;
         this.currentPlace = null;
       }
+    },
+    filterMarkers() {
+      this.currentMarkers = this.markers.filter(marker =>
+        marker.getVisible() && this.map.getBounds().contains(marker.getPosition())
+      );
     },
     toggleInfoWindow: function (marker, idx) {
       this.infoWindowPosition = marker.position;
