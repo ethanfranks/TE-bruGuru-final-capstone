@@ -67,7 +67,7 @@ export default {
     return breweryService.getBreweries().then((response) => {
       this.breweries = response.data;
       this.breweries.map((b) => {
-        let marker = new this.google.maps.Marker({
+        let marker = {
           position: {
             lat: b.gpsLocation.lat,
             lng: b.gpsLocation.lng,
@@ -76,7 +76,7 @@ export default {
             `<strong>${b.name}<br></strong>` +
             `${b.address}<br>` +
             `<a href="/brewery/${b.id}" onclick="clickHomeLink(${b})">View home page</a>`,
-        });
+        };
         this.markers.push(marker);
       });
     });

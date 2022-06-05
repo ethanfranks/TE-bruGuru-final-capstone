@@ -116,6 +116,13 @@ public class JdbcBreweryDao implements BreweryDao{
         return getBreweryByID(updatedBrewery.getId());
     }
 
+    @Override
+    public long getBreweryByBeerId(long beerId) {
+        String sql = "SELECT brewery_id FROM beers WHERE beer_id = ?";
+
+        return jdbcTemplate.queryForObject(sql, long.class, beerId);
+    }
+
     private void updatedBreweryHasFood(long breweryId, boolean food) {
         String sql = "Update breweries Set food_available = ? Where brewery_id = ? ;";
         jdbcTemplate.update(sql, food, breweryId);

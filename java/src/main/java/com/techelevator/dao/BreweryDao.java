@@ -16,4 +16,6 @@ public interface BreweryDao {
     boolean createBrewery(long brewer_id, String name);
 
     Brewery updateBreweryDetails (BreweryDTO updatedBrewery);
+
+    long getBreweryByBeerId(long beerId);
 }

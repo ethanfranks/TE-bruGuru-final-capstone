@@ -14,6 +14,7 @@ import Account from '@/views/Account'
 import BreweryUpdate from '@/views/BreweryUpdate'
 import BeerList from '@/components/BeerList'
 import AddBeer from '@/views/AddBeer'
+import BeerReviews from '@/views/BeerReviews'
 
 Vue.use(Router)
 
@@ -124,6 +125,14 @@ const router = new Router({
       path: '/beer/:id',
       name: 'beer-list',
       component: BeerList,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/beer/:id/reviews',
+      name: 'beer-review-list',
+      component: BeerReviews,
       meta: {
         requiresAuth: false
       }
