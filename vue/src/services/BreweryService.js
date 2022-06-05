@@ -17,6 +17,11 @@ export default {
 
     updateBrewery(updatedBrewery){
         return axios.put(`breweries/${updatedBrewery.id}`, updatedBrewery)
+    },
+
+    getBreweryByUsername() {
+        return axios.get(`breweries/getBrewery`)
     }
+
 
 }

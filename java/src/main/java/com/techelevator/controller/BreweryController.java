@@ -12,6 +12,7 @@ import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
 
+
 @RestController
 @CrossOrigin
 @RequestMapping(path = "/breweries")
@@ -32,15 +33,20 @@ public class BreweryController {
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
-    public Brewery getBreweryById(@PathVariable long id){
+    public Brewery getBreweryById(@Valid @PathVariable long id){
         return breweryDao.getBreweryByID(id);
     }
 
+    @RequestMapping(path = "/getBrewery", method = RequestMethod.GET)
+    public Brewery getBreweryByUsername(@Valid Principal principal){
+        return breweryDao.getBreweryByID(breweryDao.getBreweryIdByUserName(principal.getName()));
+    }
+
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
-    public Brewery updateBreweryDetails(@PathVariable String id, @RequestBody BreweryDTO breweryDTO){
+    public Brewery updateBreweryDetails(@Valid @PathVariable String id, @RequestBody BreweryDTO breweryDTO){
         System.out.println(breweryDTO);
         if(breweryDTO.getGpsLocation() == null) {
-//            BreweryDTO locatedBrewery = geoLocationService.computeGeoLocation(breweryDTO);
+            BreweryDTO locatedBrewery = geoLocationService.computeGeoLocation(breweryDTO);
             return breweryDao.updateBreweryDetails(breweryDTO);
         }
         System.out.println(breweryDTO.getGpsLocation());
