@@ -5,13 +5,16 @@
     <div class="add-brewery-form">
       <h2>Add Brewery</h2>
       <form v-on:submit.prevent="addNewBrewery">
+        
         <div class="form-element">
-        <select name="brewer" id="brewer" v-model="newBrewery.user_id" required>
-          <option :value="null">Select Brewer User Account</option>
-          <option v-for="brewer in brewers" v-bind:key="brewer.id" :value="brewer.id">User ID# {{brewer.id}} -- Username: {{brewer.username}}</option>
-        </select>
+          <select name="brewer" id="brewer" v-model="newBrewery.user_id" required>
+            <option :value="null">Select Brewer User Account</option>
+            <option v-for="brewer in brewers" v-bind:key="brewer.id" :value="brewer.id">User ID# {{brewer.id}} -- Username: {{brewer.username}}</option>
+          </select>
         </div>
+        
         <br />
+        
         <div class="form-element">
           <label for="brewery-name">Brewery Name: </label>
           <input

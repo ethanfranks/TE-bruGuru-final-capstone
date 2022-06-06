@@ -15,5 +15,9 @@ export default {
         return axios.post('/breweries/createBrewery', newBrewery)
     },
 
+    getBreweryIdByCurrentUser() {
+        return axios.get('/breweries/username');
+    }
+
 
 }

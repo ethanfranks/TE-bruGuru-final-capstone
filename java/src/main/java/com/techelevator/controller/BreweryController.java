@@ -53,4 +53,10 @@ public class BreweryController {
         return breweryDao.createBrewery(breweryDTO.getBrewer_id(), breweryDTO.getName());
     }
 
+    @RequestMapping(path = "/username", method = RequestMethod.GET)
+    public long getBreweryIdByUsername(Principal principal) {
+        String username = principal.getName();
+        return breweryDao.getBreweryIdByUserName(username);
+    }
+
 }
