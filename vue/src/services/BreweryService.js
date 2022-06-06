@@ -23,5 +23,10 @@ export default {
         return axios.get(`breweries/getBrewery`)
     }
 
+    /* Using for update beer functionality. Added by Ethan. */
+    // getBreweryIdByCurrentUser() {
+    //     return axios.get('/breweries/username');
+    // }
+
 
 }
