@@ -55,6 +55,30 @@ public class JdbcBeerDao implements BeerDao{
         return jdbcTemplate.update(sql, name, description, abv, style, imgURL,profile, breweryId, isAvailable, beerId) == 1;
     }
 
+    @Override
+    public List<Beer> getBeersBySearchParameters(String filter, String profile) {
+        List<Beer> searchResults = new ArrayList<>();
+        String sql = "SELECT * FROM beers WHERE beer_style =? AND flavor_profile LIKE ?";
+        SqlRowSet rs = jdbcTemplate.queryForRowSet(sql, filter, "%"+profile+"%");
+        while(rs.next()) {
+            Beer beer = createBeerFromRow(rs);
+            searchResults.add(beer);
+        }
+        return searchResults;
+    }
+
+    @Override
+    public List<Beer> getBeersBySearchParameters(String filter) {
+        List<Beer> searchResults = new ArrayList<>();
+        String sql = "SELECT * FROM beers WHERE beer_style =?";
+        SqlRowSet rs = jdbcTemplate.queryForRowSet(sql, filter);
+        while(rs.next()) {
+            Beer beer = createBeerFromRow(rs);
+            searchResults.add(beer);
+        }
+        return searchResults;
+    }
+
     public Beer createBeerFromRow(SqlRowSet rs) {
         Beer beer = new Beer();
 
