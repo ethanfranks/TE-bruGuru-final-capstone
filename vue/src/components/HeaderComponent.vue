@@ -2,7 +2,7 @@
   <div class="header">
     <img src="" alt="" />
     <h1>Brewery Finder</h1>
-    <nav>
+    <nav id="main-nav" :class="[!isLoggedIn ? 'two-nav' : 'three-nav']">
       <router-link class="router" id="home" v-bind:to="{ name: 'home' }"
         >Home</router-link
       >
@@ -12,7 +12,7 @@
       <router-link
         class="router"
         id="login-logout"
-        v-bind:to="{ name: !isLoggedIn ? 'login' : 'logout' }"
+        v-bind:to="{ name: !isLoggedIn ? 'login' : 'logout'}"
       >
         {{ isLoggedIn ? "Logout" : "Login" }}
       </router-link>
@@ -43,10 +43,28 @@ export default {
   background-size: 100vw;
 }
 
-nav {
+.three-nav{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas: "home account login-logout";
+}
+
+.two-nav{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "home login-logout";
+}
+
+#home {
+  grid-area: "home";
+}
+
+#account {
+  grid-area: "account";
+}
+
+#login-logout {
+  grid-area: "login-logout";
 }
 
 .router {
