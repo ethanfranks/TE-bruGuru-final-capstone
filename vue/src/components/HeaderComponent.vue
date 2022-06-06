@@ -6,13 +6,13 @@
       <router-link class="router" id="home" v-bind:to="{ name: 'home' }"
         >Home</router-link
       >
-      <router-link class="router" id="account" v-bind:to="{ name: 'account' }"
+      <router-link class="router" id="account" v-bind:to="{ name: 'account' }" v-if="isLoggedIn"
         >Account</router-link
       >
       <router-link
         class="router"
         id="login-logout"
-        v-bind:to="{ name: isLoggedIn ? 'login' : 'logout' }"
+        v-bind:to="{ name: !isLoggedIn ? 'login' : 'logout' }"
       >
         {{ isLoggedIn ? "Logout" : "Login" }}
       </router-link>
@@ -23,33 +23,24 @@
 <script>
 export default {
   name: "header-component",
-  data() {
-    return {
-      permissions: this.$store.state.user.authorities,
-    };
-  },
-  methods: {
+  computed: {
     isLoggedIn() {
-      for (let i = 0; i < this.permissions.length; i++) {
-        if (this.permissions[i].name != "") {
-          return true;
-        }
-      }
-    },
-  },
+        return this.$store.state.isLoggedIn;
+    }
+  }
 };
 </script>
 
 <style>
 .header {
-  display: grid;
   text-align: center;
   background-color: #55595c;
   color: #f8f9fa;
-  max-width: 100vw;
   width: 100vw;
-  padding-bottom: 10px;
-  margin-left: -10px;
+  padding-bottom: 1rem;
+  background-image: url('../assets/brewery-web-header.jpg');
+  background-position: center;
+  background-size: 100vw;
 }
 
 nav {

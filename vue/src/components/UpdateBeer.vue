@@ -63,8 +63,6 @@
 import beerService from '@/services/BeerService'
 import BreweryService from '@/services/BreweryService'
 
-console.log(BreweryService.getBreweryIdByCurrentUser())
-
 export default {
 name: 'update-beer',
 data() {
