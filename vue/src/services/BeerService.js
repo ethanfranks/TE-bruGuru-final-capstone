@@ -12,5 +12,8 @@ export default {
     },
     getBeerBySearch(searchParams) {
         return axios.get(`/beer?filter=${searchParams.style}&profile=${searchParams.profile}`)
+    },
+    updateBeer(beer) {
+        return axios.put(`/beer/updateBeer`, beer);
     }
 }

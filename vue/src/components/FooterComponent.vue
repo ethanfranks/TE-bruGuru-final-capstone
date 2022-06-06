@@ -15,10 +15,7 @@ export default {
   text-align: center;
   background-color: #919aa1;
   color: #f8f9fa;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 4.5rem;
-  margin-left: -10px;
+  width: 100vw;
+  padding: 0.1rem;
 }
 </style>
