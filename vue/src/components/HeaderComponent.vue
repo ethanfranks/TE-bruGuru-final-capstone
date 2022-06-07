@@ -49,12 +49,11 @@ export default {
 
 #header > h1 {
   margin: 0;
-  padding-top: 2%;
-  padding-bottom: 1%;
+  padding-top: 1%;
 }
 
 #main-nav {
-  padding-bottom: 1%;
+  padding-bottom: 0.5%;
 }
 
 .three-nav {
