@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <img src="" alt="" />
-    <h1>Brewery Finder</h1>
+    <h1>bruGuru</h1>
     <nav id="main-nav" :class="[!isLoggedIn ? 'two-nav' : 'three-nav']">
       <router-link class="router" id="home" v-bind:to="{ name: 'home' }"
         >Home</router-link
@@ -41,6 +41,10 @@ export default {
   background-image: url('../assets/brewery-web-header.jpg');
   background-position: center;
   background-size: 100vw;
+}
+
+.header > h1 {
+  margin: 0;
 }
 
 .three-nav{
