@@ -36,6 +36,7 @@ export default {
 
 <style>
 #header {
+  font-family: "Nunito Sans", sans-serif;
   text-align: center;
   background-color: #55595c;
   color: #f8f9fa;

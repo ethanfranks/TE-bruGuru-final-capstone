@@ -132,6 +132,7 @@ export default {
 
 <style>
 #register-container {
+  font-family: "Nunito Sans", sans-serif;
   display: flex;
   justify-content: space-between;
   /* flex-grow: 1; */
@@ -193,6 +194,6 @@ export default {
   overflow-y: auto;
 }
 
-@media screen and (max-height: )
+/* @media screen and (max-height: ) */
 }
 </style>

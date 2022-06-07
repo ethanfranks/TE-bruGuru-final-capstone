@@ -22,11 +22,9 @@ export default {
 </script>
 
 <style>
-div {
-  font-family: "Nunito Sans", sans-serif;
-}
 
 .home {
+  font-family: "Nunito Sans", sans-serif;
   display: flex;
   flex-grow: 1;
 }
