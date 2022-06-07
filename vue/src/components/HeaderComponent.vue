@@ -5,13 +5,17 @@
       <router-link class="router" id="home" v-bind:to="{ name: 'home' }"
         >Home</router-link
       >
-      <router-link class="router" id="account" v-bind:to="{ name: 'account' }" v-if="isLoggedIn"
+      <router-link
+        class="router"
+        id="account"
+        v-bind:to="{ name: 'account' }"
+        v-if="isLoggedIn"
         >Account</router-link
       >
       <router-link
         class="router"
         id="login-logout"
-        v-bind:to="{ name: !isLoggedIn ? 'login' : 'logout'}"
+        v-bind:to="{ name: !isLoggedIn ? 'login' : 'logout' }"
       >
         {{ isLoggedIn ? "Logout" : "Login" }}
       </router-link>
@@ -24,9 +28,9 @@ export default {
   name: "header-component",
   computed: {
     isLoggedIn() {
-        return this.$store.state.isLoggedIn;
-    }
-  }
+      return this.$store.state.isLoggedIn;
+    },
+  },
 };
 </script>
 
@@ -36,7 +40,7 @@ export default {
   background-color: #55595c;
   color: #f8f9fa;
   width: 100vw;
-  background-image: url('../assets/brewery-web-header.jpg');
+  background-image: url("../assets/brewery-web-header.jpg");
   background-position: center;
   background-size: 100vw;
   margin: 0;
@@ -52,13 +56,13 @@ export default {
   padding-bottom: 1%;
 }
 
-.three-nav{
+.three-nav {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas: "home account login-logout";
 }
 
-.two-nav{
+.two-nav {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas: "home login-logout";

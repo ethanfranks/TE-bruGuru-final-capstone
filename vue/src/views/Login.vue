@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div id="login-view">
     <div id="login" class="text-center">
-      <img :src="image" alt="Flight of beer" class="logo" />
+      <img :src="image" alt="Flight of beer" id="login-pic" />
       <form class="form-signin" @submit.prevent="login">
         <h2 class="h3 mb-3 font-weight-normal">Please Sign In</h2>
         <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
@@ -84,11 +84,13 @@ export default {
 };
 </script>
 <style scoped>
-.logo {
-  width: 50vw;
-}
-#login {
+#login-view {
   display: flex;
-  justify-content: space-around;
 }
+
+#login-pic {
+  width: 50vw;
+  padding-right: 5%;
+}
+
 </style>
