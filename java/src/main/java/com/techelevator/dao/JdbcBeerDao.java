@@ -55,17 +55,43 @@ public class JdbcBeerDao implements BeerDao{
         return jdbcTemplate.update(sql, name, description, abv, style, imgURL,profile, breweryId, isAvailable, beerId) == 1;
     }
 
+    @Override
+    public List<Beer> getBeersBySearchParameters(String filter, String profile) {
+        List<Beer> searchResults = new ArrayList<>();
+        String sql = "SELECT * FROM beers WHERE beer_style =? AND flavor_profile LIKE ?";
+        SqlRowSet rs = jdbcTemplate.queryForRowSet(sql, filter, "%"+profile+"%");
+        while(rs.next()) {
+            Beer beer = createBeerFromRow(rs);
+            searchResults.add(beer);
+        }
+        return searchResults;
+    }
+
+    @Override
+    public List<Beer> getBeersBySearchParameters(String filter) {
+        List<Beer> searchResults = new ArrayList<>();
+        String sql = "SELECT * FROM beers WHERE beer_style =?";
+        SqlRowSet rs = jdbcTemplate.queryForRowSet(sql, filter);
+        while(rs.next()) {
+            Beer beer = createBeerFromRow(rs);
+            searchResults.add(beer);
+        }
+        return searchResults;
+    }
+
     public Beer createBeerFromRow(SqlRowSet rs) {
         Beer beer = new Beer();
 
         beer.setId(rs.getLong("beer_id"));
-        beer.setId(rs.getLong("brewery_id"));
+        beer.setBreweryId(rs.getLong("brewery_id"));
         beer.setAbv(rs.getDouble("beer_abv"));
         beer.setDescription(rs.getString("beer_description"));
         beer.setName(rs.getString("beer_name"));
         beer.setStyle(rs.getString("beer_style"));
         beer.setProfile(rs.getString("flavor_profile"));
         beer.setImageURL(rs.getString("image_url"));
+        beer.setReviews(jdbcReviewDao.getBeerReviews(beer.getId()));
+        beer.setAverageRating();
 
         return beer;
     }

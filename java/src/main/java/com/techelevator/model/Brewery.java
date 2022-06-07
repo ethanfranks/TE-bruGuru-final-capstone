@@ -15,6 +15,13 @@ public class Brewery {
     private String aboutUs;
     private String address;
     private String imageURL;
+    private String sundayHours;
+    private String mondayHours;
+    private String tuesdayHours;
+    private String wednesdayHours;
+    private String thursdayHours;
+    private String fridayHours;
+    private String saturdayHours;
     private Location gpsLocation;
     private String googlePlaceId;
     private boolean food;
@@ -128,6 +135,61 @@ public class Brewery {
         this.imageURL = imageURL;
     }
 
+    public String getSundayHours() {
+        return sundayHours;
+    }
+
+    public void setSundayHours(String sundayHours) {
+        this.sundayHours = sundayHours;
+    }
+
+    public String getMondayHours() {
+        return mondayHours;
+    }
+
+    public void setMondayHours(String mondayHours) {
+        this.mondayHours = mondayHours;
+    }
+
+    public String getTuesdayHours() {
+        return tuesdayHours;
+    }
+
+    public void setTuesdayHours(String tuesdayHours) {
+        this.tuesdayHours = tuesdayHours;
+    }
+
+    public String getWednesdayHours() {
+        return wednesdayHours;
+    }
+
+    public void setWednesdayHours(String wednesdayHours) {
+        this.wednesdayHours = wednesdayHours;
+    }
+
+    public String getThursdayHours() {
+        return thursdayHours;
+    }
+
+    public void setThursdayHours(String thursdayHours) {
+        this.thursdayHours = thursdayHours;
+    }
+
+    public String getFridayHours() {
+        return fridayHours;
+    }
+
+    public void setFridayHours(String fridayHours) {
+        this.fridayHours = fridayHours;
+    }
+
+    public String getSaturdayHours() {
+        return saturdayHours;
+    }
+
+    public void setSaturdayHours(String saturdayHours) {
+        this.saturdayHours = saturdayHours;
+    }
 
     public List<Beer> getOfferings() {
         return offerings;
@@ -144,4 +206,5 @@ public class Brewery {
     public void setReviews(List <BreweryReview> reviews) {
         this.reviews = reviews;
     }
+
 }

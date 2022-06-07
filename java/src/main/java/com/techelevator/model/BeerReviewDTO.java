@@ -1,6 +1,6 @@
 package com.techelevator.model;
 
-public class BeerReview {
+public class BeerReviewDTO {
     private long reviewId;
     private long userId;
     private String reviewerUsername;
@@ -9,7 +9,7 @@ public class BeerReview {
     private int beerRating;
     private long breweryId;
 
-    public BeerReview() {
+    public BeerReviewDTO() {
     }
 
     public long getReviewId() {

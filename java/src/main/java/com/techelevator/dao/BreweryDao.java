@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Beer;
 import com.techelevator.model.Brewery;
 import com.techelevator.model.BreweryDTO;
 
@@ -16,4 +17,7 @@ public interface BreweryDao {
     boolean createBrewery(long brewer_id, String name);
 
     Brewery updateBreweryDetails (BreweryDTO updatedBrewery);
+
+    long getBreweryByBeerId(long beerId);
+
 }

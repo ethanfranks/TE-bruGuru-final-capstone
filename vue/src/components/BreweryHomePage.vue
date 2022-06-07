@@ -1,46 +1,52 @@
 <template>
   <div>
-       <brewery-update>Brewery update</brewery-update>
-      <h2>{{brewery.name}}</h2>
-      <h3>{{brewery.address}}</h3>
-      <h3>{{brewery.phoneNumber}}</h3>
-      <h3>{{brewery.email}}</h3>
-      <h3>{{brewery.aboutUs}}</h3>
-      <h3>{{brewery.igLink}}</h3>
-      <h3>{{brewery.fbLink}}</h3>
-      <h2>Our Offerings</h2>
-      <h3 v-for="beer in brewery.offerings" v-bind:key="beer.id">{{beer.name}}</h3>
-      <h2>Reviews:</h2>
-      <h3 v-for="review in brewery.reviews" v-bind:key="review.id">
-          "{{review.review}}"-{{review.reviewerUsername}}</h3>
+    <brewery-update>Brewery update</brewery-update>
+    <h2>{{ brewery.name }}</h2>
+    <h3>{{ brewery.address }}</h3>
+    <h3>{{ brewery.phoneNumber }}</h3>
+    <h3>{{ brewery.email }}</h3>
+    <h3>{{ brewery.aboutUs }}</h3>
+    <h3>{{ brewery.sundayHours }}</h3>
+    <h3>{{ brewery.mondayHours }}</h3>
+    <h3>{{ brewery.tuesdayHours }}</h3>
+    <h3>{{ brewery.wednesdayHours }}</h3>
+    <h3>{{ brewery.thursdayHours }}</h3>
+    <h3>{{ brewery.fridayHours }}</h3>
+    <h3>{{ brewery.saturdayHours }}</h3>
+    <h3>{{ brewery.igLink }}</h3>
+    <h3>{{ brewery.fbLink }}</h3>
+    <h2>Our Offerings</h2>
+    <h3 v-for="beer in brewery.offerings" v-bind:key="beer.id">
+      {{ beer.name }}
+    </h3>
+    <h2>Reviews:</h2>
+    <h3 v-for="review in brewery.reviews" v-bind:key="review.id">
+      "{{ review.review }}"-{{ review.reviewerUsername }}
+    </h3>
   </div>
 </template>
 
 <script>
-import breweryService from '@/services/BreweryService'
-import BreweryUpdate from './BreweryUpdate.vue'
+import breweryService from "@/services/BreweryService";
+import BreweryUpdate from "./BreweryUpdate.vue";
 
 export default {
-    data() {
-        return {
-            brewery: {}
-        }
-    },
-    components:  {
-        BreweryUpdate
-
-    },
-    created() {
-        const thisId = this.$route.params.id
-        return breweryService.getBreweryById(thisId).then(
-            (response) => {
-                this.brewery = response.data
-            }
-        )
-    }
-}
+  data() {
+    return {
+      brewery: {},
+    };
+  },
+  components: {
+    BreweryUpdate,
+  },
+  created() {
+    const thisId = this.$route.params.id;
+    return breweryService.getBreweryById(thisId).then((response) => {
+      this.brewery = response.data;
+    });
+  },
+};
 </script>
 
 <style>
-
 </style>

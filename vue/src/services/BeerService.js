@@ -9,5 +9,11 @@ export default {
     },
     updateAvailability(beer) {
         return axios.put('/beer/updateAvailability', beer);
+    },
+    getBeerBySearch(searchParams) {
+        return axios.get(`/beer?filter=${searchParams.style}&profile=${searchParams.profile}`)
+    },
+    updateBeer(beer) {
+        return axios.put(`/beer/updateBeer`, beer);
     }
 }

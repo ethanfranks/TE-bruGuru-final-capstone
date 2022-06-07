@@ -14,4 +14,7 @@ public interface BeerDao {
     boolean updateBeer(String name, String description, double abv, String style,
                        String imgURL, String profile, long breweryId, boolean isAvailable, long beerId);
 
+    List<Beer> getBeersBySearchParameters(String filter, String profile);
+
+    List<Beer> getBeersBySearchParameters(String filter);
 }

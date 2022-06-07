@@ -3,7 +3,7 @@
     <div id="login" class="text-center">
       <img :src="image" alt="Flight of beer" class="logo" />
       <form class="form-signin" @submit.prevent="login">
-        <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+        <h2 class="h3 mb-3 font-weight-normal">Please Sign In</h2>
         <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
           Invalid username and password!
         </div>
@@ -24,6 +24,7 @@
           required
           autofocus
         />
+        <br>
         <label for="password" class="sr-only"> Password </label>
         <input
           type="password"
@@ -84,8 +85,7 @@ export default {
 </script>
 <style scoped>
 .logo {
-  width: 750px;
-  margin: 75px;
+  width: 50vw;
 }
 #login {
   display: flex;
