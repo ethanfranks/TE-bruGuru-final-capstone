@@ -113,6 +113,28 @@ public class JdbcBreweryDao implements BreweryDao{
         }
         updatedBreweryHasFood(breweryId,updatedBrewery.isFood());
 
+        if(updatedBrewery.getSundayHours()!=null){
+            updatedBrewerySundayHours(breweryId, updatedBrewery.getSundayHours());
+        }
+        if(updatedBrewery.getMondayHours()!=null){
+            updatedBreweryMondayHours(breweryId, updatedBrewery.getMondayHours());
+        }
+        if(updatedBrewery.getTuesdayHours()!=null){
+            updatedBreweryTuesdayHours(breweryId, updatedBrewery.getTuesdayHours());
+        }
+        if(updatedBrewery.getWednesdayHours()!=null){
+            updatedBreweryWednesdayHours(breweryId, updatedBrewery.getWednesdayHours());
+        }
+        if(updatedBrewery.getThursdayHours()!=null){
+            updatedBreweryThursdayHours(breweryId, updatedBrewery.getThursdayHours());
+        }
+        if(updatedBrewery.getFridayHours()!=null){
+            updatedBreweryFridayHours(breweryId, updatedBrewery.getFridayHours());
+        }
+        if(updatedBrewery.getSaturdayHours()!=null){
+            updatedBrewerySaturdayHours(breweryId, updatedBrewery.getSaturdayHours());
+        }
+
         return getBreweryByID(updatedBrewery.getId());
     }
 
@@ -121,6 +143,17 @@ public class JdbcBreweryDao implements BreweryDao{
         String sql = "SELECT brewery_id FROM beers WHERE beer_id = ?";
 
         return jdbcTemplate.queryForObject(sql, long.class, beerId);
+    }
+    @Override
+    public void deleteBrewery(long id){
+        String deleteBeerReviewsSql = "DELETE FROM beer_reviews WHERE brewery_id = ?";
+        jdbcTemplate.update(deleteBeerReviewsSql, id);
+        String deleteBeersSql = "DELETE FROM beers WHERE brewery_id = ?";
+        jdbcTemplate.update(deleteBeersSql, id);
+        String deleteBreweryReviewsSql = "DELETE FROM brewery_reviews WHERE brewery_id = ?";
+        jdbcTemplate.update(deleteBreweryReviewsSql);
+        String sql = "DELETE FROM breweries WHERE brewery_id = ?";
+        jdbcTemplate.update(sql, id);
     }
 
     private void updatedBreweryHasFood(long breweryId, boolean food) {
@@ -195,6 +228,34 @@ public class JdbcBreweryDao implements BreweryDao{
         jdbcTemplate.update(sql, name, breweryId);
     }
 
+    private void updatedBrewerySundayHours(long breweryId, String sundayHours){
+        String sql = "UPDATE breweries SET sunday_hours = ? WHERE brewery_id = ?;";
+        jdbcTemplate.update(sql, sundayHours, breweryId);
+    }
+    private void updatedBreweryMondayHours(long breweryId, String mondayHours){
+        String sql = "UPDATE breweries SET monday_hours = ? WHERE brewery_id = ?;";
+        jdbcTemplate.update(sql, mondayHours, breweryId);
+    }
+    private void updatedBreweryTuesdayHours(long breweryId, String tuesdayHours){
+        String sql = "UPDATE breweries SET tuesday_hours = ? WHERE brewery_id = ?;";
+        jdbcTemplate.update(sql, tuesdayHours, breweryId);
+    }
+    private void updatedBreweryWednesdayHours(long breweryId, String wednesdayHours){
+        String sql = "UPDATE breweries SET wednesday_hours = ? WHERE brewery_id = ?;";
+        jdbcTemplate.update(sql, wednesdayHours, breweryId);
+    }
+    private void updatedBreweryThursdayHours(long breweryId, String thursdayHours){
+        String sql = "UPDATE breweries SET thursday_hours = ? WHERE brewery_id = ?;";
+        jdbcTemplate.update(sql, thursdayHours, breweryId);
+    }
+    private void updatedBreweryFridayHours(long breweryId, String fridayHours){
+        String sql = "UPDATE breweries SET friday_hours = ? WHERE brewery_id = ?;";
+        jdbcTemplate.update(sql, fridayHours, breweryId);
+    }
+    private void updatedBrewerySaturdayHours(long breweryId, String saturdayHours){
+        String sql = "UPDATE breweries SET saturday_hours = ? WHERE brewery_id = ?;";
+        jdbcTemplate.update(sql, saturdayHours, breweryId);
+    }
 
     public Brewery createBreweryFromRow(SqlRowSet rs) {
         Brewery brewery = new Brewery();
@@ -212,6 +273,13 @@ public class JdbcBreweryDao implements BreweryDao{
         brewery.setGpsLocation(createLocation(rs));
         brewery.setGooglePlaceId(rs.getString("googlePlaceId"));
         brewery.setFood(rs.getBoolean("food_available"));
+        brewery.setSundayHours(rs.getString("sunday_hours"));
+        brewery.setMondayHours(rs.getString("monday_hours"));
+        brewery.setTuesdayHours(rs.getString("tuesday_hours"));
+        brewery.setWednesdayHours(rs.getString("wednesday_hours"));
+        brewery.setThursdayHours(rs.getString("thursday_hours"));
+        brewery.setFridayHours(rs.getString("friday_hours"));
+        brewery.setSaturdayHours(rs.getString("saturday_hours"));
         brewery.setOfferings(getBeerByBrewery(brewery.getId()));
         brewery.setReviews(jdbcReviewDao.getBreweryReviews(brewery.getId()));
 

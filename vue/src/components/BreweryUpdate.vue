@@ -50,12 +50,80 @@
             class="form-control"
             v-model="brewery.about_us"
           ></textarea>
-          <label for="hours">Hours:</label>
-          <textarea
+          <br />
+          <br />
+          <label for="sundayHours"
+            >Enter Sunday hours of operation or enter "CLOSED":
+          </label>
+          <input
+            type="text"
             id="hours"
             class="form-control"
-            v-model="brewery.hours"
-          ></textarea>
+            v-model="brewery.sunday_hours"
+          />
+          <br />
+          <label for="mondayHours">
+            Enter Monday hours of operation or enter "CLOSED":
+          </label>
+          <input
+            type="text"
+            id="hours"
+            class="form-control"
+            v-model="brewery.monday_hours"
+          />
+          <br />
+          <label for="tuesdayHours"
+            >Enter Tuesday hours of operation or enter "CLOSED":
+          </label>
+
+          <input
+            type="text"
+            id="hours"
+            class="form-control"
+            v-model="brewery.tuesday_hours"
+          />
+          <br />
+          <label for="wednesdayHours"
+            >Enter Wednesday hours of operation or enter "CLOSED":
+          </label>
+          <input
+            type="text"
+            id="hours"
+            class="form-control"
+            v-model="brewery.wednesday_hours"
+          />
+          <br />
+          <label for="thursdayHours"
+            >Enter Thursday hours of operation or enter "CLOSED":
+          </label>
+          <input
+            type="text"
+            id="hours"
+            class="form-control"
+            v-model="brewery.thursday_hours"
+          />
+          <br />
+          <label for="fridayHours"
+            >Enter Friday hours of operation or enter "CLOSED":
+          </label>
+          <input
+            type="text"
+            id="hours"
+            class="form-control"
+            v-model="brewery.friday_hours"
+          />
+          <br />
+          <label for="saturdayHours"
+            >Enter Saturday hours of operation or enter "CLOSED":
+          </label>
+          <input
+            type="text"
+            id="hours"
+            class="form-control"
+            v-model="brewery.saturday_hours"
+          />
+          <br />
+          <br />
           <!-- BREWERY IMAGERY?!?!! -->
           <label for="Address">Address:</label>
           <textarea
@@ -63,7 +131,9 @@
             class="form-control"
             v-model="brewery.street_address"
           ></textarea>
-          <label for="food">Food Available: Yes</label>
+          <br />
+          <br />
+          <label for="food"> Food Available: Yes</label>
           <input
             id="food"
             type="checkbox"
@@ -88,7 +158,7 @@ export default {
   data() {
     return {
       brewery: {},
-      
+
       errorMsg: "",
     };
   },
@@ -102,7 +172,7 @@ export default {
   created() {
     return BreweryService.getBreweryByUsername().then((response) => {
       this.brewery = response.data;
-    })
-  }
+    });
+  },
 };
 </script>

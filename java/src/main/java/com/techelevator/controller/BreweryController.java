@@ -42,6 +42,11 @@ public class BreweryController {
         return breweryDao.getBreweryByID(breweryDao.getBreweryIdByUserName(principal.getName()));
     }
 
+    @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
+    public void deleteBrewery(long id){
+        
+    }
+
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
     public Brewery updateBreweryDetails(@Valid @PathVariable String id, @RequestBody BreweryDTO breweryDTO){
         System.out.println(breweryDTO);

@@ -18,4 +18,6 @@ public interface BreweryDao {
     Brewery updateBreweryDetails (BreweryDTO updatedBrewery);
 
     long getBreweryByBeerId(long beerId);
+
+    void deleteBrewery(long id);
 }

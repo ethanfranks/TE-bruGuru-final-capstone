@@ -1,6 +1,7 @@
 package com.techelevator.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import com.techelevator.dao.BreweryDao;
 
 import javax.validation.constraints.NotEmpty;
@@ -43,6 +44,20 @@ public class BreweryDTO {
     private String googlePlaceId;
     @JsonProperty("food_available")
     private boolean food;
+    @JsonProperty("sunday_hours")
+    private String sundayHours;
+    @JsonProperty("monday_hours")
+    private String mondayHours;
+    @JsonProperty("tuesday_hours")
+    private String tuesdayHours;
+    @JsonProperty("wednesday_hours")
+    private String wednesdayHours;
+    @JsonProperty("thursday_hours")
+    private String thursdayHours;
+    @JsonProperty("friday_hours")
+    private String fridayHours;
+    @JsonProperty("saturday_hours")
+    private String saturdayHours;
 
     // Constructor for Creating Breweries
     public BreweryDTO() {
@@ -169,6 +184,66 @@ public class BreweryDTO {
         this.food = food;
     }
 
+    public void setBrewer_id(long brewer_id) {
+        this.brewer_id = brewer_id;
+    }
+
+    public String getSundayHours() {
+        return sundayHours;
+    }
+
+    public void setSundayHours(String sundayHours) {
+        this.sundayHours = sundayHours;
+    }
+
+    public String getMondayHours() {
+        return mondayHours;
+    }
+
+    public void setMondayHours(String mondayHours) {
+        this.mondayHours = mondayHours;
+    }
+
+    public String getTuesdayHours() {
+        return tuesdayHours;
+    }
+
+    public void setTuesdayHours(String tuesdayHours) {
+        this.tuesdayHours = tuesdayHours;
+    }
+
+    public String getWednesdayHours() {
+        return wednesdayHours;
+    }
+
+    public void setWednesdayHours(String wednesdayHours) {
+        this.wednesdayHours = wednesdayHours;
+    }
+
+    public String getThursdayHours() {
+        return thursdayHours;
+    }
+
+    public void setThursdayHours(String thursdayHours) {
+        this.thursdayHours = thursdayHours;
+    }
+
+    public String getFridayHours() {
+        return fridayHours;
+    }
+
+    public void setFridayHours(String fridayHours) {
+        this.fridayHours = fridayHours;
+    }
+
+    public String getSaturdayHours() {
+        return saturdayHours;
+    }
+
+    public void setSaturdayHours(String saturdayHours) {
+        this.saturdayHours = saturdayHours;
+    }
+
     @Override
     public String toString() {
         return "BreweryDTO{" +
@@ -187,6 +262,13 @@ public class BreweryDTO {
                 ", gpsLocation=" + gpsLocation +
                 ", googlePlaceId='" + googlePlaceId + '\'' +
                 ", food=" + food +
-                '}';
+                ", sundayHours='" + sundayHours + '\'' +
+                ", mondayHours='" + mondayHours + '\'' +
+                ", tuesdayHours='" + tuesdayHours + '\'' +
+                ", wednesdayHours='" + wednesdayHours + '\'' +
+                ", thursdayHours='" + thursdayHours + '\'' +
+                ", fridayHours='" + fridayHours + '\'' +
+                ", saturdayHours='" + saturdayHours + '\'' +
+        '}';
     }
 }
