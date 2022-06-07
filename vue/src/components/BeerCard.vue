@@ -42,10 +42,11 @@ export default {
 
 <style>
 .card {
+  font-family: "Nunito Sans", sans-serif;
   border: 2px solid black;
   border-radius: 10px;
-  width: 250px;
-  height: 550px;
+  width: 100%;
+  height: 100px;
   margin: 20px;
 }
 
@@ -54,7 +55,7 @@ export default {
 }
 
 .card .beer-img {
-    height: 10rem;
+    height: 5rem;
     display: flex;
     justify-content: center;
 }
@@ -71,13 +72,5 @@ export default {
 .card .characteristic-tag {
     font-weight: bold;
     display: inline;
-}
-
-.card .is-available {
-  font-weight: bold;
-}
-
-.card .not-available {
-
 }
 </style>
