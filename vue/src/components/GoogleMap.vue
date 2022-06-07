@@ -73,7 +73,7 @@ export default {
           infoText:
             `<strong>${b.name}<br></strong>` +
             `${b.address}<br>` +
-            `<a href="/brewery/${b.id}" onclick="clickHomeLink(${b})">View home page</a>`,
+            `<a href="/brewery/${b.brewery_id}" onclick="clickHomeLink(${b})">View home page</a>`,
         };
         this.markers.push(marker);
       });
