@@ -16,6 +16,10 @@ export default {
   background-color: #919aa1;
   color: #f8f9fa;
   width: 100vw;
-  padding: 0.1rem;
+  padding: 1rem;
+}
+
+.footer > p {
+  margin: 0;
 }
 </style>

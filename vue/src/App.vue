@@ -26,6 +26,8 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap");
 
 body {
+  width: calc(100vw - 6%);
+  height: calc(100vh - 6%);
   margin: 0;
 }
 
