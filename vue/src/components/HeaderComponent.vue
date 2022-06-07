@@ -35,8 +35,7 @@ export default {
   text-align: center;
   background-color: #55595c;
   color: #f8f9fa;
-  /* Why does 100vw not work here? */
-  width: 100%;
+  width: 100vw;
   background-image: url('../assets/brewery-web-header.jpg');
   background-position: center;
   background-size: 100vw;
@@ -45,7 +44,8 @@ export default {
 
 #header > h1 {
   margin: 0;
-  padding: 2%;
+  padding-top: 2%;
+  padding-bottom: 1%;
 }
 
 #main-nav {

@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    <body class="home-components">
+    <div class="home-components">
       <google-map></google-map>
-    </body>
+    </div>
   </div>
 </template>
 
@@ -25,9 +25,16 @@ export default {
 div {
   font-family: "Nunito Sans", sans-serif;
 }
+
+.home {
+  display: flex;
+  flex-grow: 1;
+}
+
 .home-components {
   display: flex;
+  height: 100%;
+  width: 100%;
   justify-content: space-around;
-  margin: 0;
 }
 </style>

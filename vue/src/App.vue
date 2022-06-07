@@ -42,7 +42,7 @@ body {
     "header-components"
     "body-components"
     "footer-component";
-  grid-template-rows: auto 3fr auto;
+  grid-template-rows: auto 1fr auto;
   width: 100vw;
   height: 100vh;
 }
@@ -53,7 +53,9 @@ body {
 
 #body-components {
   grid-area: "body-components";
-  margin: 3%;
+  margin: 2%;
+  display: flex;
+  justify-content: space-around;
 }
 
 #footer-components {

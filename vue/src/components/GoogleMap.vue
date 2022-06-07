@@ -1,11 +1,10 @@
 <template>
   <div id="map-area">
-    <div>
-      <h2 id="map-search-header">Find Breweries</h2>
+    <div id="map-search">
+      <h3 id="map-search-header">Find Breweries</h3>
       <GmapAutocomplete @place_changed="setPlace" />
       <button @click="centerMap">Go!</button>
     </div>
-    <br />
     <GmapMap
       @tilesloaded="filterMarkers"
       :center="center"
@@ -147,13 +146,17 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 70%;
+  width: 100%;
   height: 100%;
 }
 
 #map {
   width: 100%;
-  height: 70%;
+  height: 100%;
+}
+
+#map-search {
+  padding-bottom: 2%;
 }
 
 #map-search-header {
