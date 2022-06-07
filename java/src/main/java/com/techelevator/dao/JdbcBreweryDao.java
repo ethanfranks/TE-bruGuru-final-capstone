@@ -144,17 +144,6 @@ public class JdbcBreweryDao implements BreweryDao{
 
         return jdbcTemplate.queryForObject(sql, long.class, beerId);
     }
-    @Override
-    public void deleteBrewery(long id){
-        String deleteBeerReviewsSql = "DELETE FROM beer_reviews WHERE brewery_id = ?";
-        jdbcTemplate.update(deleteBeerReviewsSql, id);
-        String deleteBeersSql = "DELETE FROM beers WHERE brewery_id = ?";
-        jdbcTemplate.update(deleteBeersSql, id);
-        String deleteBreweryReviewsSql = "DELETE FROM brewery_reviews WHERE brewery_id = ?";
-        jdbcTemplate.update(deleteBreweryReviewsSql);
-        String sql = "DELETE FROM breweries WHERE brewery_id = ?";
-        jdbcTemplate.update(sql, id);
-    }
 
     private void updatedBreweryHasFood(long breweryId, boolean food) {
         String sql = "Update breweries Set food_available = ? Where brewery_id = ? ;";

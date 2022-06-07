@@ -7,6 +7,7 @@ import com.techelevator.model.Beer;
 import com.techelevator.model.BeerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -46,4 +47,13 @@ public class BeerController {
         return beerDao.updateBeer(beerDTO.getName(), beerDTO.getDescription(), beerDTO.getAbv(), beerDTO.getStyle(),
                 beerDTO.getImageURL(), beerDTO.getProfile(), breweryId, beerDTO.isAvailable(), beerDTO.getId());
     }
+
+    @GetMapping(path = "")
+    public List<Beer> getSearchedBeers(@Valid @RequestParam String filter, @RequestParam String profile) {
+        if(profile != "") {
+            return beerDao.getBeersBySearchParameters(filter, profile);
+        }
+        return beerDao.getBeersBySearchParameters(filter);
+    }
+
 }

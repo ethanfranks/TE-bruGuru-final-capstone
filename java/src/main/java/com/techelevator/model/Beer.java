@@ -13,10 +13,23 @@ public class Beer {
     private String style;
     private String profile;
     private boolean isAvailable;
+    private double averageRating;
     private List<BeerReview> reviews = new ArrayList<>();
 
     public String getDescription() {
         return description;
+    }
+
+    public void setAverageRating() {
+        double sum = 0;
+        for(BeerReview index : reviews){
+            sum += index.getBeerRating();
+        }
+        this.averageRating= sum / reviews.size();
+    }
+
+    public double getAverageRating() {
+      return this.averageRating;
     }
 
     public void setDescription(String description) {

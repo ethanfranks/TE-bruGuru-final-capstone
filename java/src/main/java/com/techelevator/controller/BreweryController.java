@@ -42,11 +42,6 @@ public class BreweryController {
         return breweryDao.getBreweryByID(breweryDao.getBreweryIdByUserName(principal.getName()));
     }
 
-    @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
-    public void deleteBrewery(long id){
-        
-    }
-
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
     public Brewery updateBreweryDetails(@Valid @PathVariable String id, @RequestBody BreweryDTO breweryDTO){
         System.out.println(breweryDTO);
@@ -67,6 +62,12 @@ public class BreweryController {
     @RequestMapping(path="/createBrewery", method = RequestMethod.POST)
     public boolean addNewBrewery(@Valid @RequestBody BreweryDTO breweryDTO){
         return breweryDao.createBrewery(breweryDTO.getBrewer_id(), breweryDTO.getName());
+    }
+
+    @RequestMapping(path = "/username", method = RequestMethod.GET)
+    public long getBreweryIdByUsername(Principal principal) {
+        String username = principal.getName();
+        return breweryDao.getBreweryIdByUserName(username);
     }
 
 }

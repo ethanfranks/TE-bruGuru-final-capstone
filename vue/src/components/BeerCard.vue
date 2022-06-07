@@ -10,7 +10,8 @@
     <div class="flavor-profile"><p class="characteristic-tag">Flavor Profile: </p>{{ beer.profile }}</div>
     <div class="description-tag">Description</div>
     <div class="beer-description">{{ beer.description }}</div>
-
+    <div class= "average-rating">Average Rating: {{beer.averageRating}} / 5</div>
+    <button @click="goToReviews" class = "viewAllReviews">View All Reviews</button>
     <beer-reviews></beer-reviews>
 
   </div>
@@ -31,7 +32,10 @@ export default {
           return true;
         }
       }
-    }
+    },
+      goToReviews(){
+        this.$router.push({name: 'beer-review-list', params: {id: `${this.beer.id}`}})
+  }
   }
 };
 </script>
