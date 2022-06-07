@@ -6,7 +6,7 @@
 
     <div id="brewer-section" v-if="isBrewer()">
       <beer-list></beer-list>
-      <router-link v-bind:to="{name: 'add-beer'}">Add Beer</router-link>
+      <router-link v-bind:to="{name: 'add-beer', params:{id: userBrewery.brewery_id}}">Add Beer</router-link>
       <brewery-update></brewery-update>
     </div>
 
@@ -21,6 +21,7 @@
 import addBrewery from "../components/AddBrewery.vue";
 import beerList from "../components/BeerList.vue";
 import BreweryUpdate from '../components/BreweryUpdate.vue';
+import BreweryService from '@/services/BreweryService'
 
 export default {
   name: "Account",
@@ -32,7 +33,8 @@ export default {
   data() {
     return {
       permissions: this.$store.state.user.authorities,
-      showUpdate: false
+      showUpdate: false,
+      userBrewery : {},
     };
   },
   methods: {
@@ -59,6 +61,11 @@ export default {
       }
     },
   },
+  created() {
+    return BreweryService.getBreweryByUsername().then((response) => {
+      this.userBrewery = response.data
+    })
+  }
 };
 </script>
 

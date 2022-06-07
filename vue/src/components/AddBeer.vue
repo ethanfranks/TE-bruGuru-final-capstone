@@ -47,6 +47,7 @@ export default {
   data() {
     return {
       newBeer: {
+        breweryId: this.$route.params.id,
         beer_name: "",
         beer_description: "",
         beer_abv: null,

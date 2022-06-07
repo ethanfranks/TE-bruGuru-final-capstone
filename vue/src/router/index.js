@@ -139,7 +139,7 @@ const router = new Router({
       }
     },
     {
-      path: '/add-beer',
+      path: '/:id/add-beer',
       name: 'add-beer',
       component: AddBeer,
       meta: {

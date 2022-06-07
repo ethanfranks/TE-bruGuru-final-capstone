@@ -269,8 +269,8 @@ public class JdbcBreweryDao implements BreweryDao{
         brewery.setThursdayHours(rs.getString("thursday_hours"));
         brewery.setFridayHours(rs.getString("friday_hours"));
         brewery.setSaturdayHours(rs.getString("saturday_hours"));
-        brewery.setOfferings(getBeerByBrewery(brewery.getId()));
-        brewery.setReviews(jdbcReviewDao.getBreweryReviews(brewery.getId()));
+        brewery.setOfferings(getBeerByBrewery(brewery.getBrewery_id()));
+        brewery.setReviews(jdbcReviewDao.getBreweryReviews(brewery.getBrewery_id()));
 
         return brewery;
     }

@@ -34,11 +34,11 @@ public class BeerController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/addBeer", method = RequestMethod.POST)
-    public boolean addBeer(@Valid @RequestBody BeerDTO beerDTO, Principal principal) {
+    @RequestMapping(path = "/{id}/addBeer", method = RequestMethod.POST)
+    public boolean addBeer(@Valid @PathVariable long id, @RequestBody BeerDTO beerDTO, Principal principal) {
         long breweryId = breweryDao.getBreweryIdByUserName(principal.getName());
-        return beerDao.addBeer(beerDTO.getName(), beerDTO.getDescription(), beerDTO.getAbv(), beerDTO.getStyle(),
-                beerDTO.getImageURL(), beerDTO.getProfile(), breweryId, beerDTO.isAvailable());
+        return beerDao.addBeer(id, beerDTO.getName(), beerDTO.getDescription(), beerDTO.getAbv(), beerDTO.getStyle(),
+                beerDTO.getImageURL(), beerDTO.getProfile(), beerDTO.isAvailable());
     }
 
     @RequestMapping(path = "/updateBeer", method = RequestMethod.PUT)

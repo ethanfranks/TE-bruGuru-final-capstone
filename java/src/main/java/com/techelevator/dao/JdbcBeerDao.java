@@ -36,14 +36,14 @@ public class JdbcBeerDao implements BeerDao{
     }
 
     @Override
-    public boolean addBeer(String name, String description, double abv, String style,
-                            String imgURL, String profile, long breweryId, boolean isAvailable) {
+    public boolean addBeer(long brewerId, String name, String description, double abv, String style,
+                           String imgURL, String profile, boolean isAvailable) {
 
         String sql = "INSERT INTO beers (beer_name, beer_description, beer_abv, " +
                         "beer_style, image_url, flavor_profile, brewery_id, beer_available) " +
                         "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
 
-        return jdbcTemplate.update(sql, name, description, abv, style, imgURL, profile, breweryId, isAvailable) == 1;
+        return jdbcTemplate.update(sql, name, description, abv, style, imgURL, profile, brewerId, isAvailable) == 1;
     }
 
     @Override

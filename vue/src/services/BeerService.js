@@ -5,7 +5,7 @@ export default {
         return axios.get(`/beer/${breweryId}`);
     },
     addNewBeer(newBeer) {
-        return axios.post('/beer/addBeer', newBeer);
+        return axios.post(`/beer/${newBeer.breweryId}/addBeer`, newBeer);
     },
     updateAvailability(beer) {
         return axios.put('/beer/updateAvailability', beer);
