@@ -71,7 +71,26 @@ CREATE TABLE breweries (
 
 INSERT INTO breweries (brewery_name,user_id,email,phone,ig_link,fb_link,about_us,sunday_hours,monday_hours,tuesday_hours,wednesday_hours,thursday_hours,friday_hours,saturday_hours,img_url,street_address,gps_lat,gps_lng,googlePlaceId,food_available)
 VALUES ('Big Elk River Brewing Co',3,'BigElkBeer@fakeemail.com','555-666-7777','https://www.instagram.com/BigElkBeer/','https://www.Facebook.com/BigElkBeer','Test description for a fake brewery! Big Elk ipso lorum yadda yadda', 
-'11:30am - 1:00am', '2:00pm - 11:00pm','2:00pm - 11:00pm','CLOSED','2:00pm - 11:00pm','11:30am - 2:00am','11:30am - 2:00am','https://www.shutterstock.com/image-photo/glasses-different-sorts-craft-beer-on-1212903172', '123 Main St. Noel, MO. 64854', '36.601856', '-94.447206','EiAxMjMgTWFpbiBTdCwgTm9lbCwgTU8gNjQ4NTQsIFVTQSIaEhgKFAoSCdt0um1dU8iHEf7MGv4vDfNMEHs', true);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 CREATE TABLE beers (
 	beer_id SERIAL,
@@ -88,8 +107,41 @@ CREATE TABLE beers (
 );
 
 INSERT INTO beers (beer_name,beer_description,beer_abv,beer_style,flavor_profile,image_url,brewery_id, beer_available)
-VALUES ('Moose Drool', 'Our brown ale is made from the finest brown ale stuff money can buy',6.3,'Ale','Nutty,Smooth,Mild','https://bigskybrew.com/wp-content/uploads/2022/03/CANMD192web.png',1, true);
-
+VALUES ('Moose Drool', 'Our brown ale is made from the finest brown ale stuff money can buy',6.3,'Ale','Nutty,Smooth,Mild','https://bigskybrew.com/wp-content/uploads/2022/03/CANMD192web.png',1, true),
+('Blueberry Lime Sour', 'Nighthawk Sour',4.5,'Sour','Citrusy','https://image.shutterstock.com/image-vector/textured-craft-beer-pub-brewery-600w-758936941.jpg',1, true),
+('Pilsner', 'Nighthawk Pilsner',5.2,'Pilsner','Refreshing,Crisp','https://image.shutterstock.com/image-vector/textured-craft-beer-pub-brewery-600w-758936941.jpg',1, true),
+('Incognito Hazy IPA', 'Nighthawk IPA',6.0,'IPA','Citrusy,Refreshing,Strong','https://image.shutterstock.com/image-vector/textured-craft-beer-pub-brewery-600w-758936941.jpg',1, true),
+('Big Elk Sky High IPA', 'IPA inspired by big outdoor flavors. Grapefruit, with a hint of vanilla',7.2,'Ale','Strong,Citrusy','https://bigskybrew.com/wp-content/uploads/2022/03/CANMD192web.png',1, true),
+('With Great Sour...', 'Comes great drinkability',6.3,'Sour','Mild,Refreshing','https://bigskybrew.com/wp-content/uploads/2022/03/CANMD192web.png',1, false),
+('Cowabunga Dude!!', 'A dark, roasty, stout where we add lactose sugar to bring creamy mouthfeel to this chocolaty malt beverage. Medium bitter to balance out the roasty malt flavor.',5.6,'Stout','Nutty,Smooth,Creamy','https://bigskybrew.com/wp-content/uploads/2022/03/CANMD192web.png',mirrorTwin, true),
+('D''s Nutty Brown Ale', 'True to the name, this beer has a slight nutty flavor and a fuller body. It has hints of caramel and chocolate but finishes clean. The german noble hops balance the sweetness to make this an incredibly drinkable beer. Have one or five, we suggest the latter.'
+,5.5,'Brown Ale','Nutty,Smooth,Mild','https://bigskybrew.com/wp-content/uploads/2022/03/CANMD192web.png',mirrorTwin, true),
+('You, Me & Mr. PB', 'Chocolate Peanut Butter Milk Stout',5.6,'Stout','Smooth,Strong','https://bigskybrew.com/wp-content/uploads/2022/03/CANMD192web.png',mirrorTwinID, true),
+('1821 Dark', 'A dark lager with roasted chocolate and coffee notes. Part of the 1821 series which includes a super special, super secret ingredient from NDBC owners’ family village in Greece. You can guess what it is, but we’ll never tell…'
+,8.5,'Lager','Smooth','https://i1.wp.com/www.newdistrictbrewing.com/wp-content/uploads/2015/01/logo-ndbc-text-white-vert.png?w=800&ssl=1',newdistrictId, true),
+('Sour Shortcake', 'Slightly pink in color with strawberry and vanilla on the nose. Flavor starts off tart with notes of strawberry that leads into a white chocolate and vanilla smooth, rounded finish to cut the sourness.',5.1,'Sour','Refreshing','https://i1.wp.com/www.newdistrictbrewing.com/wp-content/uploads/2015/01/logo-ndbc-text-white-vert.png?w=800&ssl=1',newdistrictId, true),
+('Fashionably Late', 'This is a true pumpkin beer made with real pumpkins and you can taste them in every sip. Even non-pumpkin beer fans have fallen in love!',5.5,'Ale','Strong','https://i1.wp.com/www.newdistrictbrewing.com/wp-content/uploads/2015/01/logo-ndbc-text-white-vert.png?w=800&ssl=1',newdistrictId, true),
+('Java The Hutt Porter', 'Traditional American porter flavored with La Colombe cold brew. Chocolate malts and roasted barley add richness and a smooth mouthfeel while the coffee flavor Lingers on the palette',
+5.6,'Porter','Nutty,Smooth,Strong','https://bigskybrew.com/wp-content/uploads/2022/03/CANMD192web.png',1, true),
+('', 'Our brown ale is made from the finest brown ale stuff money can buy',6.3,'Ale','Nutty,Smooth,Mild','https://bigskybrew.com/wp-content/uploads/2022/03/CANMD192web.png',1, true),
+('', 'Our brown ale is made from the finest brown ale stuff money can buy',6.3,'Ale','Nutty,Smooth,Mild','https://bigskybrew.com/wp-content/uploads/2022/03/CANMD192web.png',1, true),
+('Moose Drool', 'Our brown ale is made from the finest brown ale stuff money can buy',6.3,'Ale','Nutty,Smooth,Mild','https://bigskybrew.com/wp-content/uploads/2022/03/CANMD192web.png',1, true),
+('Moose Drool', 'Our brown ale is made from the finest brown ale stuff money can buy',6.3,'Ale','Nutty,Smooth,Mild','https://bigskybrew.com/wp-content/uploads/2022/03/CANMD192web.png',1, true),
+('Moose Drool', 'Our brown ale is made from the finest brown ale stuff money can buy',6.3,'Ale','Nutty,Smooth,Mild','https://bigskybrew.com/wp-content/uploads/2022/03/CANMD192web.png',1, true),
+('Moose Drool', 'Our brown ale is made from the finest brown ale stuff money can buy',6.3,'Ale','Nutty,Smooth,Mild','https://bigskybrew.com/wp-content/uploads/2022/03/CANMD192web.png',1, true),
+('Moose Drool', 'Our brown ale is made from the finest brown ale stuff money can buy',6.3,'Ale','Nutty,Smooth,Mild','https://bigskybrew.com/wp-content/uploads/2022/03/CANMD192web.png',1, true),
+('Moose Drool', 'Our brown ale is made from the finest brown ale stuff money can buy',6.3,'Ale','Nutty,Smooth,Mild','https://bigskybrew.com/wp-content/uploads/2022/03/CANMD192web.png',1, true),
+('Moose Drool', 'Our brown ale is made from the finest brown ale stuff money can buy',6.3,'Ale','Nutty,Smooth,Mild','https://bigskybrew.com/wp-content/uploads/2022/03/CANMD192web.png',1, true),
+('Moose Drool', 'Our brown ale is made from the finest brown ale stuff money can buy',6.3,'Ale','Nutty,Smooth,Mild','https://bigskybrew.com/wp-content/uploads/2022/03/CANMD192web.png',1, true),
+('Moose Drool', 'Our brown ale is made from the finest brown ale stuff money can buy',6.3,'Ale','Nutty,Smooth,Mild','https://bigskybrew.com/wp-content/uploads/2022/03/CANMD192web.png',1, true),
+('Moose Drool', 'Our brown ale is made from the finest brown ale stuff money can buy',6.3,'Ale','Nutty,Smooth,Mild','https://bigskybrew.com/wp-content/uploads/2022/03/CANMD192web.png',1, true),
+('Moose Drool', 'Our brown ale is made from the finest brown ale stuff money can buy',6.3,'Ale','Nutty,Smooth,Mild','https://bigskybrew.com/wp-content/uploads/2022/03/CANMD192web.png',1, true),
+('Moose Drool', 'Our brown ale is made from the finest brown ale stuff money can buy',6.3,'Ale','Nutty,Smooth,Mild','https://bigskybrew.com/wp-content/uploads/2022/03/CANMD192web.png',1, true),
+('Moose Drool', 'Our brown ale is made from the finest brown ale stuff money can buy',6.3,'Ale','Nutty,Smooth,Mild','https://bigskybrew.com/wp-content/uploads/2022/03/CANMD192web.png',1, true),
+('Moose Drool', 'Our brown ale is made from the finest brown ale stuff money can buy',6.3,'Ale','Nutty,Smooth,Mild','https://bigskybrew.com/wp-content/uploads/2022/03/CANMD192web.png',1, true),
+('Moose Drool', 'Our brown ale is made from the finest brown ale stuff money can buy',6.3,'Ale','Nutty,Smooth,Mild','https://bigskybrew.com/wp-content/uploads/2022/03/CANMD192web.png',1, true),
+('Moose Drool', 'Our brown ale is made from the finest brown ale stuff money can buy',6.3,'Ale','Nutty,Smooth,Mild','https://bigskybrew.com/wp-content/uploads/2022/03/CANMD192web.png',1, true),
+('Moose Drool', 'Our brown ale is made from the finest brown ale stuff money can buy',6.3,'Ale','Nutty,Smooth,Mild','https://bigskybrew.com/wp-content/uploads/2022/03/CANMD192web.png',1, true);
 
 CREATE TABLE beer_reviews (
 	beer_review_id SERIAL,
