@@ -1,7 +1,7 @@
 <template>
   <div id="map-area">
     <div>
-      <h2>Find Breweries</h2>
+      <h2 id="map-search-header">Find Breweries</h2>
       <GmapAutocomplete @place_changed="setPlace" />
       <button @click="centerMap">Go!</button>
     </div>
@@ -10,7 +10,6 @@
       @tilesloaded="filterMarkers"
       :center="center"
       :zoom="12"
-      style="width: 500px; height: 400px"
       id="map"
     >
       <GmapInfoWindow
@@ -144,8 +143,21 @@ export default {
 </script>
 
 <style>
-#map {
+#map-area {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  height: 100%;
 }
+
+#map {
+  width: 100%;
+  height: 70%;
+}
+
+#map-search-header {
+  margin: 0;
+}
+
 </style>

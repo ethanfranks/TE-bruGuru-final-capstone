@@ -25,9 +25,14 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap");
 
+html {
+  height: 100vh;
+  width: 100vw;
+}
+
 body {
-  width: calc(100vw - 6%);
-  height: calc(100vh - 6%);
+  width: 100vw;
+  height: 100vh;
   margin: 0;
 }
 
@@ -40,8 +45,6 @@ body {
   grid-template-rows: auto 3fr auto;
   width: 100vw;
   height: 100vh;
-  min-width: 100vw;
-  min-height: 100vh;
 }
 
 #header-component {

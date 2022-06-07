@@ -28,5 +28,6 @@ div {
 .home-components {
   display: flex;
   justify-content: space-around;
+  margin: 0;
 }
 </style>
