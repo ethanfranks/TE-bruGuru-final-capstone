@@ -1,5 +1,9 @@
 <template>
   <div>
+    {{brewery}}
+    <h3 v-show="brewery.name">{{brewery.name}}</h3>
+    <h4 v-show="brewery.phoneNumber">{{brewery.phoneNumber}}</h4>
+
     <form v-on:submit.prevent="submitForm" class="breweryForm">
       <div class="status-message error" v-show="errorMsg !== ''"></div>
       <div class="form-group">

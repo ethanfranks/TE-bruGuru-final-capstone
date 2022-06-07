@@ -31,7 +31,17 @@ INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpUL
 INSERT INTO users (username,password_hash,role) VALUES ('dave','$2a$10$5Z8FuX3eXmGDWRklDRDwlempKvhzpmzAW8HW66uI8.4/fcwjGDoK.','ROLE_ADMIN,ROLE_BEER LOVER,ROLE_BREWER');
 INSERT INTO users (username,password_hash,role) VALUES ('taylor','$2a$10$9ozIJQwk4ItwCu4fPcCyn.gXC6O7XGzZprbwnu7UURBrJx/E8s86m','ROLE_ADMIN,ROLE_BEER LOVER,ROLE_BREWER');
 INSERT INTO users (username,password_hash,role) VALUES ('chris','$2a$10$hRhH/GnAVxWjGt38yoc9SeEn90GVeITUdcrELNoiCKAvBYmsOGx7K','ROLE_ADMIN,ROLE_BEER LOVER,ROLE_BREWER');
-INSERT INTO users (username,password_hash,role) VALUES ('ethan','$2a$10$2pcUm9CQdkjY9diqYTgGr.RJviCoRZ2JuIPqoofG.ZDPziLB40kPW','ROLE_ADMIN,ROLE_BEER LOVER,ROLE_BREWER');
+INSERT INTO users (username,password_hash,role) VALUES ('ethan','$2a$10$JkpBZ5cB.7FcoXlLEJX7m.QuzIgnfwjNQqBreyrK55CmFXCIZw6Xi','ROLE_ADMIN,ROLE_BEER LOVER,ROLE_BREWER');
+INSERT INTO users (username,password_hash,role) VALUES ('brew1','$2a$10$fDXenuinB9..4zrx.n.EfeYF3dnDiIOaCaG9DlWzvlwtFUal92OEm','ROLE_BEER LOVER,ROLE_BREWER');
+INSERT INTO users (username,password_hash,role) VALUES ('brew2','$2a$10$52AWblXeFGiQpZ7TzpBNQehYEQdq/.0Hs9BlUSTXAB6y1bQYWPx0y','ROLE_BEER LOVER,ROLE_BREWER');
+INSERT INTO users (username,password_hash,role) VALUES ('brew3','$2a$10$teZH2BXbkNjOiPhdFAcZZORlBMHkHTjxNhfZL5lMUwhEz.SWF91CG','ROLE_BEER LOVER,ROLE_BREWER');
+INSERT INTO users (username,password_hash,role) VALUES ('brew4','$2a$10$xjYy4jWeggFgoHH6ExNZ3.x2YsP4sCdBbU35Ks3jzPy5DjiSsDMKO','ROLE_BEER LOVER,ROLE_BREWER');
+INSERT INTO users (username,password_hash,role) VALUES ('brew5','$2a$10$VzbFSpezTSgu1EcctCp9m.5LHkAkC1eT497VSsT.DYvsRMbRBjpVy','ROLE_BEER LOVER,ROLE_BREWER');
+INSERT INTO users (username,password_hash,role) VALUES ('brew6','$2a$10$s2RHMqzmNk3bcXvmrTP8x.WgMZcurhsqU/4KuRx3xAhjt1Jt5Iwji','ROLE_BEER LOVER,ROLE_BREWER');
+INSERT INTO users (username,password_hash,role) VALUES ('brew7','$2a$10$dU3T7OW7KkfqwaiDV5O.1..2tMwxG.S9qksNHsxTij/TcKl36W1OC','ROLE_BEER LOVER,ROLE_BREWER');
+INSERT INTO users (username,password_hash,role) VALUES ('brew8','$2a$10$DmWhN0rLhCc5y2byou6R8.eQZlEm0DJxhyQDqxQjwSOuJzxOuYIta','ROLE_BEER LOVER,ROLE_BREWER');
+INSERT INTO users (username,password_hash,role) VALUES ('brew9','$2a$10$/bbnEE0TtdveEngUEr/4S.RKKINhSptKfyAVLItkamSA6xoUOlO/G','ROLE_BEER LOVER,ROLE_BREWER');
+INSERT INTO users (username,password_hash,role) VALUES ('brew10','$2a$10$PYNyqB7cG6Q.DWUr6Wpao.2qWss3n48LY5ttp9WPyEBvgHvoduSG.','ROLE_BEER LOVER,ROLE_BREWER');
 
 CREATE TABLE breweries (
 	brewery_id SERIAL NOT NULL,
@@ -42,7 +52,13 @@ CREATE TABLE breweries (
 	ig_link varchar(100),
 	fb_link varchar(100),
 	about_us varchar(3000),
-	hours_of_operation varchar(1000),
+	sunday_hours varchar(50),
+    monday_hours varchar(50),
+    tuesday_hours varchar(50),
+    wednesday_hours varchar(50),
+    thursday_hours varchar(50),
+    friday_hours varchar(50),
+    saturday_hours varchar(50),
 	img_url varchar(1000),
 	street_address varchar(500),
 	gps_lat numeric(10,7),
@@ -51,12 +67,11 @@ CREATE TABLE breweries (
 	food_available boolean,
 	CONSTRAINT PK_brewery PRIMARY KEY (brewery_id),
 	CONSTRAINT FK_brewery FOREIGN KEY (user_id) REFERENCES users(user_id)
-
 );
 
-INSERT INTO breweries (brewery_name,user_id,email,phone,ig_link,fb_link,about_us,hours_of_operation,img_url,street_address,gps_lat,gps_lng,googlePlaceId,food_available)
+INSERT INTO breweries (brewery_name,user_id,email,phone,ig_link,fb_link,about_us,sunday_hours,monday_hours,tuesday_hours,wednesday_hours,thursday_hours,friday_hours,saturday_hours,img_url,street_address,gps_lat,gps_lng,googlePlaceId,food_available)
 VALUES ('Big Elk River Brewing Co',3,'BigElkBeer@fakeemail.com','555-666-7777','https://www.instagram.com/BigElkBeer/','https://www.Facebook.com/BigElkBeer','Test description for a fake brewery! Big Elk ipso lorum yadda yadda', 
-'Tuesday-Sunday 11:30am - 1:00am', 'https://www.shutterstock.com/image-photo/glasses-different-sorts-craft-beer-on-1212903172', '123 Main St. Noel, MO. 64854', '36.601856', '-94.447206','EiAxMjMgTWFpbiBTdCwgTm9lbCwgTU8gNjQ4NTQsIFVTQSIaEhgKFAoSCdt0um1dU8iHEf7MGv4vDfNMEHs', true);
+'11:30am - 1:00am', '2:00pm - 11:00pm','2:00pm - 11:00pm','CLOSED','2:00pm - 11:00pm','11:30am - 2:00am','11:30am - 2:00am','https://www.shutterstock.com/image-photo/glasses-different-sorts-craft-beer-on-1212903172', '123 Main St. Noel, MO. 64854', '36.601856', '-94.447206','EiAxMjMgTWFpbiBTdCwgTm9lbCwgTU8gNjQ4NTQsIFVTQSIaEhgKFAoSCdt0um1dU8iHEf7MGv4vDfNMEHs', true);
 
 CREATE TABLE beers (
 	beer_id SERIAL,
