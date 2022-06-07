@@ -55,4 +55,5 @@ public class BeerController {
         }
         return beerDao.getBeersBySearchParameters(filter);
     }
+
 }
