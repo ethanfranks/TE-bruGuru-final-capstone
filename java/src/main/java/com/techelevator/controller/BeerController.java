@@ -55,5 +55,10 @@ public class BeerController {
         }
         return beerDao.getBeersBySearchParameters(filter);
     }
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path = "/beer/{id}", method = RequestMethod.DELETE)
+    public void deleteBeer(@PathVariable Long id){
+        beerDao.deleteBeer(id);
+    }
 
 }

@@ -15,5 +15,8 @@ export default {
     },
     updateBeer(beer) {
         return axios.put(`/beer/updateBeer`, beer);
+    },
+    deleteBeer(beer) {
+        return axios.delete(`/beer/update-beer/`, beer);
     }
 }

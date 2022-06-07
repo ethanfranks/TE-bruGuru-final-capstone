@@ -17,4 +17,6 @@ public interface BeerDao {
     List<Beer> getBeersBySearchParameters(String filter, String profile);
 
     List<Beer> getBeersBySearchParameters(String filter);
+
+    void deleteBeer(long id);
 }

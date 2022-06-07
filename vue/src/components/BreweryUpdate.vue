@@ -11,47 +11,48 @@
           v-model="brewery.brewery_name"
           autocomplete="off"
         />
-        <label for="number">Phone Number:</label>
-        <input
-          id="number"
-          type="tel"
+      </div>
+      <label for="number">Phone Number:</label>
+      <input
+        id="number"
+        type="tel"
+        class="form-control"
+        v-model="brewery.phone"
+        autocomplete="off"
+      />
+      <label for="email">Email:</label>
+      <input
+        id="email"
+        type="email"
+        class="form-control"
+        v-model="brewery.email"
+        autocomplete="off"
+      />
+      <label for="url">IG Link:</label>
+      <input
+        id="ig_url"
+        type="url"
+        class="form-control"
+        v-model="brewery.ig_link"
+        autocomplete="off"
+      />
+      <label for="url">FB Link:</label>
+      <input
+        id="fb_url"
+        type="url"
+        class="form-control"
+        v-model="brewery.fb_link"
+        autocomplete="off"
+      />
+      <div class="form-group">
+        <label for="history">About Us:</label>
+        <textarea
+          id="history"
           class="form-control"
-          v-model="brewery.phone"
-          autocomplete="off"
-        />
-        <label for="email">Email:</label>
-        <input
-          id="email"
-          type="email"
-          class="form-control"
-          v-model="brewery.email"
-          autocomplete="off"
-        />
-        <label for="url">IG Link:</label>
-        <input
-          id="ig_url"
-          type="url"
-          class="form-control"
-          v-model="brewery.ig_link"
-          autocomplete="off"
-        />
-        <label for="url">FB Link:</label>
-        <input
-          id="fb_url"
-          type="url"
-          class="form-control"
-          v-model="brewery.fb_link"
-          autocomplete="off"
-        />
-        <div class="form-group">
-          <label for="history">About Us:</label>
-          <textarea
-            id="history"
-            class="form-control"
-            v-model="brewery.about_us"
-          ></textarea>
+          v-model="brewery.about_us"
+        ></textarea>
 
-          <div class="form-group">
+        <div class="form-group">
           <label for="sundayHours"
             >Enter Sunday hours of operation or enter "CLOSED":
           </label>
@@ -132,7 +133,7 @@
             v-model="brewery.street_address"
           ></textarea>
           <label for="food">Food Available: Yes</label>
-          =======
+
           <br />
           <br />
           <label for="food"> Food Available: Yes</label>

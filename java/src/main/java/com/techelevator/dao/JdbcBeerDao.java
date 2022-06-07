@@ -78,6 +78,13 @@ public class JdbcBeerDao implements BeerDao{
         }
         return searchResults;
     }
+    @Override
+    public void deleteBeer(long id){
+        String deleteFromBeerReviewsSql = "DELETE FROM beer_reviews WHERE beer_id = ?";
+        jdbcTemplate.update(deleteFromBeerReviewsSql, id);
+        String deleteBeerSQL = "DELETE FROM beers WHERE beer_id = ?";
+        jdbcTemplate.update(deleteBeerSQL, id);
+    }
 
     public Beer createBeerFromRow(SqlRowSet rs) {
         Beer beer = new Beer();

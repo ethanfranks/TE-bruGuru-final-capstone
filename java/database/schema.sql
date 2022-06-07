@@ -54,6 +54,16 @@ CREATE TABLE breweries (
 
 );
 
+-- updating breweries table to include columns for adding hours of operation per day
+ALTER TABLE breweries ADD sunday_hours varchar(50);
+ALTER TABLE breweries ADD monday_hours varchar(50);
+ALTER TABLE breweries ADD tuesday_hours varchar(50);
+ALTER TABLE breweries ADD wednesday_hours varchar(50);
+ALTER TABLE breweries ADD thursday_hours varchar(50);
+ALTER TABLE breweries ADD friday_hours varchar(50);
+ALTER TABLE breweries ADD saturday_hours varchar(50);
+ALTER TABLE breweries DROP COLUMN hours_of_operation; 
+
 INSERT INTO breweries (brewery_name,user_id,email,phone,ig_link,fb_link,about_us,hours_of_operation,img_url,street_address,gps_lat,gps_lng,googlePlaceId,food_available)
 VALUES ('Big Elk River Brewing Co',3,'BigElkBeer@fakeemail.com','555-666-7777','https://www.instagram.com/BigElkBeer/','https://www.Facebook.com/BigElkBeer','Test description for a fake brewery! Big Elk ipso lorum yadda yadda', 
 'Tuesday-Sunday 11:30am - 1:00am', 'https://www.shutterstock.com/image-photo/glasses-different-sorts-craft-beer-on-1212903172', '123 Main St. Noel, MO. 64854', '36.601856', '-94.447206','EiAxMjMgTWFpbiBTdCwgTm9lbCwgTU8gNjQ4NTQsIFVTQSIaEhgKFAoSCdt0um1dU8iHEf7MGv4vDfNMEHs', true);
