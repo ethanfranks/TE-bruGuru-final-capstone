@@ -1,45 +1,57 @@
 <template>
-  <div>
-    <div id="login" class="text-center">
-      <img :src="image" alt="Flight of beer" class="logo" />
-      <form class="form-signin" @submit.prevent="login">
-        <h2 class="h3 mb-3 font-weight-normal">Please Sign In</h2>
-        <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
-          Invalid username and password!
-        </div>
-        <div
-          class="alert alert-success"
-          role="alert"
-          v-if="this.$route.query.registration"
-        >
-          Thank you for registering, please sign in.
-        </div>
-        <label for="username" class="sr-only">Username </label>
-        <input
-          type="text"
-          id="username"
-          class="form-control"
-          placeholder="Username"
-          v-model="user.username"
-          required
-          autofocus
-        />
-        <br>
-        <label for="password" class="sr-only"> Password </label>
-        <input
-          type="password"
-          id="password"
-          class="form-control"
-          placeholder="Password"
-          v-model="user.password"
-          required
-        />
-        <br />
-        <button type="submit">Sign in</button>
-        <br />
-        <br />
-        <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      </form>
+  <div id="login-view">
+    <div class="flex-container">
+      
+      <div id="login-img-container">
+        <img :src="image" alt="Flight of beer" id="login-pic" />
+      </div>
+
+      <div id="login-form-container" class="text-center">
+        <form class="form-signin" @submit.prevent="login">
+          <h2 class="h3 mb-3 font-weight-normal">Please Sign In</h2>
+          <div
+            class="alert alert-danger"
+            role="alert"
+            v-if="invalidCredentials"
+          >
+            Invalid username and password!
+          </div>
+          <div
+            class="alert alert-success"
+            role="alert"
+            v-if="this.$route.query.registration"
+          >
+            Thank you for registering, please sign in.
+          </div>
+          <label for="username" class="sr-only">Username </label>
+          <br>
+          <input
+            type="text"
+            id="username"
+            class="form-control"
+            placeholder="Username"
+            v-model="user.username"
+            required
+            autofocus
+          />
+          <br />
+          <label for="password" class="sr-only"> Password </label>
+          <br>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            placeholder="Password"
+            v-model="user.password"
+            required
+          />
+          <br />
+          <button type="submit">Sign in</button>
+          <br />
+          <br />
+          <router-link :to="{ name: 'register' }">Need an account?</router-link>
+        </form>
+      </div>
     </div>
   </div>
 </template>
@@ -84,11 +96,39 @@ export default {
 };
 </script>
 <style scoped>
-.logo {
-  width: 50vw;
-}
-#login {
+#login-view {
+  font-family: "Nunito Sans", sans-serif;
   display: flex;
+  flex-grow: 1;
+}
+
+.flex-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
   justify-content: space-around;
 }
+
+#login-img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+#login-pic {
+  width: 50vw;
+}
+
+#login-form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  flex-shrink: 1;
+  overflow-y: auto;
+}
+
 </style>

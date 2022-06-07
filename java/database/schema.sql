@@ -70,26 +70,26 @@ CREATE TABLE breweries (
 );
 
 INSERT INTO breweries (brewery_name,user_id,email,phone,ig_link,fb_link,about_us,sunday_hours,monday_hours,tuesday_hours,wednesday_hours,thursday_hours,friday_hours,saturday_hours,img_url,street_address,gps_lat,gps_lng,googlePlaceId,food_available)
-VALUES ('Big Elk River Brewing Co',3,'BigElkBeer@fakeemail.com','555-666-7777','https://www.instagram.com/BigElkBeer/','https://www.Facebook.com/BigElkBeer','Test description for a fake brewery! Big Elk ipso lorum yadda yadda', 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+VALUES ('Big Elk River Brewing Co',3,'BigElkBeer@fakeemail.com','555-666-7777','https://www.instagram.com/BigElkBeer/','https://www.Facebook.com/BigElkBeer','Test description for a fake brewery! Big Elk ipso lorum yadda yadda',
+'11:30am - 1:00am', '2:00pm - 11:00pm','2:00pm - 11:00pm','CLOSED','2:00pm - 11:00pm','11:30am - 2:00am','11:30am - 2:00am','https://www.shutterstock.com/image-photo/glasses-different-sorts-craft-beer-on-1212903172', '123 Main St. Noel, MO. 64854', '36.601856', '-94.447206','', true), (
+'Mirror Twin Brewing',6,'info@mirrortwinbrewing.com','555-666-7777','https://www.instagram.com/mirror/','https://www.Facebook.com/mirrortwin','Test description for a fake brewery! mirrrro twin ipso lorum yadda yadda',
+ '11:30am - 1:00am', '2:00pm - 11:00pm','2:00pm - 11:00pm','CLOSED','2:00pm - 11:00pm','11:30am - 2:00am','11:30am - 2:00am','https://www.shutterstock.com/image-photo/glasses-different-sorts-craft-beer-on-1212903172', '725 National Ave, Lexington, KY 40502', null, null,'', false),(
+ 'New District Brewing Company',7,'newdistrict@fakeemail.com','555-666-7777','https://www.instagram.com/newdistrict/','https://www.Facebook.com/newdistrict','Test description for a fake brewery! newdistrict ipso lorum yadda yadda',
+  '11:30am - 1:00am', '2:00pm - 11:00pm','2:00pm - 11:00pm','CLOSED','2:00pm - 11:00pm','11:30am - 2:00am','11:30am - 2:00am','https://www.shutterstock.com/image-photo/glasses-different-sorts-craft-beer-on-1212903172', '901 N Glebe Rd #105, Arlington, VA 22203', null, null,'', true),(
+  'Board Room Brewing Company',8,'boardroom@fakeemail.com','555-666-7777','https://www.instagram.com/BigElkBeer/','https://www.Facebook.com/BigElkBeer','Test description for a fake brewery! Big Elk ipso lorum yadda yadda',
+    '11:30am - 1:00am', '2:00pm - 11:00pm','2:00pm - 11:00pm','CLOSED','2:00pm - 11:00pm','11:30am - 2:00am','11:30am - 2:00am','https://www.shutterstock.com/image-photo/glasses-different-sorts-craft-beer-on-1212903172', '925 N Garfield St, Arlington, VA 22201', null, null,'', false),(
+    'Crafthouse Arlington',4,'crafthouse@fakeemail.com','555-666-7777','https://www.instagram.com/crafthouse/','https://www.Facebook.com/crafthouse','Test description for a fake brewery! crafthouse ipso lorum yadda yadda',
+    '11:30am - 1:00am', '2:00pm - 11:00pm','2:00pm - 11:00pm','CLOSED','2:00pm - 11:00pm','11:30am - 2:00am','11:30am - 2:00am','https://www.shutterstock.com/image-photo/glasses-different-sorts-craft-beer-on-1212903172', '901 N Glebe Rd #105, Arlington, VA 22203', null, null,'', true), (
+    'The Brew Shop',5,'brewshop@fakeemail.com','555-666-7777','https://www.instagram.com/brewshop/','https://www.Facebook.com/brewshop','Test description for a fake brewery! Brewshop ipso lorum yadda yadda',
+'11:30am - 1:00am', '2:00pm - 11:00pm','2:00pm - 11:00pm','CLOSED','2:00pm - 11:00pm','11:30am - 2:00am','11:30am - 2:00am','https://www.shutterstock.com/image-photo/glasses-different-sorts-craft-beer-on-1212903172', '2004 Wilson Blvd, Arlington, VA 22201',  null, null,'', true),(
+ 'Meridian Pint',1,'meridian@fakeemail.com','555-666-7777','https://www.instagram.com/meridian/','https://www.Facebook.com/meridian','Test description for a fake brewery! meridian ipso lorum yadda yadda',
+'11:30am - 1:00am', '2:00pm - 11:00pm','2:00pm - 11:00pm','CLOSED','2:00pm - 11:00pm','11:30am - 2:00am','11:30am - 2:00am','https://www.shutterstock.com/image-photo/glasses-different-sorts-craft-beer-on-1212903172', '6035 Wilson Blvd, Arlington, VA 22205', null, null,'', true),(
+'Nighthawk Brewery & Pizza',2,'nighthawk@fakeemail.com','555-666-7777','https://www.instagram.com/nighthawk/','https://www.Facebook.com/nighthawk','Test description for a fake brewery! nighthawk ipso lorum yadda yadda',
+'11:30am - 1:00am', '2:00pm - 11:00pm','2:00pm - 11:00pm','CLOSED','2:00pm - 11:00pm','11:30am - 2:00am','11:30am - 2:00am','https://www.shutterstock.com/image-photo/glasses-different-sorts-craft-beer-on-1212903172', '1201 S Joyce St C10, Arlington, VA 22202', null, null,'', false), (
+'Aslin Beer Company',9,'aslin@fakeemail.com','555-666-7777','https://www.instagram.com/aslin/','https://www.Facebook.com/aslin','Test description for a fake brewery! aslin ipso lorum yadda yadda',
+'11:30am - 1:00am', '2:00pm - 11:00pm','2:00pm - 11:00pm','CLOSED','2:00pm - 11:00pm','11:30am - 2:00am','11:30am - 2:00am','https://www.shutterstock.com/image-photo/glasses-different-sorts-craft-beer-on-1212903172', '847 S Pickett St, Alexandria, VA 22304', null, null,'', true), (
+'West Sixth Beer Company',10,'westsixth@fakeemail.com','555-666-7777','https://www.instagram.com/westsixth/','https://www.Facebook.com/westsixth','Test description for a fake brewery! Big Elk ipso lorum yadda yadda',
+'11:30am - 1:00am', '2:00pm - 11:00pm','2:00pm - 11:00pm','CLOSED','2:00pm - 11:00pm','11:30am - 2:00am','11:30am - 2:00am','https://www.shutterstock.com/image-photo/glasses-different-sorts-craft-beer-on-1212903172', '1 Levee Way, Newport, KY 41071', null, null,'', true);
 
 
 CREATE TABLE beers (

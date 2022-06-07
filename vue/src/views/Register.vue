@@ -1,14 +1,17 @@
 <template>
-  <div>
-    <div id="register" class="text-center">
-      <img :src="image" alt="Fancy flight of beer" class="logoTwo" />
+  <div id="register-container">
+    <div id="register-pic-container">
+      <img :src="image" alt="Fancy flight of beer" id="register-pic" />
+    </div>
 
+    <div id="registration-form">
       <form class="form-register" @submit.prevent="register">
-        <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+        <h2 class="h3 mb-3 font-weight-normal">Create Account</h2>
         <div class="alert alert-danger" role="alert" v-if="registrationErrors">
           {{ registrationErrorMsg }}
         </div>
         <label for="username" class="sr-only">Username</label>
+        <br />
         <input
           type="text"
           id="username"
@@ -18,9 +21,10 @@
           required
           autofocus
         />
-        <br />
+        <!-- <br /> -->
         <br />
         <label for="password" class="sr-only">Password</label>
+        <br />
         <input
           type="password"
           id="password"
@@ -29,7 +33,9 @@
           v-model="user.password"
           required
         />
-
+        <br />
+        <label for="confirmPassword" class="sr-only">Confirm</label>
+        <br />
         <input
           type="password"
           id="confirmPassword"
@@ -41,7 +47,7 @@
         <br />
         <br />
         <div>
-          <label for="checkbox">Do you own or represent a brewery?</label>
+          <label for="checkbox">Do you represent a brewery? </label>
           <input
             type="checkbox"
             id="isBrewer"
@@ -49,7 +55,7 @@
             v-on:change="addBrewerRole($event)"
           />
         </div>
-        <br />
+        <!-- <br /> -->
         <br />
         <button class="btn btn-lg btn-primary btn-block" type="submit">
           Create Account
@@ -125,16 +131,69 @@ export default {
 </script>
 
 <style>
-.logoTwo {
-  width: 750px;
-  margin: 75px;
-}
-#register {
+#register-container {
+  font-family: "Nunito Sans", sans-serif;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  /* flex-grow: 1; */
 }
+
+#register-pic-container {
+  display: flex;
+  height: 100%;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+#registration-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.form-register {
+  height: 100%;
+}
+
+#register-pic {
+  width: 100%;
+  height: fit-content;
+}
+
 .text-center {
   display: flex;
   align-items: center;
+}
+
+@media screen and (max-width: 480px) {
+  #register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+  }
+
+  #register-pic-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #registration-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* @media screen and (max-height: ) */
 }
 </style>

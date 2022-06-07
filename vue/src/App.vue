@@ -27,13 +27,14 @@ export default {
 
 html {
   height: 100vh;
-  width: 100vw;
+  /* width: 100vw; */
 }
 
 body {
   width: 100vw;
-  height: 100vh;
+  /* height: 100vh; */
   margin: 0;
+  overflow: hidden;
 }
 
 #app {
@@ -56,6 +57,7 @@ body {
   margin: 2%;
   display: flex;
   justify-content: space-around;
+  overflow: auto;
 }
 
 #footer-components {

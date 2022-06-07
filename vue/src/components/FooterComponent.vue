@@ -12,6 +12,7 @@ export default {
 
 <style>
 .footer {
+  font-family: "Nunito Sans", sans-serif;
   text-align: center;
   background-color: #919aa1;
   color: #f8f9fa;
