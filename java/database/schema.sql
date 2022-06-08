@@ -69,28 +69,19 @@ CREATE TABLE breweries (
 	CONSTRAINT FK_brewery FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
-INSERT INTO breweries (brewery_name,user_id,email,phone,ig_link,fb_link,about_us,sunday_hours,monday_hours,tuesday_hours,wednesday_hours,thursday_hours,friday_hours,saturday_hours,img_url,street_address,gps_lat,gps_lng,googlePlaceId,food_available)
-VALUES ('Big Elk River Brewing Co',16,'BigElkBeer@fakeemail.com','555-666-7777','https://www.instagram.com/BigElkBeer/','https://www.Facebook.com/BigElkBeer','Test description for a fake brewery! Big Elk ipso lorum yadda yadda',
-'11:30am - 1:00am', '2:00pm - 11:00pm','2:00pm - 11:00pm','CLOSED','2:00pm - 11:00pm','11:30am - 2:00am','11:30am - 2:00am','https://www.shutterstock.com/image-photo/glasses-different-sorts-craft-beer-on-1212903172', '123 Main St. Noel, MO. 64854', '36.601856', '-94.447206','', true), (
-'Mirror Twin Brewing',7,'info@mirrortwinbrewing.com','555-666-7777','https://www.instagram.com/mirror/','https://www.Facebook.com/mirrortwin','Test description for a fake brewery! mirrrro twin ipso lorum yadda yadda',
- '11:30am - 1:00am', '2:00pm - 11:00pm','2:00pm - 11:00pm','CLOSED','2:00pm - 11:00pm','11:30am - 2:00am','11:30am - 2:00am','https://www.shutterstock.com/image-photo/glasses-different-sorts-craft-beer-on-1212903172', '725 National Ave, Lexington, KY 40502', '38.0404142', '-84.4784980','ChIJP8XQkB9FQogRlFMT5O3ezIc', false),(
- 'New District Brewing Company',13,'newdistrict@fakeemail.com','555-666-7777','https://www.instagram.com/newdistrict/','https://www.Facebook.com/newdistrict','Test description for a fake brewery! newdistrict ipso lorum yadda yadda',
-  '11:30am - 1:00am', '2:00pm - 11:00pm','2:00pm - 11:00pm','CLOSED','2:00pm - 11:00pm','11:30am - 2:00am','11:30am - 2:00am','https://www.shutterstock.com/image-photo/glasses-different-sorts-craft-beer-on-1212903172', '901 N Glebe Rd #105, Arlington, VA 22203', '38.8814934', '-77.1153352','ChIJRYKNITu0t4kRReaVLyxsr3s', true),(
-  'Board Room Brewing Company',8,'boardroom@fakeemail.com','555-666-7777','https://www.instagram.com/BigElkBeer/','https://www.Facebook.com/BigElkBeer','Test description for a fake brewery! Big Elk ipso lorum yadda yadda',
-    '11:30am - 1:00am', '2:00pm - 11:00pm','2:00pm - 11:00pm','CLOSED','2:00pm - 11:00pm','11:30am - 2:00am','11:30am - 2:00am','https://www.shutterstock.com/image-photo/glasses-different-sorts-craft-beer-on-1212903172', '925 N Garfield St, Arlington, VA 22201', '38.8838800', '-77.0932289','ChIJf2KjD4W2t4kRKlxzoY6Y8zs', false),(
-    'Crafthouse Arlington',14,'crafthouse@fakeemail.com','555-666-7777','https://www.instagram.com/crafthouse/','https://www.Facebook.com/crafthouse','Test description for a fake brewery! crafthouse ipso lorum yadda yadda',
-    '11:30am - 1:00am', '2:00pm - 11:00pm','2:00pm - 11:00pm','CLOSED','2:00pm - 11:00pm','11:30am - 2:00am','11:30am - 2:00am','https://www.shutterstock.com/image-photo/glasses-different-sorts-craft-beer-on-1212903172', '901 N Glebe Rd #105, Arlington, VA 22203', '38.8814934', '-77.1153352','ChIJRYKNITu0t4kRReaVLyxsr3s', true), (
-    'The Brew Shop',15,'brewshop@fakeemail.com','555-666-7777','https://www.instagram.com/brewshop/','https://www.Facebook.com/brewshop','Test description for a fake brewery! Brewshop ipso lorum yadda yadda',
-'11:30am - 1:00am', '2:00pm - 11:00pm','2:00pm - 11:00pm','CLOSED','2:00pm - 11:00pm','11:30am - 2:00am','11:30am - 2:00am','https://www.shutterstock.com/image-photo/glasses-different-sorts-craft-beer-on-1212903172', '2004 Wilson Blvd, Arlington, VA 22201',  '38.8921709', '-77.0822744','-77.0822744', true),(
- 'Meridian Pint',9,'meridian@fakeemail.com','555-666-7777','https://www.instagram.com/meridian/','https://www.Facebook.com/meridian','Test description for a fake brewery! meridian ipso lorum yadda yadda',
-'11:30am - 1:00am', '2:00pm - 11:00pm','2:00pm - 11:00pm','CLOSED','2:00pm - 11:00pm','11:30am - 2:00am','11:30am - 2:00am','https://www.shutterstock.com/image-photo/glasses-different-sorts-craft-beer-on-1212903172', '6035 Wilson Blvd, Arlington, VA 22205', '38.8739519', '-77.1405619','ChIJfXZE-2a0t4kRvJrVkYu9C0s', true),(
-'Nighthawk Brewery & Pizza',10,'nighthawk@fakeemail.com','555-666-7777','https://www.instagram.com/nighthawk/','https://www.Facebook.com/nighthawk','Test description for a fake brewery! nighthawk ipso lorum yadda yadda',
-'11:30am - 1:00am', '2:00pm - 11:00pm','2:00pm - 11:00pm','CLOSED','2:00pm - 11:00pm','11:30am - 2:00am','11:30am - 2:00am','https://www.shutterstock.com/image-photo/glasses-different-sorts-craft-beer-on-1212903172', '1201 S Joyce St C10, Arlington, VA 22202', '38.8635402', '-77.0632430','Ei0xMjAxIFMgSm95Y2UgU3QgYzEwLCBBcmxpbmd0b24sIFZBIDIyMjAyLCBVU0EiHxodChYKFAoSCWNf3v7btreJEQTEP5XW9eFhEgNjMTA', false), (
-'Aslin Beer Company',11,'aslin@fakeemail.com','555-666-7777','https://www.instagram.com/aslin/','https://www.Facebook.com/aslin','Test description for a fake brewery! aslin ipso lorum yadda yadda',
-'11:30am - 1:00am', '2:00pm - 11:00pm','2:00pm - 11:00pm','CLOSED','2:00pm - 11:00pm','11:30am - 2:00am','11:30am - 2:00am','https://www.shutterstock.com/image-photo/glasses-different-sorts-craft-beer-on-1212903172', '847 S Pickett St, Alexandria, VA 22304', '38.8041736', '-77.1383727','ChIJ4TfnRFqyt4kRNE-gVIytAEc', true), (
-'West Sixth Beer Company',12,'westsixth@fakeemail.com','555-666-7777','https://www.instagram.com/westsixth/','https://www.Facebook.com/westsixth','Test description for a fake brewery! Big Elk ipso lorum yadda yadda',
-'11:30am - 1:00am', '2:00pm - 11:00pm','2:00pm - 11:00pm','CLOSED','2:00pm - 11:00pm','11:30am - 2:00am','11:30am - 2:00am','https://www.shutterstock.com/image-photo/glasses-different-sorts-craft-beer-on-1212903172', '1 Levee Way, Newport, KY 41071', '39.0948213', '-84.4964864','ChIJRdyu126xQYgRO1sF5gh-rl0', true);
+-- updating breweries table to include columns for adding hours of operation per day
+ALTER TABLE breweries ADD sunday_hours varchar(50);
+ALTER TABLE breweries ADD monday_hours varchar(50);
+ALTER TABLE breweries ADD tuesday_hours varchar(50);
+ALTER TABLE breweries ADD wednesday_hours varchar(50);
+ALTER TABLE breweries ADD thursday_hours varchar(50);
+ALTER TABLE breweries ADD friday_hours varchar(50);
+ALTER TABLE breweries ADD saturday_hours varchar(50);
+ALTER TABLE breweries DROP COLUMN hours_of_operation; 
 
+INSERT INTO breweries (brewery_name,user_id,email,phone,ig_link,fb_link,about_us,hours_of_operation,img_url,street_address,gps_lat,gps_lng,googlePlaceId,food_available)
+VALUES ('Big Elk River Brewing Co',3,'BigElkBeer@fakeemail.com','555-666-7777','https://www.instagram.com/BigElkBeer/','https://www.Facebook.com/BigElkBeer','Test description for a fake brewery! Big Elk ipso lorum yadda yadda', 
+'Tuesday-Sunday 11:30am - 1:00am', 'https://www.shutterstock.com/image-photo/glasses-different-sorts-craft-beer-on-1212903172', '123 Main St. Noel, MO. 64854', '36.601856', '-94.447206','EiAxMjMgTWFpbiBTdCwgTm9lbCwgTU8gNjQ4NTQsIFVTQSIaEhgKFAoSCdt0um1dU8iHEf7MGv4vDfNMEHs', true);
 
 CREATE TABLE beers (
 	beer_id SERIAL,

@@ -1,6 +1,5 @@
 <template>
   <div>
-    
     <h2>{{ brewery.name }}</h2>
     <h3>{{ brewery.address }}</h3>
     <h3>{{ brewery.phoneNumber }}</h3>
@@ -24,7 +23,11 @@
       "{{ review.review }}"-{{ review.reviewerUsername }}
     </h3>
     <button @click="toggleUpdateForm()">Update your info</button>
-    <form v-on:submit.prevent="submitForm" class="breweryForm" v-show="showUpdateForm">
+    <form
+      v-on:submit.prevent="submitForm"
+      class="breweryForm"
+      v-show="showUpdateForm"
+    >
       <div class="status-message error" v-show="errorMsg !== ''"></div>
       <div class="form-group">
         <label for="Name">Name:</label>
@@ -34,7 +37,7 @@
           class="form-control"
           v-model="brewery.brewery_name"
           autocomplete="off"
-        /><br>
+        /><br />
         <label for="number">Phone Number:</label>
         <input
           id="number"
@@ -42,7 +45,7 @@
           class="form-control"
           v-model="brewery.phone"
           autocomplete="off"
-        /><br>
+        /><br />
         <label for="email">Email:</label>
         <input
           id="email"
@@ -50,7 +53,7 @@
           class="form-control"
           v-model="brewery.email"
           autocomplete="off"
-        /><br>
+        /><br />
         <label for="url">IG Link:</label>
         <input
           id="ig_url"
@@ -58,7 +61,7 @@
           class="form-control"
           v-model="brewery.ig_link"
           autocomplete="off"
-        /><br>
+        /><br />
         <label for="url">FB Link:</label>
         <input
           id="fb_url"
@@ -66,16 +69,8 @@
           class="form-control"
           v-model="brewery.fb_link"
           autocomplete="off"
-        /><br>
+        /><br />
         <div class="form-group">
-          <label for="history">About Us:</label>
-          <textarea
-            id="history"
-            class="form-control"
-            v-model="brewery.about_us"
-          ></textarea>
-          <br />
-          <br />
           <label for="sundayHours"
             >Enter Sunday hours of operation or enter "CLOSED":
           </label>
@@ -155,9 +150,12 @@
             class="form-control"
             v-model="brewery.street_address"
           ></textarea>
+          <label for="food">Food Available: Yes</label>
+
           <br />
           <br />
           <label for="food"> Food Available: Yes</label>
+          >>>>>>> main
           <input
             id="food"
             type="checkbox"
@@ -179,11 +177,8 @@
 <script>
 import BreweryService from "@/services/BreweryService";
 
-
 export default {
-  components : {
-    
-  },
+  components: {},
   data() {
     return {
       brewery: {},
@@ -201,7 +196,7 @@ export default {
     },
     toggleUpdateForm() {
       this.showUpdateForm = !this.showUpdateForm;
-    }
+    },
   },
   created() {
     return BreweryService.getBreweryByUsername().then((response) => {
