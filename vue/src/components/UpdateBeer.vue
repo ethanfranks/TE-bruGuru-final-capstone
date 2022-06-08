@@ -92,11 +92,22 @@
       </div>
     </form>
 
-    <!-- <h2 class="form-title">Delete Beer</h2>
-    <form class="delete-beer-form" v-on:submit.prevent="deleteBeer"></form> -->
-    <button class="btnDeleteBeer" v-on:click="deleteBeer(beers.beer_id)">
-      Delete Beer
-    </button>
+    <h2>Delete Beer</h2>
+    <form class="delete-beer-form" v-on:submit.prevent="deleteBeer">
+      <label for="delete-beer-options">
+        Select the name of the beer you wish to delete:
+      </label>
+      <select name="delete-beer-options" v-model="beers.beer_id">
+        <option v-for="beer in beers" v-bind:key="beer.beer_id">
+          Beer ID# {{ beer.beer_id }} -- Beer Name: {{ beer.beer_name }}
+        </option>
+      </select>
+      <br />
+      <br />
+      <button class="btnDeleteBeer" v-on:click="deleteBeer(beers.beer_id)">
+        Delete Beer
+      </button>
+    </form>
   </div>
 </template>
 
@@ -136,15 +147,13 @@ export default {
         }
       });
     },
-    methods: {
-      deleteBeer(id) {
-        beerService.deleteBeer(id).then((response) => {
-          if (response.status == 200) {
-            window.alert("Beer Deleted!");
-            this.resetForm();
-          }
-        });
-      },
+    deleteBeer(beer_id) {
+      beerService.deleteBeer(beer_id).then((response) => {
+        if (response.status == 200) {
+          window.alert("Beer Deleted!");
+          this.resetForm();
+        }
+      });
     },
     resetForm() {
       this.newBeer = {};
