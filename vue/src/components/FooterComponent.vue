@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-    <p>Developed by The A Team &copy; 2022</p>
+    <p>Developed by bruGuru TE &copy; 2022</p>
   </div>
 </template>
 
