@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-    <p>Developed by The A Team &copy; 2022</p>
+    <p>Developed by bruGuru TE &copy; 2022</p>
   </div>
 </template>
 
@@ -17,8 +17,8 @@ export default {
   background-color: #919aa1;
   color: #f8f9fa;
   width: 100vw;
-  padding-top: 1%;
-  padding-bottom: 1%;
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
 }
 
 .footer > p {

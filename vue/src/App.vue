@@ -57,7 +57,7 @@ body {
   margin: 2%;
   display: flex;
   justify-content: space-around;
-  overflow: auto;
+  overflow:hidden;
 }
 
 #footer-components {

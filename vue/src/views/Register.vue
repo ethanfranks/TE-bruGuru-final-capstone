@@ -135,7 +135,6 @@ export default {
   font-family: "Nunito Sans", sans-serif;
   display: flex;
   justify-content: space-between;
-  /* flex-grow: 1; */
 }
 
 #register-pic-container {
