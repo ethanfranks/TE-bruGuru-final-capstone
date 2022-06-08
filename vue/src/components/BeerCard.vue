@@ -84,7 +84,7 @@ div > p {
 
 #beer-card-details {
   grid-area: "details";
-    overflow-y: auto;
+  overflow-y: auto;
 
 }
 
