@@ -51,7 +51,7 @@ export default {
   border-radius: 10px;
   width: 97%;
   min-height: 20%;
-  max-height: 45%;
+  max-height: 50%;
   margin: 0;
   display: flex;
   flex-direction: column;
