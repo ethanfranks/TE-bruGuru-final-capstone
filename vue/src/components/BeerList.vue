@@ -1,6 +1,6 @@
 <template>
-  <div v-for: class="beer-list">
-    <beer-card v-for="beer in beers" v-bind:key="beer.beer_id" v-bind:beer="beer"></beer-card>
+  <div>
+      <beer-card class="beer-card" v-for="beer in beers" v-bind:key="beer.beer_id" v-bind:beer="beer"></beer-card>
   </div>
 </template>
 
@@ -27,10 +27,14 @@ export default {
 };
 </script>
 
-<style>
-.beer-list {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
+<style scoped>
+#beer-list {
+  height: 100%;
+  width: 100%;
 }
+
+.beer-card {
+  margin: 0.2%;
+}
+
 </style>

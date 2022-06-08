@@ -62,12 +62,6 @@ export default {
     font-family: "Nunito Sans", sans-serif;
     height: 100%;
     width: 100%;
-    /* display: grid;
-    grid-template-areas: 
-      "img name"
-      "details details";
-    grid-template-columns: 1fr 5fr;
-    grid-template-columns: 0fr 1fr; */
   }
 
   #brewery-grid-container {
@@ -79,21 +73,27 @@ export default {
     height: fit-content;
     text-align: center;
     align-items: center;
+    
   }
 
   #brewery-info > p, a {
     font-size: 0.75rem;
     margin: 0.2rem;
+    margin: 0;
+  }
+
+  #brewery-info > a {
+    text-decoration: none;
   }
 
   #brewery-info > h5 {
-    margin: 0.3rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
     text-decoration: underline;
   }
 
   #brewery-name > h3 {
     grid-area: "name";
-    margin: 0.3rem;
   }
 
   #brewery-logo > img {
