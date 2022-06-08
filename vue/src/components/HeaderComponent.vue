@@ -39,7 +39,6 @@ export default {
   font-family: "Nunito Sans", sans-serif;
   text-align: center;
   background-color: #55595c;
-  color: #f8f9fa;
   width: 100vw;
   background-image: url("../assets/brewery-web-header.jpg");
   background-position: center;
@@ -49,7 +48,9 @@ export default {
 
 #header > h1 {
   margin: 0;
-  padding-top: 1%;
+  padding-top: 2%;
+  font-family: "Montserrat", "Nunito Sans", sans-serif;
+  color: #f8f9fa;
 }
 
 #main-nav {
@@ -86,6 +87,6 @@ export default {
 }
 
 .router:hover {
-  color: #ced4da;
+  color: #41596B;
 }
 </style>

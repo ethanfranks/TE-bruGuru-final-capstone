@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Breweries Near Me</h2>
+    <h3>All Breweries</h3>
   </div>
 </template>
 

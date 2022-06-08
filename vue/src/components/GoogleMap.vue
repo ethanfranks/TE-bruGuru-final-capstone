@@ -156,7 +156,7 @@ export default {
 }
 
 #map-search {
-  padding-bottom: 2%;
+  padding-bottom: 1%;
 }
 
 #map-search-header {

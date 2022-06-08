@@ -24,6 +24,7 @@ export default {
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
 
 html {
   height: 100vh;
@@ -54,7 +55,7 @@ body {
 
 #body-components {
   grid-area: "body-components";
-  margin: 2%;
+  margin: 1%;
   display: flex;
   justify-content: space-around;
   overflow:hidden;
