@@ -51,7 +51,7 @@ export default {
   border-radius: 10px;
   width: 97%;
   min-height: 20%;
-  max-height: 50%;
+  max-height: 45%;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -59,26 +59,42 @@ export default {
 }
 
 .beer-name {
-  grid-area: "name";
   margin: 0;
+}
+
+div > p {
+  display: inline;
 }
 
 #beer-card-grid-container {
   display: grid;
-  grid-template-areas: "img info reviews";
+  grid-template-areas: "img details reviews";
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: 100%;
+  overflow: hidden;
+  margin-bottom: 1%;
 }
 
 .beer-img > img {
   grid-area: "img";
-  max-height: 20%;
-}
+  max-width: 100%;
+  max-height: 100%;
+  margin-left: 3%;
+  }
 
 #beer-card-details {
   grid-area: "details";
+    overflow-y: auto;
+
 }
 
 #beer-card-reviews {
   grid-area: "reviews";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-right: 3%;
 }
 
 #beer-card-details > div > p {
