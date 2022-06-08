@@ -1,16 +1,11 @@
 <template>
   <div id="brewery-component">
-    <div id="brewery-grid-container">
-        <div id="brewery-logo">
-          <img :src="brewery.imageURL" alt="brewery logo">
-        </div>
-
-        <div id="brewery-name">
-          <h3>{{ brewery.name }}</h3>
+    <div id="brewery-flex-container">
+        <h3>{{ brewery.name }}</h3>
+        <div id="brewery-logo-container">
+          <img v-if="onerror" src="https://blog.spoongraphics.co.uk/wp-content/uploads/2017/craft-brewery-logos/24.jpg" alt="brewery logo">
         </div>
     </div>
-
-    <br>
     
     <div id="brewery-info">
       <h5>Find Us Here</h5>
@@ -42,16 +37,17 @@ import breweryService from "@/services/BreweryService";
 export default {
   data() {
     return {
-      brewery: {},
+      breweryRoute: {},
     };
   },
+  props: ['brewery'],
   components: {
     
   },
   created() {
     const thisId = this.$route.params.id;
     return breweryService.getBreweryById(thisId).then((response) => {
-      this.brewery = response.data;
+      this.breweryRoute = response.data;
     });
   },
 };
@@ -64,15 +60,13 @@ export default {
     width: 100%;
   }
 
-  #brewery-grid-container {
-    display: grid;
-    grid-template-areas: 
-      "img name";
-    grid-template-columns: 1fr 5fr;
+  #brewery-flex-container {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    height: fit-content;
-    text-align: center;
+    max-height: 25%;
     align-items: center;
+    justify-content: center;
     
   }
 
@@ -96,9 +90,14 @@ export default {
     grid-area: "name";
   }
 
+  #brewery-logo-container {
+    height: 100%;
+    width: 100%;
+  }
+
   #brewery-logo > img {
-    max-height: 100%;
-    max-width: 100%;
+    max-height: fit-content;
+    max-width: fit-content;
     margin: 0;
     grid-area: "img";
   }

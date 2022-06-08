@@ -5,9 +5,25 @@
     </div>
 
     <div id="brewer-section" v-if="isBrewer() && !isAdmin()">
-      <beer-list></beer-list>
-      <router-link v-bind:to="{name: 'add-beer', params:{id: userBrewery.brewery_id}}">Add Beer</router-link>
-      <brewery-update></brewery-update>
+      
+      <div class="brewery-left-container">
+        <brewery-details v-bind:brewery="userBrewery"></brewery-details>
+      </div>
+
+      <div class="brewery-right-container">
+        <div id="brewer-update-brewery">
+          <brewery-update></brewery-update>
+        </div>
+
+        <div id="brewery-add-beer">
+          <add-beer></add-beer>
+        </div>
+
+        <div id="brewery-delete-beer">
+          <!-- <delete-beer></delete-beer> -->
+        </div>
+      </div>
+      
     </div>
 
     <div id="user-section" v-if="isUser() && !isBrewer() && !isAdmin()">
@@ -19,17 +35,21 @@
 </template>
 
 <script>
-import addBrewery from "../components/AddBrewery.vue";
-import beerList from "../components/BeerList.vue";
+import AddBrewery from "../components/AddBrewery.vue";
 import BreweryUpdate from '../components/BreweryUpdate.vue';
 import BreweryService from '@/services/BreweryService'
+import BreweryDetails from '../components/BreweryDetails.vue'
+import AddBeer from '../components/AddBeer.vue'
+// import DeleteBeer from '../components/DeleteBeer.vue'
 
 export default {
   name: "Account",
   components: {
-    addBrewery,
-    beerList,
+    AddBrewery,
     BreweryUpdate,
+    BreweryDetails,
+    AddBeer,
+    // DeleteBeer
   },
   data() {
     return {
@@ -66,7 +86,7 @@ export default {
     return BreweryService.getBreweryByUsername().then((response) => {
       this.userBrewery = response.data
     })
-  }
+  },
 };
 </script>
 
@@ -82,5 +102,27 @@ export default {
   align-items: center;
   width: 100%;
   height: 100%;
+}
+
+#brewer-section {
+  display: grid;
+  grid-template-areas: "left right";
+  grid-template-columns: 1fr 2fr;
+  width: 100%;
+  height: 100%;
+}
+
+.brewery-left-container {
+  grid-area: left;
+  overflow-y: auto;
+}
+
+.brewery-right-container {
+  grid-area: right;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
 }
 </style>
