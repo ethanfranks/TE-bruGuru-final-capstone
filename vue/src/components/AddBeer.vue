@@ -44,6 +44,7 @@ import beerService from "../services/BeerService";
 
 export default {
   name: "add-beer",
+  props: ['brewery'],
   data() {
     return {
       newBeer: {
@@ -57,6 +58,9 @@ export default {
         beer_available: false
       },
     };
+  },
+  computed: {
+
   },
   methods: {
     addNewBeer() {
