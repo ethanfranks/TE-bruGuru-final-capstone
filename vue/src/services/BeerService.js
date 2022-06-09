@@ -15,5 +15,8 @@ export default {
     },
     updateBeer(beer) {
         return axios.put(`/beer/updateBeer`, beer);
+    },
+    getBeerById(id) {
+        return axios.get(`/beer/beerById/${id}`)
     }
 }

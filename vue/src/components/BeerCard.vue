@@ -38,7 +38,7 @@ export default {
       }
     },
       goToReviews(){
-        this.$router.push({name: 'beer-review-list', params: {id: `${this.beer.id}`}})
+        this.$router.push({name: 'beer-review-list', params: {id: `${this.beer.id}`, beer: this.beer}})
   }
   }
 };

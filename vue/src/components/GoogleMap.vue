@@ -81,9 +81,6 @@ export default {
   },
   mounted() {
     this.geolocate();
-    this.$refs.googleMapRef.$mapPromise.then((map) => {
-      this.map = map;
-    });
   },
   methods: {
     setPlace(place) {
@@ -151,7 +148,7 @@ export default {
 }
 
 #map {
-  width: 80%;
+  width: 100%;
   height: 100%;
 }
 

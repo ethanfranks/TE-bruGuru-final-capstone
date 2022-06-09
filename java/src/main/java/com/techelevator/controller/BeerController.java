@@ -55,5 +55,9 @@ public class BeerController {
         }
         return beerDao.getBeersBySearchParameters(filter);
     }
+    @GetMapping(path = "/beerById/{id}")
+    public Beer getBeerByBeerId(@Valid @PathVariable long id) {
+        return beerDao.getBeerByBeerId(id);
+    }
 
 }
