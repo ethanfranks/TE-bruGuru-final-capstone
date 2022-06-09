@@ -13,12 +13,10 @@
 <script>
 import beerCard from "@/components/BeerCard";
 import beerService from "@/services/BeerService";
+import BreweryService from "@/services/BreweryService";
 
 export default {
   name: "beer-list",
-  props: {
-    id: Number,
-  },
   components: {
     beerCard,
   },
@@ -29,10 +27,21 @@ export default {
     };
   },
   created() {
-    // const thisId = this.id;
-    return beerService.getBeersByBreweryId(2).then((response) => {
-      this.beers = response.data;
-    });
+    let thisId = this.$route.params.id;
+    if (thisId != null) {
+        return beerService.getBeersByBreweryId(thisId).then((response) => {
+        this.beers = response.data;
+      });
+    } else {
+        let brewery = {};
+        BreweryService.getBreweryByUsername().then((response) => {
+        brewery = response.data;
+        thisId = brewery.id;
+        return beerService.getBeersByBreweryId(thisId).then((response) => {
+        this.beers = response.data;
+      });
+      })
+    }
   },
 };
 </script>

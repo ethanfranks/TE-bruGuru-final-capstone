@@ -41,17 +41,32 @@ import breweryService from "@/services/BreweryService";
 export default {
   data() {
     return {
-      breweryRouted: {},
+      brewery: {},
     };
   },
   components: {},
-  props: ['brewery'],
+  // props: ['breweryId'],
   created() {
     const thisId = this.$route.params.id;
-    return breweryService.getBreweryById(thisId).then((response) => {
-      this.breweryRouted = response.data;
-    });
+    console.log("this id before if/else" + thisId)
+    if (thisId != null) {
+      return breweryService.getBreweryById(thisId).then((response) => {
+        this.brewery = response.data;
+      });
+    } else {
+      return breweryService.getBreweryByUsername().then((response) => {
+        this.brewery = response.data;
+      });
+    }
+
   },
+
+  // if (this.brewery == null) {
+  // const thisId = this.$route.params.id;
+  //   return breweryService.getBreweryById(thisId).then((response) => {
+  //   this.brewery = response.data;
+  // });
+  // }
 };
 </script>
 

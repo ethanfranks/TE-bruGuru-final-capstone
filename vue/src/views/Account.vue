@@ -7,7 +7,7 @@
     <div id="brewer-section" v-if="isBrewer() && !isAdmin()">
       
       <div class="brewery-left-container">
-        <brewery-details v-bind:brewery="userBrewery"></brewery-details>
+        <brewery-details></brewery-details>
       </div>
 
       <div class="brewery-right-container">

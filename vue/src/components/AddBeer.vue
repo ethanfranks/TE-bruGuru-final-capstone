@@ -41,13 +41,15 @@
 
 <script>
 import beerService from "../services/BeerService";
+import BreweryService from '../services/BreweryService'
 
 export default {
   name: "add-beer",
+  props: ['brewery'],
   data() {
     return {
       newBeer: {
-        breweryId: this.$route.params.id,
+        breweryId: null,
         beer_name: "",
         beer_description: "",
         beer_abv: null,
@@ -58,6 +60,12 @@ export default {
       },
     };
   },
+    created() {
+      BreweryService.getBreweryByUsername().then((response) => {
+        let brewery = response.data;
+        this.newBeer.breweryId = brewery.id;
+      })
+    },
   methods: {
     addNewBeer() {
       beerService.addNewBeer(this.newBeer).then((response) => {

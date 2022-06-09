@@ -27,6 +27,14 @@ export default {
     BeerList,
     BreweryReviews,
   },
+  // data() {
+  //   return {
+  //     breweryId: null
+  //   }
+  // },
+  // created() {
+  //   this.breweryId 
+  // }
 };
 </script>
 
