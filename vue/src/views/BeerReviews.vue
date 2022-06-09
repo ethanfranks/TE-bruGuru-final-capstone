@@ -114,7 +114,7 @@ export default {
     },
     submitNewReview(review) {
       return reviewService.submitNewBeerReview(review).then((response) => {
-        if (response == "true") {
+        if (response.status == 200) {
           window.alert("Review submitted");
         } else {
           window.alert("Something went wrong");
@@ -210,5 +210,10 @@ export default {
 
 #beer-area > h2 {
   margin: 0;
+}
+
+#select-rating-submit {
+  display: flex;
+  justify-content: space-between;
 }
 </style>
