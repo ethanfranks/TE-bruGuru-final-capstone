@@ -2,7 +2,7 @@
   <div id="brewery-component">
     <div id="brewery-grid-container">
       <div id="brewery-logo">
-        <img :src="brewery.imageURL" alt="brewery logo" />
+        <img :src="brewery.imageURL" alt=""/>
       </div>
 
       <div id="brewery-name">
