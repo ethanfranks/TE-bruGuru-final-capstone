@@ -86,6 +86,17 @@ public class JdbcBeerDao implements BeerDao{
         jdbcTemplate.update(deleteBeerSQL, id);
     }
 
+    @Override
+    public Beer getBeerByBeerId(long id) {
+        Beer beer = new Beer();
+        String sql = "SELECT * FROM beers WHERE beer_id=?";
+        SqlRowSet rs = jdbcTemplate.queryForRowSet(sql,id);
+        if(rs.next()){
+            beer = createBeerFromRow(rs);
+        }
+        return beer;
+    }
+
     public Beer createBeerFromRow(SqlRowSet rs) {
         Beer beer = new Beer();
 

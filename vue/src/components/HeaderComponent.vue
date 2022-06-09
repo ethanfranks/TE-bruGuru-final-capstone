@@ -17,7 +17,7 @@
         id="login-logout"
         v-bind:to="{ name: !isLoggedIn ? 'login' : 'logout' }"
       >
-        {{ !isLoggedIn ? "Login" : "Logout" }}
+        {{ isLoggedIn ? "Logout" : "Login" }}
       </router-link>
     </nav>
   </div>
@@ -28,7 +28,7 @@ export default {
   name: "header-component",
   computed: {
     isLoggedIn() {
-      return this.$store.state.user.authorities;
+      return this.$store.state.user ;
     },
   },
 };
@@ -48,7 +48,7 @@ export default {
 
 #header > h1 {
   margin: 0;
-  padding-top: 0.5%;
+  padding-top: 2%;
   font-family: "Montserrat", "Nunito Sans", sans-serif;
   color: #f8f9fa;
 }

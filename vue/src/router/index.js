@@ -134,6 +134,7 @@ const router = new Router({
       path: '/beer/:id/reviews',
       name: 'beer-review-list',
       component: BeerReviews,
+      props: true,
       meta: {
         requiresAuth: false
       }
