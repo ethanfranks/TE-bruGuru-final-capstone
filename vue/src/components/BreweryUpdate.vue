@@ -5,13 +5,13 @@
     <h3>{{ brewery.phoneNumber }}</h3>
     <h3>{{ brewery.email }}</h3>
     <h3>{{ brewery.aboutUs }}</h3>
-    <h3>Sunday: {{ brewery.sundayHours }}</h3>
-    <h3>Monday: {{ brewery.mondayHours }}</h3>
-    <h3>Tuesday: {{ brewery.tuesdayHours }}</h3>
-    <h3>Wednesday: {{ brewery.wednesdayHours }}</h3>
-    <h3>Thursday: {{ brewery.thursdayHours }}</h3>
-    <h3>Friday: {{ brewery.fridayHours }}</h3>
-    <h3>Saturday: {{ brewery.saturdayHours }}</h3>
+    <h6>Sunday: {{ brewery.sundayHours }}</h6>
+    <h6>Monday: {{ brewery.mondayHours }}</h6>
+    <h6>Tuesday: {{ brewery.tuesdayHours }}</h6>
+    <h6>Wednesday: {{ brewery.wednesdayHours }}</h6>
+    <h6>Thursday: {{ brewery.thursdayHours }}</h6>
+    <h6>Friday: {{ brewery.fridayHours }}</h6>
+    <h6>Saturday: {{ brewery.saturdayHours }}</h6>
     <h3>{{ brewery.igLink }}</h3>
     <h3>{{ brewery.fbLink }}</h3>
     <h2>Our Offerings</h2>
@@ -155,7 +155,6 @@
           <br />
           <br />
           <label for="food"> Food Available: Yes</label>
-          >>>>>>> main
           <input
             id="food"
             type="checkbox"

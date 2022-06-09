@@ -22,6 +22,11 @@
         <div id="brewery-delete-beer">
           <!-- <delete-beer></delete-beer> -->
         </div>
+
+        <div id="brewery-beer-list">
+          <beer-list :id="userBrewery.brewery_id"></beer-list>
+        </div>
+
       </div>
       
     </div>
@@ -40,6 +45,7 @@ import BreweryUpdate from '../components/BreweryUpdate.vue';
 import BreweryService from '@/services/BreweryService'
 import BreweryDetails from '../components/BreweryDetails.vue'
 import AddBeer from '../components/AddBeer.vue'
+import BeerList from "../components/BeerList.vue";
 // import DeleteBeer from '../components/DeleteBeer.vue'
 
 export default {
@@ -49,13 +55,14 @@ export default {
     BreweryUpdate,
     BreweryDetails,
     AddBeer,
+    BeerList,
     // DeleteBeer
   },
   data() {
     return {
       permissions: this.$store.state.user.authorities,
       showUpdate: false,
-      userBrewery : {},
+      userBrewery: {},
     };
   },
   methods: {
@@ -84,8 +91,8 @@ export default {
   },
   created() {
     return BreweryService.getBreweryByUsername().then((response) => {
-      this.userBrewery = response.data
-    })
+      this.userBrewery = response.data;
+    });
   },
 };
 </script>
