@@ -47,24 +47,26 @@ export default {
   components: {},
   // props: ['breweryId'],
   created() {
-    breweryService.getBreweryByUsername().then((response) => {
-      if (response.data != null) {
+    const thisId = this.$route.params.id;
+    console.log("this id before if/else" + thisId)
+    if (thisId != null) {
+      return breweryService.getBreweryById(thisId).then((response) => {
         this.brewery = response.data;
-      } else {
-        const thisId = this.$route.params.id;
-        return breweryService.getBreweryById(thisId).then((response) => {
-          this.brewery = response.data;
-        });
-      }
-    });
+      });
+    } else {
+      return breweryService.getBreweryByUsername().then((response) => {
+        this.brewery = response.data;
+      });
+    }
 
-    // if (this.brewery == null) {
-    // const thisId = this.$route.params.id;
-    //   return breweryService.getBreweryById(thisId).then((response) => {
-    //   this.brewery = response.data;
-    // });
-    // }
   },
+
+  // if (this.brewery == null) {
+  // const thisId = this.$route.params.id;
+  //   return breweryService.getBreweryById(thisId).then((response) => {
+  //   this.brewery = response.data;
+  // });
+  // }
 };
 </script>
 

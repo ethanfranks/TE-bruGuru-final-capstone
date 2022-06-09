@@ -16,7 +16,7 @@
         </div>
 
         <div id="brewery-add-beer">
-          <add-beer v-bind:brewery="userBrewery"></add-beer>
+          <add-beer></add-beer>
         </div>
 
         <!-- <div id="brewery-delete-beer">
