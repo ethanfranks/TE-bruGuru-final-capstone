@@ -7,27 +7,29 @@
 
       <div id="beer-card-details">
         <div class="beer-style">
-          <p class="characteristic-tag">Type:</p>
+          <p class="characteristic-tag"><b>Type:</b></p>
           {{ beer.style }}
         </div>
         <div class="beer-abv">
-          <p class="characteristic-tag">ABV:</p>
+          <p class="characteristic-tag"><b>ABV:</b></p>
           {{ beer.abv }}
         </div>
         <div class="flavor-profile">
-          <p class="characteristic-tag">Flavor Profile:</p>
+          <p class="characteristic-tag"><b>Flavor Profile:</b></p>
           {{ beer.profile }}
         </div>
-        <div class="description-tag">Description</div>
+        <div class="description-tag"><b>Description</b></div>
         <div class="beer-description">{{ beer.description }}</div>
       </div>
 
       <div id="beer-card-reviews">
         <div class="average-rating">
-          Average Rating: {{ beer.averageRating }} / 5
+          <div v-if="beer.averageRating != 'NaN'">
+            Average Rating: {{ beer.averageRating }} / 5
+          </div>
         </div>
         <button @click="goToReviews" class="viewAllReviews">
-          View All Reviews
+          {{ beer.averageRating != 'NaN' ? 'View All Reviews' : 'Be the first to review!'}}
         </button>
       </div>
     </div>
