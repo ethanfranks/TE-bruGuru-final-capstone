@@ -1,16 +1,19 @@
 <template>
   <div id="brewery-component">
     <div id="brewery-grid-container">
-      <div id="brewery-logo">
-        <img :src="brewery.imageURL" alt="brewery logo" />
-      </div>
-
       <div id="brewery-name">
         <h3>{{ brewery.name }}</h3>
       </div>
+<!-- 
+      <div id="brewery-logo">
+        <img
+          @error="imgWorks = false"
+          v-if="imgWorks == true"
+          src="https://images-platform.99static.com//L1FuYJMN22WF_A-KhpWCunb2HHA=/543x73:1248x778/fit-in/590x590/99designs-contests-attachments/88/88532/attachment_88532157"
+          alt="brewery logo"
+        />
+      </div> -->
     </div>
-
-    <br />
 
     <div id="brewery-info">
       <h5>Find Us Here</h5>
@@ -42,13 +45,14 @@ export default {
   data() {
     return {
       brewery: {},
+      imgWorks: true,
     };
   },
   components: {},
   // props: ['breweryId'],
   created() {
     const thisId = this.$route.params.id;
-    console.log("this id before if/else" + thisId)
+    console.log("this id before if/else" + thisId);
     if (thisId != null) {
       return breweryService.getBreweryById(thisId).then((response) => {
         this.brewery = response.data;
@@ -58,15 +62,7 @@ export default {
         this.brewery = response.data;
       });
     }
-
   },
-
-  // if (this.brewery == null) {
-  // const thisId = this.$route.params.id;
-  //   return breweryService.getBreweryById(thisId).then((response) => {
-  //   this.brewery = response.data;
-  // });
-  // }
 };
 </script>
 
@@ -78,11 +74,12 @@ export default {
 }
 
 #brewery-grid-container {
-  display: grid;
-  grid-template-areas: "img name";
-  grid-template-columns: 1fr 5fr;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: fit-content;
+  max-height: 30%;
   text-align: center;
   align-items: center;
 }
@@ -104,15 +101,20 @@ a {
   text-decoration: underline;
 }
 
-#brewery-name > h3 {
-  grid-area: "name";
+#brewery-name {
+  height: 50%;
+}
+
+#brewery-logo {
+  overflow: hidden;
+  position: relative;
 }
 
 #brewery-logo > img {
   max-height: 100%;
   max-width: 100%;
-  margin: 0;
-  grid-area: "img";
+  margin: auto;
+  display: inline-block;
 }
 
 #brewery-details {

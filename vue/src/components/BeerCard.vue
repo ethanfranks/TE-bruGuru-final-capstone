@@ -3,6 +3,7 @@
     <h3 class="beer-name">{{ beer.name }}</h3>
 
     <div id="beer-card-grid-container">
+      
       <div class="beer-img"><img :src="beer.imageURL" /></div>
 
       <div id="beer-card-details">
@@ -90,16 +91,24 @@ div > p {
   margin-bottom: 1%;
 }
 
+.beer-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
 .beer-img > img {
   grid-area: "img";
-  max-width: 100%;
-  max-height: 100%;
-  margin-left: 3%;
+  max-width: 90%;
+  max-height: 90%;
 }
 
 #beer-card-details {
   grid-area: "details";
   overflow-y: auto;
+  max-height: 100%;
 }
 
 #beer-card-reviews {
@@ -108,7 +117,7 @@ div > p {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-right: 3%;
+  margin-right: 5%;
 }
 
 #beer-card-details > div > p {
@@ -127,5 +136,14 @@ div > p {
 .card .characteristic-tag {
   font-weight: bold;
   /* display: inline; */
+}
+
+.description-tag {
+  text-decoration: underline;
+}
+
+.average-rating {
+  text-align: center;
+  padding-bottom: 5%;
 }
 </style>
