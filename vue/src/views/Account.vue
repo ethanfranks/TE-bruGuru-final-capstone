@@ -19,9 +19,9 @@
           <add-beer></add-beer>
         </div>
 
-        <div id="brewery-delete-beer">
-          <!-- <delete-beer></delete-beer> -->
-        </div>
+        <!-- <div id="brewery-delete-beer">
+          <router-link :to="{name: 'beer-update'}">Update Beer</router-link>
+        </div> -->
 
         <div id="brewery-beer-list">
           <beer-list :id="userBrewery.brewery_id"></beer-list>
@@ -46,7 +46,6 @@ import BreweryService from '@/services/BreweryService'
 import BreweryDetails from '../components/BreweryDetails.vue'
 import AddBeer from '../components/AddBeer.vue'
 import BeerList from "../components/BeerList.vue";
-// import DeleteBeer from '../components/DeleteBeer.vue'
 
 export default {
   name: "Account",
@@ -56,7 +55,6 @@ export default {
     BreweryDetails,
     AddBeer,
     BeerList,
-    // DeleteBeer
   },
   data() {
     return {

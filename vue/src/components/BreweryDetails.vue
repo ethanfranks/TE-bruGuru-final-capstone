@@ -41,14 +41,15 @@ import breweryService from "@/services/BreweryService";
 export default {
   data() {
     return {
-      brewery: {},
+      breweryRouted: {},
     };
   },
   components: {},
+  props: ['brewery'],
   created() {
     const thisId = this.$route.params.id;
     return breweryService.getBreweryById(thisId).then((response) => {
-      this.brewery = response.data;
+      this.breweryRouted = response.data;
     });
   },
 };
