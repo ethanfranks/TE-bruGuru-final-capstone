@@ -2,7 +2,7 @@
   <div id="main">
     <img :src="image" alt="brewery" class="brewery-image" />
     
-    <div class="add-brewery-form">
+    <div class="add-brewery-form-container">
       <h2>Add Brewery</h2>
       <form v-on:submit.prevent="addNewBrewery">
         
@@ -12,10 +12,8 @@
             <option v-for="brewer in brewers" v-bind:key="brewer.id" :value="brewer.id">User ID# {{brewer.id}} -- Username: {{brewer.username}}</option>
           </select>
         </div>
-        
-        <br />
-        
-        <div class="form-element">
+              
+        <div class="form-element" id="brewery-name-fe">
           <label for="brewery-name">Brewery Name: </label>
           <input
             id="brewery-name"
@@ -23,7 +21,6 @@
             v-model="newBrewery.brewery_name" required placeholder="Brewery Name"
           />
         </div>
-        <br />
         <div class="actions">
           <button class="bold">Submit</button>
           <button v-on:click.prevent="resetForm" type="cancel" class="bold">
@@ -85,33 +82,43 @@ export default {
   font-weight: bold;
 }
 
-.add-brewery-form {
+.add-brewery-form-container {
   display: inline-block;
-  top: 200px;
   width: 100vw;
   border-top: 15px solid black;
   border-bottom: 15px solid black;
   padding: whitesmoke;
-  margin-top: 10%;
-  padding-top: 2.5%;
-  padding-bottom: 2.5%;
+  margin: 0;
   background: whitesmoke;
   box-shadow: inset 0 0 0 15px whitesmoke;
   opacity: 0.85;
   font-weight: bold;
   text-align: center;
 }
+
+.add-brewery-form-container > form {
+  padding-bottom: 1%;
+}
+
+.add-brewery-form-container > h2 {
+  padding-top: 1%;
+  margin: 0;
+}
+
 .brewery-image {
-  min-height: 100%;
-  min-width: 1024px;
+  height: 100%;
   width: 100%;
-  height: auto;
   position: fixed;
   top: 0;
   left: 0;
   z-index: -2;
 }
-#main {
-  text-align: center;
+
+.actions {
+  padding-top: 1%;
+}
+
+#brewery-name-fe {
+  padding-top: 1%;
 }
 </style>

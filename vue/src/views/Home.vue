@@ -21,7 +21,7 @@ export default {
 };
 </script>
 
-<style>
+<style >
 
 .home {
   font-family: "Nunito Sans", sans-serif;

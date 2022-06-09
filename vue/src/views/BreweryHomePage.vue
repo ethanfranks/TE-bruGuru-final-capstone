@@ -39,6 +39,7 @@ export default {
   grid-template-columns: 1fr 2fr;
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 #brewery-details-container {

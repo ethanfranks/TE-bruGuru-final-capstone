@@ -4,13 +4,14 @@
       <add-brewery></add-brewery>
     </div>
 
-    <div id="brewer-section" v-if="isBrewer()">
+    <div id="brewer-section" v-if="isBrewer() && !isAdmin()">
       <beer-list></beer-list>
       <router-link v-bind:to="{name: 'add-beer', params:{id: userBrewery.brewery_id}}">Add Beer</router-link>
       <brewery-update></brewery-update>
     </div>
 
-    <div id="user-section" v-if="isUser()">
+    <div id="user-section" v-if="isUser() && !isBrewer() && !isAdmin()">
+      This feature is currently in development.
       <!-- add the favorite breweries component and favorite beers component here 
             also, if we want an update account component, etc... -->
     </div>
@@ -55,7 +56,7 @@ export default {
     // make sure ROLE_USER exists
     isUser() {
       for (let i = 0; i < this.permissions.length; i++) {
-        if (this.permissions[i].name == "ROLE_USER") {
+        if (this.permissions[i].name == "ROLE_BEER LOVER") {
           return true;
         }
       }
@@ -70,4 +71,8 @@ export default {
 </script>
 
 <style scoped>
+#admin-section {
+  display: flex;
+  align-items: center;
+}
 </style>
