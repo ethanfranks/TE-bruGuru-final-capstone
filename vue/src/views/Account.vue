@@ -11,11 +11,12 @@
       </div>
 
       <div class="brewery-right-container">
+        
         <div id="brewer-update-brewery">
           <brewery-update></brewery-update>
         </div>
 
-        <div id="brewery-add-beer">
+        <div id="brewer-add-beer">
           <add-beer></add-beer>
         </div>
 
@@ -127,7 +128,18 @@ export default {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  align-items: center;
   height: 100%;
   width: 100%;
+}
+
+#brewer-update-brewery {
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+#brewer-add-beer {
+  padding-top: 1%;
+  padding-bottom: 2%;
 }
 </style>
