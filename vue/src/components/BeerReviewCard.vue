@@ -1,10 +1,9 @@
 <template>
   <div class="beer-review-card">
-    <div>
-      <h5>"{{ review.reviewBody }}"</h5>
-      <h5>Rating: {{ review.beerRating }}/5</h5>
-      <h5>-- {{ review.reviewerUsername }} --</h5>
-      <p>{{ review.averageRating }}</p>
+    <div id="beer-review-container">
+      <p>"{{ review.reviewBody }}"</p>
+      <p>Rating: {{ review.beerRating }}/5</p>
+      <p><b>-- {{ review.reviewerUsername }} --</b></p>
     </div>
   </div>
 </template>
@@ -18,19 +17,26 @@ export default {
 
 <style scoped>
 .beer-review-card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* text-align: center; */
   font-family: "Nunito Sans", sans-serif;
   border: 2px solid black;
   border-radius: 3px;
   margin: 0.5%;
-  max-height: 50%;
+  max-height: 100%;
+  max-width: 100%;
   background-color: whitesmoke;
 }
 
-.beer-review-card > h5 {
-  margin: 0;
+p {
+  margin: 2%;
+  word-break: break-all;
+  white-space: normal;
+}
+
+#beer-review-container {
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 </style>

@@ -60,6 +60,7 @@ export default {
       BreweryService.addBrewery(this.newBrewery).then((response) => {
         if (response.status == 201) {
           this.resetForm();
+          window.alert("Brewery Added!")
         }
       });
     },

@@ -159,15 +159,13 @@ export default {
   justify-content: center;
   align-items: center;
   overflow-y: auto;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 #reviews-area {
-  display: grid;
-  grid-template-areas: 
-  "add-review"
-  "reviews";
-  grid-template-rows: 1fr 1fr;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 #beer-review {
@@ -190,10 +188,14 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 #reviews-list-container {
   grid-area: "reviews";
+  max-width: 100%;
+  height: 100%;
 }
 
 .characteristic-tag {
