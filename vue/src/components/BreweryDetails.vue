@@ -1,22 +1,20 @@
 <template>
   <div id="brewery-component">
-    <div id="brewery-grid-container">
       <div id="brewery-name">
         <h2>{{ brewery.name }}</h2>
       </div>
 
-      <!-- <div id="brewery-logo">
+      <div id="brewery-logo">
         <img
           @error="imgWorks = false"
           v-if="imgWorks == true"
-          :src="brewery.imageURL"
+          src="https://images-platform.99static.com//L1FuYJMN22WF_A-KhpWCunb2HHA=/543x73:1248x778/fit-in/590x590/99designs-contests-attachments/88/88532/attachment_88532157"
           alt="brewery logo"
         />
-      </div> -->
-    </div>
+      </div>
 
     <div id="brewery-info">
-      <h5>Find Us Here</h5>
+      <h4>Find Us Here</h4>
       <p>{{ brewery.address }}</p>
       <p>{{ brewery.phoneNumber }}</p>
       <p>{{ brewery.email }}</p>
@@ -24,9 +22,9 @@
       <br />
       <a :href="brewery.fbLink">Facebook</a>
       <br />
-      <h5>About Us</h5>
+      <h4>About Us</h4>
       <p>{{ brewery.aboutUs }}</p>
-      <h5>Hours of Operation</h5>
+      <h4>Hours of Operation</h4>
       <p>Monday: {{ brewery.mondayHours }}</p>
       <p>Tuesday: {{ brewery.tuesdayHours }}</p>
       <p>Wednesday: {{ brewery.wednesdayHours }}</p>
@@ -86,7 +84,7 @@ export default {
 
 #brewery-info > p,
 a {
-  font-size: 0.75rem;
+  font-size: 1rem;
   margin: 0.2rem;
   margin: 0;
 }
@@ -95,19 +93,24 @@ a {
   text-decoration: none;
 }
 
-#brewery-info > h5 {
+#brewery-info > h4 {
   margin-top: 0.3rem;
   margin-bottom: 0.3rem;
   text-decoration: underline;
 }
 
 #brewery-name {
-  height: 50%;
+  height: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #brewery-logo {
-  overflow: hidden;
-  position: relative;
+  height: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #brewery-logo > img {

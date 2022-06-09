@@ -26,7 +26,7 @@
       <div id="beer-card-reviews">
         <div class="average-rating">
           <div v-if="beer.averageRating != 'NaN'">
-            Average Rating: {{ beer.averageRating }} / 5
+            Average Rating: {{ Math.round(beer.averageRating * 10)/10 }} / 5
           </div>
         </div>
         <button @click="goToReviews" class="viewAllReviews">

@@ -59,7 +59,7 @@
 
 <script>
 import authService from "../services/AuthService";
-import image from "../assets/secondBeerFlight.png";
+import image from "../assets/bruGuru.svg";
 
 export default {
   name: "login",
@@ -111,14 +111,14 @@ export default {
 
 #login-img-container {
   display: flex;
-  align-items: center;
+  align-items: flex;
   justify-content: center;
   width: 100%;
   height: 100%;
 }
 
 #login-pic {
-  width: 50vw;
+  width: 30vw;
 }
 
 #login-form-container {

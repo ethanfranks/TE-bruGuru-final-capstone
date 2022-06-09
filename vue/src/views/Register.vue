@@ -134,7 +134,9 @@ export default {
 #register-container {
   font-family: "Nunito Sans", sans-serif;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
 }
 
 #register-pic-container {
@@ -150,12 +152,19 @@ export default {
   justify-content: center;
   align-items: center;
   width: 50%;
-  height: 100%;
-  overflow-y: auto;
+  height: 50%;
 }
 
 .form-register {
   height: 100%;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+}
+
+.form-register > h2 {
+  margin: 0;
 }
 
 #register-pic {
@@ -185,14 +194,14 @@ export default {
   }
 
   #registration-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
-}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+  }
 
-/* @media screen and (max-height: ) */
+  /* @media screen and (max-height: ) */
 }
 </style>
