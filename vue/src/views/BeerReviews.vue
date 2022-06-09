@@ -19,18 +19,7 @@
           <div class="description-tag">Description</div>
           <div class="beer-description">{{ beer.description }}</div>
         </div>
-      </div>
-      <beer-review-card
-        id="beer-review"
-        class="beer-review-card"
-        v-for="review in beer.reviews"
-        v-bind:key="review.id"
-        v-bind:review="review"
-      ></beer-review-card>
-      <div>
-        <button @click="toggleReviewForm">Submit a review</button>
-      </div>
-      <div>
+              <div>
         <form action.prevent v-show="showReviewForm">
           <textarea
             name="review"
@@ -54,6 +43,19 @@
           </select>
           <button @click="submitNewReview(newReview)">Submit</button>
         </form>
+      </div>
+      </div>
+      <div id="beer-review-container">
+      <beer-review-card
+        id="beer-review"
+        class="beer-review-card"
+        v-for="review in beer.reviews"
+        v-bind:key="review.id"
+        v-bind:review="review"
+      ></beer-review-card>
+      </div>
+      <div>
+        <button @click="toggleReviewForm">Submit a review</button>
       </div>
     </div>
   </div>
@@ -124,7 +126,6 @@ export default {
 #beer-reviews-page {
   display: grid;
   grid-template-areas:
-    "beer reviews"
     "beer reviews";
   grid-template-columns: 1fr 2fr;
   height: 100%;
@@ -134,18 +135,20 @@ export default {
 #beer-area {
 align-content: center;
   grid-area: "beer";
-}
-#beer-area > p {
-    text-transform: bold;
+  overflow-y: auto;
 }
 
-#beer-review {
-    display: flex;
-    flex-direction: column;
-  grid-area: "reviews";
+.beer-review-card {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow-y: auto;
+ 
+}
+
+#beer-review-container {
+   grid-area: "reviews";
+   overflow-y: auto;
 }
 
 </style>
