@@ -4,10 +4,9 @@
         <h2>{{ brewery.name }}</h2>
       </div>
 
-      <div id="brewery-logo">
+      <div id="brewery-logo" v-if="imgWorks == true">
         <img
           @error="imgWorks = false"
-          v-if="imgWorks == true"
           :src="brewery.imageURL"
         />
       </div>
@@ -46,7 +45,6 @@ export default {
     };
   },
   components: {},
-  // props: ['breweryId'],
   created() {
     const thisId = this.$route.params.id;
     console.log("this id before if/else" + thisId);
