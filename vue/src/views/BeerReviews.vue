@@ -21,6 +21,7 @@
           <div class="beer-description">{{ beer.description }}</div>
         </div>
         <br />
+        <router-link v-bind:to="{ name: 'brewery-details', params: {id: beer.breweryId}}">Brewery Page</router-link>
       </div>
 
       <div id="reviews-area">
