@@ -5,12 +5,7 @@
       <GmapAutocomplete @place_changed="setPlace" />
       <button @click="centerMap">Go!</button>
     </div>
-    <GmapMap
-      @tilesloaded="filterMarkers"
-      :center="center"
-      :zoom="12"
-      id="map"
-    >
+    <GmapMap @tilesloaded="filterMarkers" :center="center" :zoom="12" id="map">
       <GmapInfoWindow
         @
         :options="infoWindowOptions"
@@ -99,8 +94,10 @@ export default {
       }
     },
     filterMarkers() {
-      this.currentMarkers = this.markers.filter(marker =>
-        marker.getVisible() && this.map.getBounds().contains(marker.getPosition())
+      this.currentMarkers = this.markers.filter(
+        (marker) =>
+          marker.getVisible() &&
+          this.map.getBounds().contains(marker.getPosition())
       );
     },
     toggleInfoWindow: function (marker, idx) {
@@ -148,7 +145,7 @@ export default {
 }
 
 #map {
-  width: 100%;
+  width: 80%;
   height: 100%;
 }
 
@@ -159,5 +156,4 @@ export default {
 #map-search-header {
   margin: 0;
 }
-
 </style>

@@ -18,9 +18,7 @@ public interface BeerDao {
 
     List<Beer> getBeersBySearchParameters(String filter);
 
-<<<<<<< HEAD
     Beer getBeerByBeerId(long id);
-=======
+
     void deleteBeer(long id);
->>>>>>> 10cb37e35318adc1a3cc9c136b18a6072a65be61
 }
