@@ -1,6 +1,8 @@
 <template>
-  <div class="beer-list">
+  <div>
+    <!-- <h3>Our Selection</h3> -->
     <beer-card
+      class="beer-card"
       v-for="beer in beers"
       v-bind:key="beer.beer_id"
       v-bind:beer="beer"
@@ -35,10 +37,14 @@ export default {
 };
 </script>
 
-<style>
-.beer-list {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
+<style scoped>
+#beer-list {
+  font-family: "Nunito Sans", sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+.beer-card {
+  margin: 0.2%;
 }
 </style>

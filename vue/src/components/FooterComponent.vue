@@ -27,13 +27,13 @@ export default {
 
 .footer > p {
   margin: 0;
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   display: inline-block;
 }
 
 #bruGuru-logo {
-  height: 4%;
-  width: 4%;
+  height: 2%;
+  width: 2%;
   display: inline-block;
   padding-right: 1%;
 }
