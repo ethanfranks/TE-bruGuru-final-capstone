@@ -97,25 +97,23 @@ a {
 
 #brewery-name {
   height: 15%;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
 }
 
 #brewery-name > h2 {
   height: 100%;
   width: 100%;
   margin: 0;
+  padding-bottom: 2%;
   text-align: center;
 }
 
 #brewery-logo {
-  height: 15%;
+  height: 20vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 5%;
-}
+  padding-bottom: 2%;
+  }
 
 #brewery-logo > img {
   max-height: 100%;
