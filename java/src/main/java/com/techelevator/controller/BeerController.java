@@ -55,9 +55,16 @@ public class BeerController {
         }
         return beerDao.getBeersBySearchParameters(filter);
     }
+<<<<<<< HEAD
     @GetMapping(path = "/beerById/{id}")
     public Beer getBeerByBeerId(@Valid @PathVariable long id) {
         return beerDao.getBeerByBeerId(id);
+=======
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path = "/updateBeer/delete-beer/{id}", method = RequestMethod.DELETE)
+    public void deleteBeer(@PathVariable Long id){
+        beerDao.deleteBeer(id);
+>>>>>>> 10cb37e35318adc1a3cc9c136b18a6072a65be61
     }
 
 }
