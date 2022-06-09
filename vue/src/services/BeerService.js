@@ -17,6 +17,6 @@ export default {
         return axios.put(`/beer/updateBeer`, beer);
     },
     deleteBeer(beer_id) {
-        return axios.delete(`/beer/update-beer/`, beer_id);
+        return axios.delete(`/beer/delete-beer/${beer_id}`);
     }
 }

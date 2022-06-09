@@ -56,8 +56,8 @@ public class BeerController {
         return beerDao.getBeersBySearchParameters(filter);
     }
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @RequestMapping(path = "/updateBeer/delete-beer/{id}", method = RequestMethod.DELETE)
-    public void deleteBeer(@PathVariable Long id){
+    @RequestMapping(path = "/delete-beer/{id}", method = RequestMethod.DELETE)
+    public void deleteBeer(@PathVariable @Valid Long id){
         beerDao.deleteBeer(id);
     }
 

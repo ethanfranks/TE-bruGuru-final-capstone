@@ -1,5 +1,5 @@
 <template>
-  <div v-for: class="beer-list">
+  <div class="beer-list">
     <beer-card
       v-for="beer in beers"
       v-bind:key="beer.beer_id"
@@ -14,6 +14,9 @@ import beerService from "@/services/BeerService";
 
 export default {
   name: "beer-list",
+  props: {
+    id: Number,
+  },
   components: {
     beerCard,
   },
@@ -24,8 +27,8 @@ export default {
     };
   },
   created() {
-    const thisId = this.$route.params.id;
-    return beerService.getBeersByBreweryId(thisId).then((response) => {
+    // const thisId = this.id;
+    return beerService.getBeersByBreweryId(2).then((response) => {
       this.beers = response.data;
     });
   },

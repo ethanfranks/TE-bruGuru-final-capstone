@@ -15,7 +15,7 @@ import BreweryUpdate from '@/views/BreweryUpdate'
 import BeerList from '@/components/BeerList'
 import AddBeer from '@/views/AddBeer'
 import BeerReviews from '@/views/BeerReviews'
-import UpdateBeer from '@/components/UpdateBeer'
+import BeerUpdateView from '@/views/BeerUpdateView'
 
 Vue.use(Router)
 
@@ -148,12 +148,13 @@ const router = new Router({
     },
     {
       path: '/update-beer',
-      name: 'update-beer',
-      component: UpdateBeer,
+      name: 'beer-update',
+      component: BeerUpdateView,
       meta: {
         requiresAuth: true
       }
-    }
+    },
+
   ]
 })
 

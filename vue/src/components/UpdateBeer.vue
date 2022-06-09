@@ -10,7 +10,7 @@
             v-bind:key="beer.beer_id"
             :value="beer.beer_id"
           >
-            Beer ID# {{ beer.beer_id }} -- Name: {{ beer_name }}
+            Beer ID# {{ beer.id }} -- Name: {{ beer.name }}
           </option>
         </select>
       </div>
@@ -21,7 +21,7 @@
           id="beer-name"
           type="text"
           placeholder="Name"
-          v-model="beerToUpdate.beer_name"
+          v-model="beerToUpdate.name"
           required
         />
       </div>
@@ -91,23 +91,28 @@
         <button v-on:click.prevent="resetForm" type="cancel">Cancel</button>
       </div>
     </form>
-
-    <h2>Delete Beer</h2>
-    <form class="delete-beer-form" v-on:submit.prevent="deleteBeer">
-      <label for="delete-beer-options">
-        Select the name of the beer you wish to delete:
-      </label>
-      <select name="delete-beer-options" v-model="beers.beer_id">
-        <option v-for="beer in beers" v-bind:key="beer.beer_id">
-          Beer ID# {{ beer.beer_id }} -- Beer Name: {{ beer.beer_name }}
-        </option>
-      </select>
-      <br />
-      <br />
-      <button class="btnDeleteBeer" v-on:click="deleteBeer(beers.beer_id)">
-        Delete Beer
-      </button>
-    </form>
+    <div>
+      <h2>Delete Beer</h2>
+      <form class="delete-beer-form" v-on:submit.prevent="deleteBeer">
+        <label for="delete-beer-options">
+          Select the name of the beer you wish to delete:
+        </label>
+        <select name="delete-beer-options" v-model="deletedBeerId">
+          <option
+            v-for="beer in beers"
+            v-bind:key="beer.beer_id"
+            :value="beer.id"
+          >
+            Beer ID# {{ beer.id }} -- Beer Name: {{ beer.name }}
+          </option>
+        </select>
+        <br />
+        <br />
+        <button class="delete-beer-button" v-on:click="deleteBeer()">
+          Delete Beer
+        </button>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -117,11 +122,13 @@ import BreweryService from "@/services/BreweryService";
 
 export default {
   name: "update-beer",
+  props: ["brewery_id"],
   data() {
     return {
+      deletedBeerId: "",
       beers: [],
       beerToUpdate: {
-        beer_name: "",
+        name: "",
         beer_description: "",
         beer_abv: null,
         beer_style: "",
@@ -134,9 +141,11 @@ export default {
     };
   },
   created() {
-    const thisId = BreweryService.getBreweryIdByCurrentUser();
-    return beerService.getBeersByBreweryId(thisId).then((response) => {
-      this.beers = response.data;
+    BreweryService.getBreweryByUsername().then((response) => {
+      const brewery_id = response.data.id;
+      beerService.getBeersByBreweryId(brewery_id).then((response) => {
+        this.beers = response.data;
+      });
     });
   },
   methods: {
@@ -147,13 +156,33 @@ export default {
         }
       });
     },
-    deleteBeer(beer_id) {
-      beerService.deleteBeer(beer_id).then((response) => {
-        if (response.status == 200) {
-          window.alert("Beer Deleted!");
-          this.resetForm();
-        }
-      });
+    deleteBeer() {
+      if (
+        confirm(
+          "Are you sure you want to delete this beer? This action cannot be undone."
+        )
+      )
+        beerService
+          .deleteBeer(this.deletedBeerId)
+          .then((response) => {
+            if (response.status == 200) {
+              window.alert("Beer Deleted!");
+            }
+          })
+          .catch((error) => {
+            if (error.response) {
+              this.errorMsg =
+                "Error deleting beer. Response received was '" +
+                error.response.statusText +
+                "'.";
+            } else if (error.request) {
+              this.errorMsg =
+                "Error deleting beer. Server could not be reached.";
+            } else {
+              this.errorMsg =
+                "Error deleting beer. Request could not be created.";
+            }
+          });
     },
     resetForm() {
       this.newBeer = {};

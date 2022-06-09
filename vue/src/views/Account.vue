@@ -5,9 +5,20 @@
     </div>
 
     <div id="brewer-section" v-if="isBrewer()">
-      <beer-list></beer-list>
-      <router-link v-bind:to="{name: 'add-beer', params:{id: userBrewery.brewery_id}}">Add Beer</router-link>
-      <brewery-update></brewery-update>
+      <beer-list :id="userBrewery.brewery_id"></beer-list>
+      <router-link
+        v-bind:to="{ name: 'add-beer', params: { id: userBrewery.brewery_id } }"
+        >Add Beer</router-link
+      >
+      <!-- <brewery-update></brewery-update> -->
+
+      <router-link
+        v-bind:to="{
+          name: 'beer-update',
+          params: { id: userBrewery.brewery_id },
+        }"
+        >Update a beer</router-link
+      >
     </div>
 
     <div id="user-section" v-if="isUser()">
@@ -20,21 +31,21 @@
 <script>
 import addBrewery from "../components/AddBrewery.vue";
 import beerList from "../components/BeerList.vue";
-import BreweryUpdate from '../components/BreweryUpdate.vue';
-import BreweryService from '@/services/BreweryService'
+// import BreweryUpdate from "../components/BreweryUpdate.vue";
+import BreweryService from "@/services/BreweryService";
 
 export default {
   name: "Account",
   components: {
     addBrewery,
     beerList,
-    BreweryUpdate,
+    // BreweryUpdate,
   },
   data() {
     return {
       permissions: this.$store.state.user.authorities,
       showUpdate: false,
-      userBrewery : {},
+      userBrewery: {},
     };
   },
   methods: {
@@ -63,9 +74,9 @@ export default {
   },
   created() {
     return BreweryService.getBreweryByUsername().then((response) => {
-      this.userBrewery = response.data
-    })
-  }
+      this.userBrewery = response.data;
+    });
+  },
 };
 </script>
 
