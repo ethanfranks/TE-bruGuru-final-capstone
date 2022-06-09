@@ -1,28 +1,9 @@
 <template>
   <div>
-    <h2>{{ brewery.name }}</h2>
-    <h3>{{ brewery.address }}</h3>
-    <h3>{{ brewery.phoneNumber }}</h3>
-    <h3>{{ brewery.email }}</h3>
-    <h3>{{ brewery.aboutUs }}</h3>
-    <h6>Sunday: {{ brewery.sundayHours }}</h6>
-    <h6>Monday: {{ brewery.mondayHours }}</h6>
-    <h6>Tuesday: {{ brewery.tuesdayHours }}</h6>
-    <h6>Wednesday: {{ brewery.wednesdayHours }}</h6>
-    <h6>Thursday: {{ brewery.thursdayHours }}</h6>
-    <h6>Friday: {{ brewery.fridayHours }}</h6>
-    <h6>Saturday: {{ brewery.saturdayHours }}</h6>
-    <h3>{{ brewery.igLink }}</h3>
-    <h3>{{ brewery.fbLink }}</h3>
-    <h2>Our Offerings</h2>
-    <h3 v-for="beer in brewery.offerings" v-bind:key="beer.id">
-      {{ beer.name }}
-    </h3>
-    <h2>Reviews:</h2>
-    <h3 v-for="review in brewery.reviews" v-bind:key="review.id">
-      "{{ review.review }}"-{{ review.reviewerUsername }}
-    </h3>
-    <button @click="toggleUpdateForm()">Update your info</button>
+    <button @click="toggleUpdateForm()">Update Brewery Info</button>
+    
+    <h2 v-show="showUpdateForm">Update Brewery</h2>
+
     <form
       v-on:submit.prevent="submitForm"
       class="breweryForm"

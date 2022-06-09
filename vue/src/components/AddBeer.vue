@@ -1,8 +1,10 @@
 <template>
   <div class="add-beer-component">
-    <h2>Add Beer</h2>
+    <button @click="toggleUpdateForm()">Add a Beer</button>
 
-    <form v-on:submit.prevent="addNewBeer">
+    <h2 v-show="showUpdateForm">Add Beer</h2>
+
+    <form v-on:submit.prevent="addNewBeer" v-show="showUpdateForm">
       <div class="form-element">
         <label for="beer-name">Beer Name: </label>
         <input id="beer-name" type="text" placeholder="Name" v-model="newBeer.beer_name" required />
@@ -58,6 +60,7 @@ export default {
         flavor_profile: "",
         beer_available: false
       },
+      showUpdateForm: false,
     };
   },
     created() {
@@ -77,6 +80,9 @@ export default {
     },
     resetForm() {
       this.newBeer = {};
+    },
+    toggleUpdateForm() {
+      this.showUpdateForm = !this.showUpdateForm;
     },
   },
 };
