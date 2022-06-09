@@ -4,12 +4,12 @@
       <div id="brewery-name">
         <h3>{{ brewery.name }}</h3>
       </div>
-<!-- 
-      <div id="brewery-logo">
+
+      <!-- <div id="brewery-logo">
         <img
           @error="imgWorks = false"
           v-if="imgWorks == true"
-          src="https://images-platform.99static.com//L1FuYJMN22WF_A-KhpWCunb2HHA=/543x73:1248x778/fit-in/590x590/99designs-contests-attachments/88/88532/attachment_88532157"
+          :src="brewery.imageURL"
           alt="brewery logo"
         />
       </div> -->
