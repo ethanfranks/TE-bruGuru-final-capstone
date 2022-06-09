@@ -1,7 +1,12 @@
 <template>
   <div>
     <!-- <h3>Our Selection</h3> -->
-      <beer-card class="beer-card" v-for="beer in beers" v-bind:key="beer.beer_id" v-bind:beer="beer"></beer-card>
+    <beer-card
+      class="beer-card"
+      v-for="beer in beers"
+      v-bind:key="beer.beer_id"
+      v-bind:beer="beer"
+    ></beer-card>
   </div>
 </template>
 
@@ -14,6 +19,7 @@ export default {
   components: {
     beerCard,
   },
+
   data() {
     return {
       beers: [],
@@ -38,5 +44,4 @@ export default {
 .beer-card {
   margin: 0.2%;
 }
-
 </style>
