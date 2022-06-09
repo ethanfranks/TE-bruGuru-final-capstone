@@ -5,7 +5,9 @@
     </div>
 
     <div id="registration-form">
-      <form class="form-register" @submit.prevent="register">
+
+      <div id="form-flex">
+<form class="form-register" @submit.prevent="register">
         <h2 class="h3 mb-3 font-weight-normal">Create Account</h2>
         <div class="alert alert-danger" role="alert" v-if="registrationErrors">
           {{ registrationErrorMsg }}
@@ -55,7 +57,6 @@
             v-on:change="addBrewerRole($event)"
           />
         </div>
-        <!-- <br /> -->
         <br />
         <button class="btn btn-lg btn-primary btn-block" type="submit">
           Create Account
@@ -66,6 +67,9 @@
           >Already have an account?</router-link
         >
       </form>
+      </div>
+
+      
     </div>
   </div>
 </template>
@@ -152,7 +156,7 @@ export default {
   justify-content: center;
   align-items: center;
   width: 50%;
-  height: 50%;
+  height: 100%;
 }
 
 .form-register {

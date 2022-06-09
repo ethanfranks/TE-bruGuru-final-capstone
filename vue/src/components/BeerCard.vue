@@ -119,6 +119,7 @@ div > p {
   align-items: center;
   flex-direction: column;
   margin-right: 5%;
+  margin-left: 5%;
 }
 
 #beer-card-details > div > p {
