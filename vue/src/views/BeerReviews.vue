@@ -154,10 +154,6 @@ export default {
 #beer-area {
   align-content: center;
   grid-area: "beer";
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   overflow-y: auto;
   max-width: 100%;
   max-height: 100%;
@@ -190,6 +186,7 @@ export default {
   justify-content: center;
   max-width: 100%;
   max-height: 100%;
+  overflow-y: auto;
 }
 
 #reviews-list-container {
@@ -209,13 +206,17 @@ export default {
 }
 
 #beer-area > img {
-  max-height: 20%;
+  max-height: 25%;
   width: fit-content;
   justify-content: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #beer-area > h2 {
   margin: 0;
+  text-align: center;
 }
 
 #select-rating-submit {
