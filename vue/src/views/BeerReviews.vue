@@ -3,6 +3,7 @@
     <div id="beer-reviews-page">
       <div id="beer-area">
         <h2>{{ beer.name }}</h2>
+        <img :src="beer.imageURL" alt="" />
         <div id="beer-card-details">
           <div class="beer-style">
             <p class="characteristic-tag">Type:</p>
@@ -19,43 +20,59 @@
           <div class="description-tag">Description</div>
           <div class="beer-description">{{ beer.description }}</div>
         </div>
+        <br />
+        <router-link v-bind:to="{ name: 'brewery-details', params: {id: beer.breweryId}}">Brewery Page</router-link>
+      </div>
+
+      <div id="reviews-area">
+        <div id="add-review-container">
+          <div>
+            <button @click="toggleReviewForm">Submit a review</button>
+          </div>
+          <br />
+          <form action.prevent v-show="showReviewForm">
+            <textarea
+              name="review"
+              id="review-text"
+              cols="30"
+              rows="10"
+              v-model="newReview.reviewBody"
+            ></textarea
+            ><br />
+            <div id="select-rating-submit">
               <div>
-        <form action.prevent v-show="showReviewForm">
-          <textarea
-            name="review"
-            id="review-text"
-            cols="30"
-            rows="10"
-            v-model="newReview.reviewBody"
-          ></textarea
-          ><br />
-          <label for="rating">Select rating</label>
-          <select
-            name="rating"
-            id="rating-select"
-            v-model="newReview.beerRating"
-          >
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-          <button @click="submitNewReview(newReview)">Submit</button>
-        </form>
-      </div>
-      </div>
-      <div id="beer-review-container">
-      <beer-review-card
-        id="beer-review"
-        class="beer-review-card"
-        v-for="review in beer.reviews"
-        v-bind:key="review.id"
-        v-bind:review="review"
-      ></beer-review-card>
-      </div>
-      <div>
-        <button @click="toggleReviewForm">Submit a review</button>
+                <label for="rating">Select rating: </label>
+                <select
+                  name="rating"
+                  id="rating-select"
+                  v-model="newReview.beerRating"
+                >
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <button
+                id="review-submit-button"
+                @click="submitNewReview(newReview)"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div id="reviews-list-container">
+          <beer-review-card
+            id="beer-review"
+            class="beer-review-card"
+            v-for="review in beer.reviews"
+            v-bind:key="review.id"
+            v-bind:review="review"
+          ></beer-review-card>
+        </div>
       </div>
     </div>
   </div>
@@ -97,7 +114,7 @@ export default {
     },
     submitNewReview(review) {
       return reviewService.submitNewBeerReview(review).then((response) => {
-        if (response == "true") {
+        if (response.status == 200) {
           window.alert("Review submitted");
         } else {
           window.alert("Something went wrong");
@@ -124,6 +141,7 @@ export default {
 
 <style scoped>
 #beer-reviews-page {
+  font-family: "Nunito Sans", sans-serif;
   display: grid;
   grid-template-areas:
     "beer reviews";
@@ -132,15 +150,30 @@ export default {
   width: 100%;
   overflow: hidden;
 }
+
 #beer-area {
-align-content: center;
+  align-content: center;
   grid-area: "beer";
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   overflow-y: auto;
 }
 
-.beer-review-card {
+#reviews-area {
+  display: grid;
+  grid-template-areas: 
+  "add-review"
+  "reviews";
+  grid-template-rows: 1fr 1fr;
+  overflow-y: auto;
+}
+
+#beer-review {
   display: flex;
   flex-direction: column;
+  grid-area: "reviews";
   justify-content: center;
   align-items: center;
  
@@ -151,4 +184,40 @@ align-content: center;
    overflow-y: auto;
 }
 
+#add-review-container {
+  grid-area: "add-review";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#reviews-list-container {
+  grid-area: "reviews";
+}
+
+.characteristic-tag {
+  font-weight: bold;
+  display: inline;
+}
+
+.description-tag {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#beer-area > img {
+  max-height: 20%;
+  width: fit-content;
+  justify-content: center;
+}
+
+#beer-area > h2 {
+  margin: 0;
+}
+
+#select-rating-submit {
+  display: flex;
+  justify-content: space-between;
+}
 </style>

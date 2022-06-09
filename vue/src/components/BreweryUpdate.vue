@@ -1,28 +1,9 @@
 <template>
   <div>
-    <h2>{{ brewery.name }}</h2>
-    <h3>{{ brewery.address }}</h3>
-    <h3>{{ brewery.phoneNumber }}</h3>
-    <h3>{{ brewery.email }}</h3>
-    <h3>{{ brewery.aboutUs }}</h3>
-    <h6>Sunday: {{ brewery.sundayHours }}</h6>
-    <h6>Monday: {{ brewery.mondayHours }}</h6>
-    <h6>Tuesday: {{ brewery.tuesdayHours }}</h6>
-    <h6>Wednesday: {{ brewery.wednesdayHours }}</h6>
-    <h6>Thursday: {{ brewery.thursdayHours }}</h6>
-    <h6>Friday: {{ brewery.fridayHours }}</h6>
-    <h6>Saturday: {{ brewery.saturdayHours }}</h6>
-    <h3>{{ brewery.igLink }}</h3>
-    <h3>{{ brewery.fbLink }}</h3>
-    <h2>Our Offerings</h2>
-    <h3 v-for="beer in brewery.offerings" v-bind:key="beer.id">
-      {{ beer.name }}
-    </h3>
-    <h2>Reviews:</h2>
-    <h3 v-for="review in brewery.reviews" v-bind:key="review.id">
-      "{{ review.review }}"-{{ review.reviewerUsername }}
-    </h3>
-    <button @click="toggleUpdateForm()">Update your info</button>
+    <button @click="toggleUpdateForm()">Update Brewery Info</button>
+
+    <h2 v-show="showUpdateForm">Update Brewery</h2>
+
     <form
       v-on:submit.prevent="submitForm"
       class="breweryForm"
@@ -30,7 +11,7 @@
     >
       <div class="status-message error" v-show="errorMsg !== ''"></div>
       <div class="form-group">
-        <label for="Name">Name:</label>
+        <label for="Name">Name: </label>
         <input
           id="name"
           type="text"
@@ -38,7 +19,7 @@
           v-model="brewery.brewery_name"
           autocomplete="off"
         /><br />
-        <label for="number">Phone Number:</label>
+        <label for="number">Phone Number: </label>
         <input
           id="number"
           type="tel"
@@ -46,7 +27,7 @@
           v-model="brewery.phone"
           autocomplete="off"
         /><br />
-        <label for="email">Email:</label>
+        <label for="email">Email: </label>
         <input
           id="email"
           type="email"
@@ -54,7 +35,7 @@
           v-model="brewery.email"
           autocomplete="off"
         /><br />
-        <label for="url">IG Link:</label>
+        <label for="url">IG Link: </label>
         <input
           id="ig_url"
           type="url"
@@ -62,28 +43,33 @@
           v-model="brewery.ig_link"
           autocomplete="off"
         /><br />
-        <label for="url">FB Link:</label>
+        <label for="url">FB Link: </label>
         <input
           id="fb_url"
           type="url"
           class="form-control"
           v-model="brewery.fb_link"
           autocomplete="off"
-        /><br />
+        />
+        <br />
+        <label for="Address">Address: </label>
+        <textarea
+          id="address"
+          class="form-control"
+          v-model="brewery.street_address"
+        ></textarea>
+        <br />
+        <label for="food"> Food Available? </label>
+        <input
+          id="food"
+          type="checkbox"
+          class="form-control"
+          v-model="brewery.food_available"
+        />
+        <br>
         <div class="form-group">
-          <label for="sundayHours"
-            >Enter Sunday hours of operation or enter "CLOSED":
-          </label>
-          <input
-            type="text"
-            id="hours"
-            class="form-control"
-            v-model="brewery.sunday_hours"
-          />
-          <br />
-          <label for="mondayHours">
-            Enter Monday hours of operation or enter "CLOSED":
-          </label>
+          <p id="hours-of-operation-title">Hours of Operation</p>
+          <label for="mondayHours"> Monday: </label>
           <input
             type="text"
             id="hours"
@@ -91,9 +77,7 @@
             v-model="brewery.monday_hours"
           />
           <br />
-          <label for="tuesdayHours"
-            >Enter Tuesday hours of operation or enter "CLOSED":
-          </label>
+          <label for="tuesdayHours">Tuesday: </label>
 
           <input
             type="text"
@@ -102,9 +86,7 @@
             v-model="brewery.tuesday_hours"
           />
           <br />
-          <label for="wednesdayHours"
-            >Enter Wednesday hours of operation or enter "CLOSED":
-          </label>
+          <label for="wednesdayHours">Wednesday: </label>
           <input
             type="text"
             id="hours"
@@ -112,9 +94,7 @@
             v-model="brewery.wednesday_hours"
           />
           <br />
-          <label for="thursdayHours"
-            >Enter Thursday hours of operation or enter "CLOSED":
-          </label>
+          <label for="thursdayHours">Thursday: </label>
           <input
             type="text"
             id="hours"
@@ -122,9 +102,7 @@
             v-model="brewery.thursday_hours"
           />
           <br />
-          <label for="fridayHours"
-            >Enter Friday hours of operation or enter "CLOSED":
-          </label>
+          <label for="fridayHours">Friday: </label>
           <input
             type="text"
             id="hours"
@@ -132,9 +110,7 @@
             v-model="brewery.friday_hours"
           />
           <br />
-          <label for="saturdayHours"
-            >Enter Saturday hours of operation or enter "CLOSED":
-          </label>
+          <label for="saturdayHours">Saturday: </label>
           <input
             type="text"
             id="hours"
@@ -142,25 +118,14 @@
             v-model="brewery.saturday_hours"
           />
           <br />
-          <br />
-          <!-- BREWERY IMAGERY?!?!! -->
-          <label for="Address">Address:</label>
-          <textarea
-            id="address"
-            class="form-control"
-            v-model="brewery.street_address"
-          ></textarea>
-          <label for="food">Food Available: Yes</label>
-
-          <br />
-          <br />
-          <label for="food"> Food Available: Yes</label>
+          <label for="sundayHours">Sunday: </label>
           <input
-            id="food"
-            type="checkbox"
+            type="text"
+            id="hours"
             class="form-control"
-            v-model="brewery.food_available"
+            v-model="brewery.sunday_hours"
           />
+          <br />
           <input
             id="submit"
             type="submit"
@@ -204,3 +169,12 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+#hours-of-operation-title {
+  font-weight: bold;
+  text-decoration: underline;
+  margin: 0;
+  /* text-align: center; */
+}
+</style>
