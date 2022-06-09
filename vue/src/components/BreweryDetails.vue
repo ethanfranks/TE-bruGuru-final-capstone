@@ -8,8 +8,7 @@
         <img
           @error="imgWorks = false"
           v-if="imgWorks == true"
-          src="https://images-platform.99static.com//L1FuYJMN22WF_A-KhpWCunb2HHA=/543x73:1248x778/fit-in/590x590/99designs-contests-attachments/88/88532/attachment_88532157"
-          alt="brewery logo"
+          :src="brewery.imageURL"
         />
       </div>
 
@@ -111,6 +110,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 5%;
 }
 
 #brewery-logo > img {
