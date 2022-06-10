@@ -3,34 +3,45 @@
     <h3 class="beer-name">{{ beer.name }}</h3>
 
     <div id="beer-card-grid-container">
-      
       <div class="beer-img"><img :src="beer.imageURL" /></div>
 
-      <div id="beer-card-details">
-        <div class="beer-style">
-          <p class="characteristic-tag"><b>Type:</b></p>
-          {{ beer.style }}
+      <!-- <div id="details-box"> -->
+        <div id="beer-card-details">
+          <div>
+            <div class="beer-style">
+              <p class="characteristic-tag"><b>Type:</b></p>
+              {{ beer.style }}
+            </div>
+            <div class="beer-abv">
+              <p class="characteristic-tag"><b>ABV:</b></p>
+              {{ beer.abv }}
+            </div>
+            <div class="flavor-profile">
+              <p class="characteristic-tag"><b>Flavor Profile:</b></p>
+              {{ beer.profile }}
+            </div>
+            <br />
+            <div class="description-tag"><b>Description</b></div>
+            <div class="beer-description">{{ beer.description }}</div>
+          </div>
         </div>
-        <div class="beer-abv">
-          <p class="characteristic-tag"><b>ABV:</b></p>
-          {{ beer.abv }}
-        </div>
-        <div class="flavor-profile">
-          <p class="characteristic-tag"><b>Flavor Profile:</b></p>
-          {{ beer.profile }}
-        </div>
-        <div class="description-tag"><b>Description</b></div>
-        <div class="beer-description">{{ beer.description }}</div>
-      </div>
+      <!-- </div> -->
 
       <div id="beer-card-reviews">
         <div class="average-rating">
           <div v-if="beer.averageRating != 'NaN'">
-            Average Rating: {{ beer.averageRating }} / 5
+            <b
+              >Average Rating: <br />
+              {{ Math.round(beer.averageRating * 10) / 10 }} / 5</b
+            >
           </div>
         </div>
         <button @click="goToReviews" class="viewAllReviews">
-          {{ beer.averageRating != 'NaN' ? 'View All Reviews' : 'Be the first to review!'}}
+          {{
+            beer.averageRating != "NaN"
+              ? "View All Reviews"
+              : "Be the first to review!"
+          }}
         </button>
       </div>
     </div>
@@ -76,7 +87,7 @@ export default {
 }
 
 .beer-name {
-  margin: 0;
+  margin-top: 1%;
 }
 
 div > p {
@@ -110,7 +121,15 @@ div > p {
   grid-area: "details";
   overflow-y: auto;
   max-height: 100%;
+  /* display: flex;
+  justify-content: center;
+  flex-direction: column; */
+  overflow-y: auto;
 }
+
+/* #details-box {
+  overflow-y: auto;
+} */
 
 #beer-card-reviews {
   grid-area: "reviews";
@@ -119,6 +138,7 @@ div > p {
   align-items: center;
   flex-direction: column;
   margin-right: 5%;
+  margin-left: 5%;
 }
 
 #beer-card-details > div > p {
@@ -136,7 +156,6 @@ div > p {
 
 .card .characteristic-tag {
   font-weight: bold;
-  /* display: inline; */
 }
 
 .description-tag {

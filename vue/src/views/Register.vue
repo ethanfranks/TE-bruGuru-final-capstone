@@ -5,7 +5,9 @@
     </div>
 
     <div id="registration-form">
-      <form class="form-register" @submit.prevent="register">
+
+      <div id="form-flex">
+<form class="form-register" @submit.prevent="register">
         <h2 class="h3 mb-3 font-weight-normal">Create Account</h2>
         <div class="alert alert-danger" role="alert" v-if="registrationErrors">
           {{ registrationErrorMsg }}
@@ -55,7 +57,6 @@
             v-on:change="addBrewerRole($event)"
           />
         </div>
-        <!-- <br /> -->
         <br />
         <button class="btn btn-lg btn-primary btn-block" type="submit">
           Create Account
@@ -66,6 +67,9 @@
           >Already have an account?</router-link
         >
       </form>
+      </div>
+
+      
     </div>
   </div>
 </template>
@@ -134,7 +138,9 @@ export default {
 #register-container {
   font-family: "Nunito Sans", sans-serif;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
 }
 
 #register-pic-container {
@@ -151,11 +157,18 @@ export default {
   align-items: center;
   width: 50%;
   height: 100%;
-  overflow-y: auto;
 }
 
 .form-register {
   height: 100%;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+}
+
+.form-register > h2 {
+  margin: 0;
 }
 
 #register-pic {
@@ -185,14 +198,14 @@ export default {
   }
 
   #registration-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
-}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+  }
 
-/* @media screen and (max-height: ) */
+  /* @media screen and (max-height: ) */
 }
 </style>

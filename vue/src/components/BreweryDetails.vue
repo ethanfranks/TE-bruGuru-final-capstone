@@ -1,39 +1,34 @@
 <template>
   <div id="brewery-component">
-    <div id="brewery-grid-container">
+    <div>
       <div id="brewery-name">
         <h2>{{ brewery.name }}</h2>
       </div>
 
-      <!-- <div id="brewery-logo">
-        <img
-          @error="imgWorks = false"
-          v-if="imgWorks == true"
-          :src="brewery.imageURL"
-          alt="brewery logo"
-        />
-      </div> -->
-    </div>
+      <div id="brewery-logo" v-if="imgWorks == true">
+        <img @error="imgWorks = false" :src="brewery.imageURL" />
+      </div>
 
-    <div id="brewery-info">
-      <h5>Find Us Here</h5>
-      <p>{{ brewery.address }}</p>
-      <p>{{ brewery.phoneNumber }}</p>
-      <p>{{ brewery.email }}</p>
-      <a :href="brewery.igLink">Instagram</a>
-      <br />
-      <a :href="brewery.fbLink">Facebook</a>
-      <br />
-      <h5>About Us</h5>
-      <p>{{ brewery.aboutUs }}</p>
-      <h5>Hours of Operation</h5>
-      <p>Monday: {{ brewery.mondayHours }}</p>
-      <p>Tuesday: {{ brewery.tuesdayHours }}</p>
-      <p>Wednesday: {{ brewery.wednesdayHours }}</p>
-      <p>Thursday: {{ brewery.thursdayHours }}</p>
-      <p>Friday: {{ brewery.fridayHours }}</p>
-      <p>Saturday: {{ brewery.saturdayHours }}</p>
-      <p>Sunday: {{ brewery.sundayHours }}</p>
+      <div id="brewery-info">
+        <h4>Find Us Here</h4>
+        <p>{{ brewery.address }}</p>
+        <p>{{ brewery.phoneNumber }}</p>
+        <p>{{ brewery.email }}</p>
+        <a :href="brewery.igLink">Instagram</a>
+        <br />
+        <a :href="brewery.fbLink">Facebook</a>
+        <br />
+        <h4>About Us</h4>
+        <p>{{ brewery.aboutUs }}</p>
+        <h4>Hours of Operation</h4>
+        <p>Monday: {{ brewery.mondayHours }}</p>
+        <p>Tuesday: {{ brewery.tuesdayHours }}</p>
+        <p>Wednesday: {{ brewery.wednesdayHours }}</p>
+        <p>Thursday: {{ brewery.thursdayHours }}</p>
+        <p>Friday: {{ brewery.fridayHours }}</p>
+        <p>Saturday: {{ brewery.saturdayHours }}</p>
+        <p>Sunday: {{ brewery.sundayHours }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -49,7 +44,6 @@ export default {
     };
   },
   components: {},
-  // props: ['breweryId'],
   created() {
     const thisId = this.$route.params.id;
     console.log("this id before if/else" + thisId);
@@ -86,7 +80,7 @@ export default {
 
 #brewery-info > p,
 a {
-  font-size: 0.75rem;
+  font-size: 1rem;
   margin: 0.2rem;
   margin: 0;
 }
@@ -95,20 +89,31 @@ a {
   text-decoration: none;
 }
 
-#brewery-info > h5 {
+#brewery-info > h4 {
   margin-top: 0.3rem;
   margin-bottom: 0.3rem;
   text-decoration: underline;
 }
 
 #brewery-name {
-  height: 50%;
+  height: 15%;
+}
+
+#brewery-name > h2 {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding-bottom: 2%;
+  text-align: center;
 }
 
 #brewery-logo {
-  overflow: hidden;
-  position: relative;
-}
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 2%;
+  }
 
 #brewery-logo > img {
   max-height: 100%;
