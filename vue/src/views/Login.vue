@@ -1,7 +1,7 @@
 <template>
   <div id="login-view">
     <div class="flex-container">
-      
+
       <div id="login-img-container">
         <img :src="image" alt="Flight of beer" id="login-pic" />
       </div>
