@@ -31,11 +31,19 @@
       </div>
 
       <div id="reviews-area">
-        <div id="add-review-container">
+        <div v-if="!isLoggedIn" id="create-account-router">
+          <router-link class="account-link" v-bind:to="{ name: 'register' }"
+            >Create an account</router-link
+          >
+          <p> or </p>
+          <router-link class="account-link" v-bind:to="{ name: 'login' }"
+            >login here</router-link
+          >
+          to leave a review!
+        </div>
+        <div v-if="isLoggedIn" id="add-review-container">
           <div>
-            <button v-if="!isLoggedIn" @click="toggleReviewForm">
-              Leave a Review
-            </button>
+            <button @click="toggleReviewForm">Leave a Review</button>
           </div>
           <br />
           <form action.prevent v-show="showReviewForm">
@@ -73,6 +81,11 @@
         </div>
 
         <div id="reviews-list-container">
+          <!-- <div v-if="!reviews.length" id="no-reviews">
+            <p>There are currently no reviews for this beer.</p>
+            <img src="../assets/bruGuru.svg">
+          </div> -->
+
           <beer-review-card
             id="beer-review"
             class="beer-review-card"
@@ -113,10 +126,12 @@ export default {
       this.beer = response.data;
     });
   },
-  methods: {
+  computed: {
     isLoggedIn() {
       return this.$store.state.user.authorities;
     },
+  },
+  methods: {
     goToAddReview() {
       this.$router.push();
     },
@@ -126,7 +141,7 @@ export default {
     submitNewReview(review) {
       return reviewService.submitNewBeerReview(review).then((response) => {
         if (response.status == 200) {
-          window.alert("Review submitted");
+          window.alert("Review Submitted!");
         } else {
           window.alert("Something went wrong");
         }
@@ -151,6 +166,31 @@ export default {
 </script>
 
 <style scoped>
+#no-reviews {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+#no-reviews > img {
+  max-width: 25%;
+}
+
+#create-account-router {
+  text-align: center;
+  text-decoration: none;
+}
+
+#create-account-router > .account-link {
+  text-decoration: none;
+}
+
+#create-account-router > p {
+  display: inline;
+}
+
 #beer-reviews-page {
   font-family: "Nunito Sans", sans-serif;
   display: grid;
@@ -201,7 +241,7 @@ export default {
 #reviews-list-container {
   grid-area: "reviews";
   max-width: 100%;
-  height: 100%;
+  height: 95%;
 }
 
 .characteristic-tag {
