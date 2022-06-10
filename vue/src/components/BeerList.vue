@@ -36,7 +36,7 @@ export default {
         let brewery = {};
         BreweryService.getBreweryByUsername().then((response) => {
         brewery = response.data;
-        thisId = brewery.id;
+        thisId = brewery.brewery_id;
         return beerService.getBeersByBreweryId(thisId).then((response) => {
         this.beers = response.data;
       });
