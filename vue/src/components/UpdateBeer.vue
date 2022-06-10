@@ -128,7 +128,7 @@ import BreweryService from "@/services/BreweryService";
 
 export default {
   name: "update-beer",
-  props: ["brewery_id"],
+  // props: ["brewery_id"],
   data() {
     return {
       showUpdateForm: false,
@@ -149,9 +149,10 @@ export default {
   },
   created() {
     BreweryService.getBreweryByUsername().then((response) => {
-      const brewery_id = response.data.id;
+      const brewery_id = response.data.brewery_id;
       beerService.getBeersByBreweryId(brewery_id).then((response) => {
         this.beers = response.data;
+        this.beerToUpdate.brewery_id = brewery_id;
       });
     });
   },
@@ -162,7 +163,9 @@ export default {
     updateBeer() {
       beerService.updateBeer(this.beerToUpdate).then((response) => {
         if (response.status == 200) {
+          window.alert("Updated Beer Successfully!")
           this.resetForm();
+          this.$router.push({name: 'account'});
         }
       });
     },
@@ -176,7 +179,7 @@ export default {
           .deleteBeer(this.deletedBeerId)
           .then((response) => {
             if (response.status == 200) {
-              window.alert("Beer Deleted!");
+              window.alert("Beer Deleted Successfully!");
             }
           })
           .catch((error) => {

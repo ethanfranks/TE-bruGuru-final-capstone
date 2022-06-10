@@ -46,7 +46,6 @@ export default {
   components: {},
   created() {
     const thisId = this.$route.params.id;
-    console.log("this id before if/else" + thisId);
     if (thisId != null) {
       return breweryService.getBreweryById(thisId).then((response) => {
         this.brewery = response.data;
