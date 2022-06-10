@@ -163,9 +163,10 @@ export default {
     updateBeer() {
       beerService.updateBeer(this.beerToUpdate).then((response) => {
         if (response.status == 200) {
-          window.alert("Updated Beer Successfully!")
+          window.alert("Updated Beer Successfully!");
           this.resetForm();
-          this.$router.push({name: 'account'});
+          this.$router.push({ name: "account" });
+          this.showUpdateForm = false;
         }
       });
     },
@@ -180,6 +181,8 @@ export default {
           .then((response) => {
             if (response.status == 200) {
               window.alert("Beer Deleted Successfully!");
+              this.$router.push({ name: "account" });
+              this.showUpdateForm = false;
             }
           })
           .catch((error) => {
