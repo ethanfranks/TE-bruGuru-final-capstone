@@ -13,7 +13,7 @@
           <option
             v-for="beer in beers"
             v-bind:key="beer.beer_id"
-            :value="beer.beer_id"
+            :value="beer.id"
           >
             Beer ID# {{ beer.id }} -- Name: {{ beer.name }}
           </option>
@@ -26,7 +26,7 @@
           id="beer-name"
           type="text"
           placeholder="Name"
-          v-model="beerToUpdate.name"
+          v-model="beerToUpdate.beer_name"
           required
         />
       </div>
@@ -135,7 +135,7 @@ export default {
       deletedBeerId: "",
       beers: [],
       beerToUpdate: {
-        name: "",
+        beer_name: "",
         beer_description: "",
         beer_abv: null,
         beer_style: "",
@@ -198,7 +198,7 @@ export default {
           });
     },
     resetForm() {
-      this.newBeer = {};
+      this.beerToUpdate = {};
     },
   },
 };
