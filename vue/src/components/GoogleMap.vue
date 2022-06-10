@@ -2,8 +2,8 @@
   <div id="map-area">
     <div id="map-search">
       <h3 id="map-search-header">Find Breweries</h3>
-      <GmapAutocomplete @place_changed="setPlace" />
-      <button @click="centerMap">Go!</button>
+      <GmapAutocomplete @place_changed="setPlace" @keyup.enter="centerMap" />
+      <button @click="centerMap" id="go-button">Go!</button>
     </div>
     <GmapMap @tilesloaded="filterMarkers" :center="center" :zoom="12" id="map">
       <GmapInfoWindow
@@ -155,5 +155,6 @@ export default {
 
 #map-search-header {
   margin: 0;
+  text-align: center;
 }
 </style>
