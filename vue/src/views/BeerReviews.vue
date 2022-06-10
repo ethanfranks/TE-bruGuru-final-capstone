@@ -21,13 +21,21 @@
           <div class="beer-description">{{ beer.description }}</div>
         </div>
         <br />
-        <router-link v-bind:to="{ name: 'brewery-details', params: {id: beer.breweryId}}">Brewery Page</router-link>
+        <router-link
+          v-bind:to="{
+            name: 'brewery-details',
+            params: { id: beer.breweryId },
+          }"
+          >Brewery Page</router-link
+        >
       </div>
 
       <div id="reviews-area">
         <div id="add-review-container">
           <div>
-            <button @click="toggleReviewForm">Submit a review</button>
+            <button v-if="!isLoggedIn" @click="toggleReviewForm">
+              Leave a Review
+            </button>
           </div>
           <br />
           <form action.prevent v-show="showReviewForm">
@@ -106,6 +114,9 @@ export default {
     });
   },
   methods: {
+    isLoggedIn() {
+      return this.$store.state.user.authorities;
+    },
     goToAddReview() {
       this.$router.push();
     },
@@ -143,8 +154,7 @@ export default {
 #beer-reviews-page {
   font-family: "Nunito Sans", sans-serif;
   display: grid;
-  grid-template-areas:
-    "beer reviews";
+  grid-template-areas: "beer reviews";
   grid-template-columns: 1fr 2fr;
   height: 100%;
   width: 100%;
@@ -170,12 +180,11 @@ export default {
   grid-area: "reviews";
   justify-content: center;
   align-items: center;
- 
 }
 
 #beer-review-container {
-   grid-area: "reviews";
-   overflow-y: auto;
+  grid-area: "reviews";
+  overflow-y: auto;
 }
 
 #add-review-container {
