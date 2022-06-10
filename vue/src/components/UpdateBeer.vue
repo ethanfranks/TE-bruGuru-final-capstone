@@ -105,6 +105,7 @@
         <label for="delete-beer-options">
           Select the name of the beer you wish to delete:
         </label>
+        <br>
         <select name="delete-beer-options" v-model="deletedBeerId">
           <option
             v-for="beer in beers"
