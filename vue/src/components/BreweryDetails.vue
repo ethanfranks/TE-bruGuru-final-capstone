@@ -5,7 +5,7 @@
         <h2>{{ brewery.name }}</h2>
       </div>
 
-      <div id="brewery-logo" v-if="imgWorks == true">
+      <div id="brewery-logo" v-if="brewery.imageURL != null && imgWorks == true">
         <img @error="imgWorks = false" :src="brewery.imageURL" />
       </div>
 
