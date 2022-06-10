@@ -1,7 +1,12 @@
 <template>
   <div class="update-beer">
-    <h2 class="form-title">Update Beer Information</h2>
-    <form class="update-beer-form" v-on:submit.prevent="updateBeer">
+    <button @click="toggleUpdateForm()">Update a Beer</button>
+    <h2 class="form-title" v-show="showUpdateForm">Update Beer Information</h2>
+    <form
+      v-show="showUpdateForm"
+      class="update-beer-form"
+      v-on:submit.prevent="updateBeer"
+    >
       <div class="form-element">
         <select name="beer" id="beer" v-model="beerToUpdate.beer_id">
           <option :value="null">Select Beer to be Updated</option>
@@ -91,7 +96,10 @@
         <button v-on:click.prevent="resetForm" type="cancel">Cancel</button>
       </div>
     </form>
-    <div>
+
+    <br />
+
+    <div v-show="showUpdateForm" class="delete-beer">
       <h2>Delete Beer</h2>
       <form class="delete-beer-form" v-on:submit.prevent="deleteBeer">
         <label for="delete-beer-options">
@@ -106,8 +114,6 @@
             Beer ID# {{ beer.id }} -- Beer Name: {{ beer.name }}
           </option>
         </select>
-        <br />
-        <br />
         <button class="delete-beer-button" v-on:click="deleteBeer()">
           Delete Beer
         </button>
@@ -125,6 +131,7 @@ export default {
   props: ["brewery_id"],
   data() {
     return {
+      showUpdateForm: false,
       deletedBeerId: "",
       beers: [],
       beerToUpdate: {
@@ -149,6 +156,9 @@ export default {
     });
   },
   methods: {
+    toggleUpdateForm() {
+      this.showUpdateForm = !this.showUpdateForm;
+    },
     updateBeer() {
       beerService.updateBeer(this.beerToUpdate).then((response) => {
         if (response.status == 200) {
@@ -192,4 +202,8 @@ export default {
 </script>
 
 <style>
+.update-beer {
+  font-family: "Nunito Sans", sans-serif;
+  text-align: center;
+}
 </style>

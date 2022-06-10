@@ -175,6 +175,5 @@ export default {
   font-weight: bold;
   text-decoration: underline;
   margin: 0;
-  /* text-align: center; */
 }
 </style>
